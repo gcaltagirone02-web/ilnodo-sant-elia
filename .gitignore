@@ -22,3 +22,25 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# AI and internal tools
+.gemini/
+.kilocode/
+.kilocodemodes
+_bmad/
+_bmad-output/
+
+# Testing
+.playwright-mcp/
+test-results/
+
+# Windows-specific files
+Thumbs.db
+
+# Temp files
+temp.html
+
+# Large assets/testing images
+signature_final_v2.png
+sunset_and_signature_final.png
+test_2752.avif

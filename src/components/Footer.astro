@@ -1,0 +1,267 @@
+---
+// Footer.astro
+---
+
+<footer
+  class="bg-stone-950 pt-20 pb-10 border-t border-white/5 relative overflow-hidden"
+>
+  <!-- Decorative background elements -->
+  <div
+    class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Brand & Info -->
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <h2
+            class="text-3xl text-stone-100 tracking-tight italic"
+            style="font-family: var(--font-playfair);"
+          >
+            Il Nodo
+          </h2>
+          <p class="text-stone-500 text-sm leading-relaxed max-w-xs">
+            Il tuo angolo di paradiso a Sant'Elia. Aperitivi d'autore, vista
+            mozzafiato e l'accoglienza autentica della nostra terra.
+          </p>
+        </div>
+
+        <!-- Social Connect -->
+        <div class="flex items-center space-x-4">
+          <a
+            href="https://www.instagram.com/il_nodo_beach_bar/"
+            target="_blank"
+            class="w-10 h-10 rounded-full bg-stone-900 border border-white/10 flex items-center justify-center text-stone-400 hover:text-amber-500 hover:border-amber-500/50 transition-all group"
+            aria-label="Instagram"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><rect width="20" height="20" x="2" y="2" rx="5" ry="5"
+              ></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+              ></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg
+            >
+          </a>
+          <a
+            href="https://www.facebook.com/chioscoilnodo"
+            target="_blank"
+            class="w-10 h-10 rounded-full bg-stone-900 border border-white/10 flex items-center justify-center text-stone-400 hover:text-amber-500 hover:border-amber-500/50 transition-all group"
+            aria-label="Facebook"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path></svg
+            >
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-6">
+        <h3
+          class="text-stone-100 font-medium uppercase tracking-widest text-xs"
+        >
+          Navigazione
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href="#hero"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#storia"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Chi Siamo</a
+            >
+          </li>
+          <li>
+            <a
+              href="#prodotti"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Prodotti</a
+            >
+          </li>
+          <li>
+            <a
+              href="#galleria"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Galleria</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quick Navigation Cont. -->
+      <div class="space-y-6 md:pt-10">
+        <ul class="space-y-3">
+          <li>
+            <a
+              href="#privé"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Privé & Eventi</a
+            >
+          </li>
+          <li>
+            <a
+              href="#recensioni"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Recensioni</a
+            >
+          </li>
+          <li>
+            <a
+              href="#dove-siamo"
+              class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
+              >Dove Siamo</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://wa.me/393273180479"
+              class="text-amber-500 hover:text-amber-400 transition-colors text-sm font-semibold"
+              >Contattaci</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-6">
+        <h3
+          class="text-stone-100 font-medium uppercase tracking-widest text-xs"
+        >
+          Informazioni
+        </h3>
+        <ul class="space-y-4 text-sm text-stone-500">
+          <li class="flex items-start space-x-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-amber-500/60 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              ></path><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg
+            >
+            <span>Via dei Cantieri, snc<br />Sant'Elia, PA 90017</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-amber-500/60 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path></svg
+            >
+            <a
+              href="tel:+393273180479"
+              class="hover:text-stone-100 transition-colors">+39 327 318 0479</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
+    >
+      <p class="text-stone-600 text-xs italic">
+        &copy; {new Date().getFullYear()} Il Nodo. Tutti i diritti riservati.
+      </p>
+
+      <div class="flex items-center space-x-6">
+        <a
+          href="#"
+          class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
+          >Privacy Policy</a
+        >
+        <a
+          href="#"
+          class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
+          >Cookie Policy</a
+        >
+      </div>
+
+      <p class="text-stone-600 text-[10px] uppercase tracking-[0.3em] flex items-center gap-3">
+        Design by 
+        <a 
+          href="https://www.instagram.com/caltaa_/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-stone-300 hover:text-amber-400 transition-all duration-700 text-3xl lowercase hover:scale-110 active:scale-95 inline-block signature-glow"
+          style="font-family: var(--font-signature); tracking: normal; text-transform: none; margin-top: -8px;"
+        >
+          Calta
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Smooth scroll for the footer links is handled globally but we can add micro-adjustments if needed */
+  footer a {
+    position: relative;
+  }
+
+  .signature-glow {
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+    animation: signature-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes signature-pulse {
+    0%, 100% {
+      text-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+      opacity: 0.8;
+    }
+    50% {
+      text-shadow: 0 0 25px rgba(251, 191, 36, 0.5);
+      opacity: 1;
+      color: var(--color-amber-400);
+    }
+  }
+
+  .signature-glow:hover {
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
+    opacity: 1;
+  }
+</style>

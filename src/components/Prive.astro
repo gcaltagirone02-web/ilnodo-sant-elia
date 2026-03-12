@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+// Placeholder for a premium background image or we can use decorative elements
+// For now, we use a sophisticated gradient and decorative blobs to create the liquid glass effect
+---
+
+<section id="privé" class="relative py-24 overflow-hidden bg-stone-950">
+  <!-- Decorative Background Elements -->
+  <div
+    class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30"
+  >
+    <div
+      class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-amber-500/20 rounded-full blur-[120px] animate-pulse"
+    >
+    </div>
+    <div
+      class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px] animate-pulse"
+      style="animation-delay: 2s;"
+    >
+    </div>
+  </div>
+
+  <div class="container relative z-10 px-6 mx-auto">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <!-- Content Column -->
+      <div class="space-y-8" data-aos="fade-right">
+        <div class="space-y-4">
+          <h2
+            class="text-amber-500 font-medium tracking-widest uppercase text-sm"
+          >
+            Esclusività & Privacy
+          </h2>
+          <h3
+            class="text-4xl md:text-5xl lg:text-6xl font-serif text-stone-100 leading-tight"
+          >
+            Il Tuo Nodo <span
+              class="italic text-stone-400 text-3xl md:text-4xl lg:text-5xl block mt-2"
+              >Privatamente Unico</span
+            >
+          </h3>
+          <p class="text-lg text-stone-400 max-w-lg leading-relaxed">
+            Dalle celebrazioni intime agli eventi aziendali, offriamo uno spazio
+            dove il tempo si ferma e il panorama si fa esclusivo. Vivi Il Nodo
+            in totale riservatezza.
+          </p>
+        </div>
+
+        <ul class="space-y-4 text-stone-200">
+          <li class="flex items-center space-x-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Area riservata con vista panoramica</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Menu degustazione e cocktail pairing dedicati</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Service staff dedicato per un'esperienza sartoriale</span>
+          </li>
+        </ul>
+
+        <a
+          href="https://wa.me/393273180479?text=Ciao!%20Vorrei%20più%20informazioni%20per%20organizzare%20un%20evento%20privato%20al%20Privé%20del%20Nodo."
+          class="inline-flex items-center px-8 py-4 bg-amber-500 text-stone-950 font-semibold rounded-full hover:bg-amber-400 transition-all duration-300 hover:scale-105 active:scale-95 group"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Richiedi Disponibilità</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Visual Column (Liquid Glass Card) -->
+      <div class="relative" data-aos="fade-left">
+        <div
+          class="relative z-10 glass p-8 md:p-12 rounded-[2rem] border border-white/10 backdrop-blur-3xl shadow-2xl space-y-8 overflow-hidden"
+        >
+          <!-- Glass Reflection Overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none"
+          >
+          </div>
+
+          <div class="relative space-y-6">
+            <div class="w-16 h-1 w-24 bg-amber-500/50 rounded-full"></div>
+            <h4 class="text-3xl font-serif text-white">Eventi Sartoriali</h4>
+            <p class="text-stone-300">
+              Ogni dettaglio è curato per riflettere il tuo stile. Che sia un
+              compleanno, un anniversario o un traguardo importante, lo
+              trasformiamo in un ricordo indelebile.
+            </p>
+
+            <div class="pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
+              <div>
+                <span class="block text-2xl font-serif text-amber-500">20+</span
+                >
+                <span class="text-xs uppercase tracking-widest text-stone-500"
+                  >Posti Esclusivi</span
+                >
+              </div>
+              <div>
+                <span class="block text-2xl font-serif text-amber-500"
+                  >100%</span
+                >
+                <span class="text-xs uppercase tracking-widest text-stone-500"
+                  >Privacy Garantita</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative Elements behind card -->
+        <div
+          class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl animate-pulse"
+        >
+        </div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 1s;"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Additional liquid gradient animation */
+  @keyframes fluid {
+    0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+  }
+
+  /* Optional: we can add a subtle moving glow behind the text or sections */
+</style>

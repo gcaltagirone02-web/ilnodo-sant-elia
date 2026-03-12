@@ -1,0 +1,40 @@
+---
+import { SEO as AstroSEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Il Nodo 2.0 | Eccellenza per la tua PMI",
+  description = "Soluzioni web premium per piccole e medie imprese. Sviluppato con Astro per performance estreme.",
+  ogImage = "/og-default.jpg",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+---
+
+<AstroSEO
+  title={title}
+  description={description}
+  canonical={canonicalURL}
+  openGraph={{
+    basic: {
+      title: title,
+      type: "website",
+      image: ogImage,
+    },
+  }}
+  twitter={{
+    creator: "@ilnodo",
+  }}
+  extend={{
+    link: [{ rel: "icon", href: "/favicon.svg" }],
+    meta: [
+      { name: "viewport", content: "width=device-width" },
+      { name: "generator", content: Astro.generator },
+    ],
+  }}
+/>

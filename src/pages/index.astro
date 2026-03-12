@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Storytelling from "../components/Storytelling.astro";
+import ProductHighlights from "../components/ProductHighlights.astro";
+import SunsetExperience from "../components/SunsetExperience.astro";
+import Gallery from "../components/Gallery.astro";
+import Prive from "../components/Prive.astro";
+import Reviews from "../components/Reviews.astro";
+import Location from "../components/Location.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const currentPath = Astro.url.pathname;
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Il Nodo 2.0 — Beach Bar a Sant'Elia | Aperitivo al Tramonto"
+  description="Aperitivo al tramonto a Sant'Elia. Il Nodo 2.0: cocktail artigianali, musica e tramonti siciliani direttamente sul mare. Prenota il tuo tavolo via WhatsApp."
+>
+  <Navbar currentPath={currentPath} />
+  <main>
+    <Hero />
+    <Storytelling id="storia" />
+    <ProductHighlights id="prodotti" />
+    <SunsetExperience />
+    <Gallery />
+    <Prive />
+    <Reviews />
+    <Location />
+    <Footer />
+  </main>
 </Layout>

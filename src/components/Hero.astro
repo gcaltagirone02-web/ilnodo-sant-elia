@@ -1,0 +1,535 @@
+---
+/**
+ * Hero.astro
+ * Full-screen hero section for the homepage.
+ * - Dynamic background image based on viewport (mobile vs desktop)
+ * - Vignette + radial overlay for dramatic focus
+ * - CSS-only fade-up intro animations in sequence (no JS)
+ * - Modernized CTA buttons: pill primary + glassmorphic secondary
+ * - Animated scroll indicator with pulsing line
+ */
+import { getImage } from "astro:assets";
+import desktopImg from "../assets/images/Hero-desktop.png";
+import mobileImg from "../assets/images/Hero-mobile.png";
+
+interface Props {
+  /** Alt text for the hero background image */
+  imageAlt?: string;
+}
+
+const {
+  imageAlt = "Vista panoramica del beach bar Il Nodo 2.0 a Sant'Elia con la celebre casa bianca sugli scogli e un Aperol Spritz sul bancone",
+} = Astro.props;
+
+// Ottimizziamo le immagini per le diverse viewport usando getImage
+// Mobile: 828px base + 1656px Retina 2x
+const mobileOptimized = await getImage({
+  src: mobileImg,
+  format: "webp",
+  quality: 95,
+  width: 828,
+  height: 1792,
+});
+const mobileRetina = await getImage({
+  src: mobileImg,
+  format: "webp",
+  quality: 90,
+  width: 1656,
+  height: 3584,
+});
+
+// Desktop: 1920px FHD + 2560px Retina/4K
+const desktopOptimized = await getImage({
+  src: desktopImg,
+  format: "avif", // Più nitido di WebP sugli spigoli fini e minori artefatti di compressione
+  quality: 90,
+  width: 1920,
+});
+const desktopRetina = await getImage({
+  src: desktopImg,
+  format: "avif",
+  quality: 90,
+  width: 2752, // Full available width
+});
+---
+
+<section id="hero" class="hero" aria-labelledby="hero-heading">
+  <!-- Background image layer -->
+  <div class="hero__bg" aria-hidden="true">
+    <picture>
+      <!-- Mobile: max 767px, con srcset Retina -->
+      <source
+        media="(max-width: 767px)"
+        srcset={`${mobileOptimized.src} 828w, ${mobileRetina.src} 1656w`}
+        sizes="100vw"
+        type="image/webp"
+      />
+      <!-- Desktop: min 768px, using raw asset to bypass compression blur -->
+      <source media="(min-width: 768px)" srcset={desktopImg.src} />
+      <!-- Fallback img -->
+      <img
+        src={desktopImg.src}
+        alt={imageAlt}
+        class="hero__bg-img"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+  </div>
+
+  <!-- Content layer -->
+  <div class="hero__content">
+    <div class="hero__inner">
+      <!-- Primary heading (LCP element) - Più emozionale -->
+      <h1 id="hero-heading" class="hero__heading hero-anim hero-anim--2">
+        Il tuo posto<br />
+        sul mare
+      </h1>
+
+      <!-- Script corsivo -->
+      <p class="hero__script hero-anim hero-anim--2-5">
+        ti aspetta. <br class="mobile-only" /><span class="hero__location-sub"
+          >a Sant'Elia, Palermo</span
+        >
+      </p>
+
+      <!-- Supporting tagline -->
+      <p class="hero__tagline hero-anim hero-anim--3">
+        Siediti. Il tramonto è già pronto per te.
+      </p>
+
+      <!-- CTA group -->
+      <div
+        class="hero__cta-group hero-anim hero-anim--4"
+        role="group"
+        aria-label="Azioni principali"
+      >
+        <a
+          href="https://wa.me/393273180479?text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto.%20Mi%20date%20disponibilit%C3%A0%3F&utm_source=hero"
+          class="hero__cta-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Prenota via WhatsApp (apre in una nuova scheda)"
+        >
+          <span>Prenota il tuo tavolo</span>
+          <span class="hero__cta-primary-shine" aria-hidden="true"></span>
+        </a>
+
+        <a
+          href="#menu"
+          class="hero__cta-secondary"
+          aria-label="Scopri il nostro menu"
+        >
+          <span>Scopri il menu</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100svh; /* Usa svh per un dimensionamento corretto su mobile */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to right,
+        rgba(5, 12, 35, 0.7) 0%,
+        /* Navy più profondo */ rgba(5, 12, 35, 0.4) 40%,
+        rgba(5, 12, 35, 0.1) 65%,
+        transparent 85%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(5, 10, 30, 0.4) 0%,
+        /* Più scuro in alto per la nav */ transparent 30%,
+        transparent 70%,
+        rgba(5, 10, 30, 0.5) 100%
+      );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ---- Background ---- */
+  .hero__bg {
+    position: absolute;
+    /* Inset negativo crea margine per il parallax senza ricorrere a scale() sfocato */
+    top: -30px;
+    bottom: -30px;
+    left: -15px;
+    right: -15px;
+    z-index: 0;
+    background-color: var(--color-bg-primary); /* Fallback color */
+  }
+
+  .hero__bg picture,
+  .hero__bg-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center bottom; /* Focalizza la vista sul bancone/cocktail */
+    /* RIMOSSO transform-origin e will-change: Chrome downsampla severamente le immagini con will-change: transform su schermi grandi! */
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      /* Applichiamo il parallax al container .hero__bg nativo, NON all'IMG, per bypassare il downsampling delle texture GPU */
+      .hero__bg {
+        animation: hero-parallax linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 100svh;
+      }
+
+      @keyframes hero-parallax {
+        from {
+          /* Scala 1 fissa la rasterizzazione della texture 1:1, superando l'interpolazione hardware */
+          transform: translateY(0) scale(1);
+        }
+        to {
+          /* Nessuno scale: solo scroll Y all'interno del margine esteso di -30px del container */
+          transform: translateY(30px) scale(1);
+        }
+      }
+    }
+  }
+
+  /* Subtle film grain/noise texture for premium feel */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* ---- Content ---- */
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Spinge il testo in alto */
+    align-items: flex-start;
+    flex: 1;
+    /* Usa clamp per margini fluidi: piÃ¹ spazio in alto per la nav, piÃ¹ largo su desktop */
+    padding: clamp(8rem, 15vh, 12rem) clamp(1.5rem, 5vw, 6rem)
+      clamp(4rem, 8vh, 7rem);
+  }
+
+  .hero__inner {
+    max-width: 56rem;
+    /* Clean text shadow for depth without clutter */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ---- Intro Animations (CSS only, no JS) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-anim {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: hero-fade-up 800ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    .hero-anim--2 {
+      animation-delay: 380ms;
+    }
+    .hero-anim--2-5 {
+      animation-delay: 460ms;
+    }
+    .hero-anim--3 {
+      animation-delay: 600ms;
+    }
+    .hero-anim--4 {
+      animation-delay: 740ms;
+    }
+
+    @keyframes hero-fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .hero__heading {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+  }
+
+  .hero__script {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-cta);
+    margin: 0 0 2rem;
+    opacity: 0.95;
+    line-height: 1.2;
+  }
+
+  .hero__location-sub {
+    font-size: 0.7em;
+    opacity: 0.8;
+    color: #ffffff;
+    display: inline-block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .hero__tagline {
+    font-family: var(--font-sans);
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    font-weight: 400; /* Leggermente piÃ¹ marcato */
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8); /* 80% white */
+    margin: 0 0 3rem;
+    max-width: 40rem;
+    opacity: 0.95;
+  }
+
+  /* ---- CTA Group ---- */
+  .hero__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    text-shadow: none; /* Annulla text shadow ereditato per tenere puliti i bottoni */
+  }
+
+  /* Primary CTA – pill with shimmer */
+  .hero__cta-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-white);
+    background: var(--color-cta);
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    min-height: 56px;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      background var(--duration-fast) var(--ease-smooth),
+      transform var(--duration-fast) var(--ease-smooth),
+      box-shadow var(--duration-fast) var(--ease-smooth);
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.3),
+      0 4px 10px rgba(245, 166, 35, 0.2); /* Sottile ombra calda ambra */
+  }
+
+  .hero__cta-primary-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--duration-fast) var(--ease-smooth);
+  }
+
+  .hero__cta-primary:hover .hero__cta-primary-icon {
+    transform: rotate(-15deg) scale(1.15);
+  }
+
+  /* Shimmer effect on hover */
+  .hero__cta-primary-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255 255 255 / 0.3) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0s;
+  }
+
+  .hero__cta-primary:hover .hero__cta-primary-shine {
+    transform: translateX(100%);
+    transition: transform 600ms ease;
+  }
+
+  .hero__cta-primary:hover {
+    background: color-mix(in srgb, var(--color-cta) 90%, white);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 12px 40px color-mix(in srgb, var(--color-cta) 60%, transparent),
+      0 4px 12px color-mix(in srgb, var(--color-cta) 30%, transparent);
+  }
+
+  .hero__cta-primary:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Secondary CTA – ghost button ambra */
+  .hero__cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-cta);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    /* Glassmorphism premium (unificato mobile/desktop) */
+    border: 1.5px solid rgba(245, 166, 35, 0.8);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    min-height: 56px;
+    transition:
+      background var(--duration-fast) var(--ease-smooth),
+      color var(--duration-fast) var(--ease-smooth),
+      transform var(--duration-fast) var(--ease-smooth),
+      box-shadow var(--duration-fast) var(--ease-smooth),
+      border-color var(--duration-fast) var(--ease-smooth);
+  }
+
+  .hero__cta-secondary:hover {
+    background: var(--color-cta);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-cta) 40%, transparent);
+  }
+
+  .hero__cta-secondary:hover .hero__cta-secondary-arrow {
+    transform: translateX(5px);
+  }
+
+  .hero__cta-secondary:active {
+    transform: translateY(1px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 640px) {
+    .hero::before {
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 15, 35, 0.75) 0%,
+        rgba(5, 15, 35, 0.55) 40%,
+        rgba(5, 15, 35, 0.1) 65%,
+        rgba(5, 15, 35, 0.35) 100%
+      );
+    }
+
+    .hero__inner {
+      padding-top: 80px;
+      text-shadow: none;
+    }
+
+    .hero__content {
+      /* Padding ottimizzato per alzare leggermente il testo ed evitare il bicchiere */
+      padding: clamp(8rem, 18svh, 12rem) 1.5rem 3rem;
+      justify-content: flex-start;
+    }
+
+    .hero__heading {
+      font-size: clamp(2.4rem, 10vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      text-shadow: 0px 4px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero__script {
+      font-size: 32px;
+      color: var(--color-cta);
+      margin-top: 4px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      opacity: 0.95;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-only {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hero__location-sub {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero__tagline {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      margin-top: 16px; /* Diamo più vicinanza all'head ma separandolo bene */
+      margin-bottom: 24px;
+      opacity: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      max-width: 90%;
+    }
+
+    .hero__cta-group {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .hero__cta-primary {
+      width: 100%;
+      justify-content: center;
+      /* Ombra più satura per il bottone primario */
+      box-shadow: 0 6px 24px rgba(245, 166, 35, 0.4);
+    }
+
+    .hero__cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* Piccoli adjustment per schermi in height ridotta (es. orizzontale su telefono) */
+  @media (max-height: 600px) and (orientation: landscape) {
+    .hero__content {
+      padding-top: 5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anim {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+</style>

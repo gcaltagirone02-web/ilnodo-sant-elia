@@ -1,0 +1,547 @@
+---
+import { Image } from "astro:assets";
+import gallery1 from "../assets/images/tramonto-gallery.png";
+import gallery2 from "../assets/images/overview-il-nodo.png";
+import gallery3 from "../assets/images/il-nodo-cocktail-macro.png";
+import gallery5 from "../assets/images/pink-sky-gallery-il-nodo.png";
+import tramonto from "../assets/images/terrazza-golen-hour-sant-elia.png";
+import spiaggia from "../assets/images/spiaggia-sant-elia.png";
+import cocktail from "../assets/images/caletta-sant-elia.png";
+import panorama from "../assets/images/blue-cocktails-il-nodo.png";
+import goldenHour from "../assets/images/gin-tonic-il-nodo.png";
+
+interface Props {
+  id?: string;
+}
+
+const { id = "galleria" } = Astro.props;
+
+const images = [
+  {
+    src: cocktail, // caletta-sant-elia.png
+    alt: "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar.",
+    span: "large",
+  },
+  {
+    src: gallery2, // overview-il-nodo.png
+    alt: "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo.",
+    span: "tall",
+  },
+  {
+    src: gallery3, // il-nodo-cocktail-macro.png
+    alt: "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink.",
+    span: "small",
+  },
+  {
+    src: gallery1, // tramonto-gallery.png
+    alt: "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza.",
+    span: "small",
+  },
+  {
+    src: tramonto, // terrazza-golen-hour-sant-elia.png
+    alt: "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro.",
+    span: "tall",
+  },
+  {
+    src: spiaggia, // spiaggia-sant-elia.png
+    alt: "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale.",
+    span: "wide",
+  },
+  {
+    src: panorama, // blue-cocktails-il-nodo.png
+    alt: "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo.",
+    span: "small",
+  },
+  {
+    src: goldenHour, // gin-tonic-il-nodo.png
+    alt: "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare.",
+    span: "small",
+  },
+  {
+    src: gallery5, // pink-sky-gallery-il-nodo.png
+    alt: "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia.",
+    span: "small",
+  },
+];
+---
+
+<section id={id} class="gallery">
+  <div class="container">
+    <div class="gallery__header reveal">
+      <span class="gallery__label">I Nostri Momenti</span>
+      <h2 class="gallery__title">
+        Cattura l'essenza della <br />
+        <span class="italic text-accent">vita sul mare.</span>
+      </h2>
+    </div>
+
+    {/* Layout Switcher Container */}
+    <div class="gallery__wrapper">
+      {/* Scroll indicator for mobile */}
+      <div class="gallery__scroll-hint mobile-only">
+        <span>Scorri per esplorare</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+            points="12 5 19 12 12 19"></polyline></svg
+        >
+      </div>
+
+      <div class="gallery__grid">
+        {
+          images.map((image, index) => (
+            <button
+              type="button"
+              class={`gallery__item gallery__item--${image.span} reveal delay-${(index % 3) + 1}`}
+              aria-label={`Visualizza immagine: ${image.alt}`}
+              data-gallery-item
+              data-img-src={image.src.src}
+              data-img-alt={image.alt}
+            >
+              <div class="gallery__image-wrapper">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  class="gallery__image"
+                  width={
+                    image.span === "large" || image.span === "wide" ? 1200 : 800
+                  }
+                  loading="lazy"
+                />
+                <div class="gallery__overlay">
+                  <div class="gallery__info">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="gallery__icon"
+                    >
+                      <>
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      </>
+                    </svg>
+                    <span class="gallery__caption-short">{image.alt}</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <dialog id="gallery-lightbox" class="lightbox">
+    <div class="lightbox__content">
+      <form method="dialog">
+        <button class="lightbox__close" aria-label="Chiudi galleria">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="18" y1="6" x2="6" y2="18"></line><line
+              x1="6"
+              y1="6"
+              x2="18"
+              y2="18"></line></svg
+          >
+        </button>
+      </form>
+      <img src="" alt="" id="lightbox-image" class="lightbox__image" />
+      <p id="lightbox-caption" class="lightbox__caption"></p>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  const setupGallery = () => {
+    const dialog = document.getElementById(
+      "gallery-lightbox",
+    ) as HTMLDialogElement;
+    const lightboxImg = document.getElementById(
+      "lightbox-image",
+    ) as HTMLImageElement;
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const galleryItems = document.querySelectorAll("[data-gallery-item]");
+
+    if (!dialog || !lightboxImg || !lightboxCaption) return;
+
+    galleryItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-img-src");
+        const alt = item.getAttribute("data-img-alt");
+
+        if (src && alt) {
+          lightboxImg.src = src;
+          lightboxImg.alt = alt;
+          lightboxCaption.textContent = alt;
+          dialog.showModal();
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
+
+    dialog.addEventListener("close", () => {
+      document.body.style.overflow = "";
+      lightboxImg.src = "";
+    });
+
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+
+    // ESC key already handled by browser <dialog>,
+    // but just in case of weirdness, it's native.
+  };
+
+  setupGallery();
+  document.addEventListener("astro:after-swap", setupGallery);
+</script>
+
+<style>
+  .gallery {
+    background-color: var(--color-bg-primary);
+    padding: clamp(4rem, 10vw, 8rem) 0;
+    overflow: hidden; /* Prevent slider overflow on main thread */
+  }
+
+  .container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .gallery__header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .gallery__label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .gallery__title {
+    font-size: var(--text-heading);
+    line-height: 1.1;
+    color: var(--color-text-primary);
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  /* Hybrid Layout Logic */
+  .gallery__wrapper {
+    position: relative;
+  }
+
+  .gallery__scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  /* Mobile: Horizontal Snap Slider */
+  .gallery__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar IE */
+    margin: 0 -1.5rem; /* Break container padding */
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .gallery__grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+
+  .gallery__item {
+    flex: 0 0 80%; /* Peek effect: partial visibility of next */
+    scroll-snap-align: center;
+    aspect-ratio: 4/5;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: var(--color-bg-secondary);
+    transition: transform 0.4s var(--ease-smooth);
+  }
+
+  /* Desktop: Bento Grid */
+  @media (min-width: 768px) {
+    .mobile-only {
+      display: none;
+    }
+
+    .gallery__header {
+      margin-bottom: 4rem;
+    }
+
+    .gallery__grid {
+      display: grid;
+      overflow: visible;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 250px;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      scroll-snap-type: none;
+    }
+
+    .gallery__item {
+      flex: none;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto; /* Grid handles aspect */
+      scroll-snap-align: none;
+    }
+
+    .gallery__item--small {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+    .gallery__item--wide {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+    .gallery__item--tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+    .gallery__item--large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery__item:hover {
+      transform: scale(1.02);
+      z-index: 2;
+    }
+  }
+
+  .gallery__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-smooth);
+  }
+
+  .gallery__item:hover .gallery__image {
+    transform: scale(1.1);
+  }
+
+  .gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(15, 28, 70, 0.7) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-smooth);
+    backdrop-filter: blur(2px);
+  }
+
+  @media (min-width: 768px) {
+    .gallery__item:hover .gallery__overlay {
+      opacity: 1;
+    }
+  }
+
+  /* On mobile, hints of overlay are nice but click for depth */
+  @media (max-width: 767px) {
+    .gallery__overlay {
+      opacity: 1; /* Keep visible on mobile for context since there's no hover */
+      background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(15, 28, 70, 0.5) 100%
+      );
+      backdrop-filter: none;
+    }
+    .gallery__icon {
+      display: none;
+    }
+  }
+
+  .gallery__info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    transform: translateY(10px);
+    transition: transform 0.4s var(--ease-smooth);
+  }
+
+  .gallery__item:hover .gallery__info {
+    transform: translateY(0);
+  }
+
+  .gallery__caption-short {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 95vw;
+    width: 100%;
+    max-height: 95vh;
+    outline: none;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(15, 28, 70, 0.95);
+    backdrop-filter: blur(12px);
+  }
+
+  .lightbox__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+  }
+
+  .lightbox__close {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s var(--ease-smooth);
+    z-index: 100;
+  }
+
+  .lightbox__close:hover {
+    background: var(--color-accent);
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  .lightbox__image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  }
+
+  .lightbox__caption {
+    margin-top: 2rem;
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Animations */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+
+    .delay-1 {
+      animation-delay: 0ms;
+    }
+    .delay-2 {
+      animation-delay: 100ms;
+    }
+    .delay-3 {
+      animation-delay: 200ms;
+    }
+
+    @keyframes reveal-fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>

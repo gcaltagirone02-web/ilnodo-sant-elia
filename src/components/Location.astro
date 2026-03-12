@@ -1,0 +1,86 @@
+---
+// Location.astro
+---
+
+<section id="dove-siamo" class="py-24 bg-stone-950 overflow-hidden relative">
+  <!-- Subtle background texture -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E');"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      
+      <!-- Content Column -->
+      <div class="space-y-12" data-aos="fade-right">
+        <div class="space-y-4">
+          <h2 class="text-amber-500 font-medium tracking-widest uppercase text-sm">Coordinate di Bellezza</h2>
+          <h3 class="text-4xl md:text-5xl font-serif text-stone-100">Vieni a trovarci a <span class="italic text-stone-400">Sant'Elia</span></h3>
+          <p class="text-stone-400 text-lg leading-relaxed max-w-lg">
+            Siamo incastonati nel suggestivo borgo di Sant'Elia, dove il mare lambisce le antiche case dei pescatori. Un angolo di Sicilia autentica che aspetta solo di essere scoperto.
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2">
+          <!-- Address -->
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2 text-stone-100 font-medium uppercase tracking-wider text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Indirizzo</span>
+            </div>
+            <p class="text-stone-300">Via dei Cantieri, snc<br/>90017 Sant'Elia (PA)</p>
+            <a 
+              href="https://www.google.com/maps/dir/?api=1&destination=38.0960,13.5365" 
+              target="_blank" 
+              class="inline-block text-amber-500 hover:text-amber-400 text-sm font-semibold transition-colors decoration-amber-500/30 underline underline-offset-4"
+            >
+              Link Google Maps →
+            </a>
+          </div>
+
+          <!-- Hours -->
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2 text-stone-100 font-medium uppercase tracking-wider text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Orari</span>
+            </div>
+            <ul class="text-stone-300 text-sm space-y-1">
+              <li class="flex justify-between"><span>Lun - Gio:</span> <span>16:00 - 01:00</span></li>
+              <li class="flex justify-between"><span>Ven - Dom:</span> <span>16:00 - 02:00</span></li>
+              <li class="text-stone-500 mt-2 italic">* Gli orari possono variare in base alla stagione.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-stone-800 flex flex-wrap gap-6">
+           <div>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">Telefono</span>
+             <a href="tel:+393273180479" class="text-stone-200 hover:text-amber-500 transition-colors">+39 327 318 0479</a>
+           </div>
+           <div>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">Email</span>
+             <a href="mailto:info@ilnodo-santelia.it" class="text-stone-200 hover:text-amber-500 transition-colors">info@ilnodo-santelia.it</a>
+           </div>
+        </div>
+      </div>
+
+      <!-- Map Column -->
+      <div class="relative w-full aspect-square lg:aspect-auto lg:h-[600px] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl" data-aos="zoom-in">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.459255971405!2d13.536511376569788!3d38.09601337190625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319e274b754e8a1%3A0x7d7591b037b52dd2!2sChiosco%20Il%20Nodo!5e1!3m2!1sit!2sit!4v1773281328449!5m2!1sit!2sit" 
+          class="w-full h-full border-0 grayscale-[0.2] contrast-[1.1]" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <!-- Map Overlay Gradient (Optional: subtle darkening to match theme) -->
+        <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.3)]"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
