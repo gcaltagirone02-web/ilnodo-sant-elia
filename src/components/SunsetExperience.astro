@@ -18,12 +18,14 @@ const { id = "sunset-experience" } = Astro.props;
     <Image 
       src={sunsetDesktop} 
       alt="Tramonto spettacolare a Sant'Elia" 
+      format="avif"
       class="hidden md:block w-full h-full object-cover scale-110 motion-safe:animate-slow-zoom"
     />
     <!-- Mobile Background -->
     <Image 
       src={sunsetMobile} 
       alt="Tramonto spettacolare a Sant'Elia" 
+      format="avif"
       class="block md:hidden w-full h-full object-cover scale-110 motion-safe:animate-slow-zoom"
     />
     <!-- Premium Overlay Mix -->

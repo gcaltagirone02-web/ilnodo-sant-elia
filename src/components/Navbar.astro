@@ -18,9 +18,10 @@ interface Props {
 const { currentPath = "/" } = Astro.props;
 
 const navLinks = [
-  { href: "/#menu", label: "Menu" },
+  { href: "/#storia", label: "Chi Siamo" },
+  { href: "/#prodotti", label: "Menu" },
+  { href: "/#sunset-experience", label: "Esperienza" },
   { href: "/#galleria", label: "Galleria" },
-  { href: "/#privé", label: "Privé" },
   { href: "/#dove-siamo", label: "Dove siamo" },
 ];
 ---
@@ -40,6 +41,7 @@ const navLinks = [
         src={logoImg}
         alt="Il Nodo Logo"
         class="site-nav__logo-img"
+        format="avif"
         loading="eager"
       />
     </a>
