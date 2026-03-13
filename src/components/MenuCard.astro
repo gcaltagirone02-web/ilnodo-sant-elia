@@ -1,0 +1,135 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  description?: string;
+  ingredients?: string[];
+  isHighlight?: boolean;
+}
+
+const { name, price, description, ingredients, isHighlight = false } = Astro.props;
+---
+
+<article class:list={["menu-card", { "menu-card--highlight": isHighlight }]}>
+  <div class="menu-card__content">
+    {isHighlight && <span class="menu-card__badge">Signature</span>}
+    <div class="menu-card__header">
+      <h3 class="menu-card__name">{name}</h3>
+      <span class="menu-card__price">{price}</span>
+    </div>
+    
+    {description && <p class="menu-card__description">{description}</p>}
+    
+    {ingredients && ingredients.length > 0 && (
+      <ul class="menu-card__ingredients" aria-label="Ingredienti">
+        {ingredients.map((ingredient) => (
+          <li class="menu-card__ingredient">{ingredient}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+</article>
+
+<style>
+  .menu-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid rgba(15, 28, 70, 0.05);
+    border-radius: 1.25rem;
+    transition: transform var(--duration-smooth) var(--ease-smooth), box-shadow var(--duration-smooth) var(--ease-smooth);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    height: 100%;
+  }
+
+  .menu-card__content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .menu-card--highlight {
+    border: 2px solid var(--color-accent-amber-light);
+    background: linear-gradient(135deg, white 0%, #F8FAFC 100%);
+  }
+
+  .menu-card__badge {
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-amber);
+    background-color: rgba(202, 138, 4, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(202, 138, 4, 0.2);
+  }
+
+  .menu-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .menu-card__name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .menu-card__price {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--color-accent-amber);
+    font-size: 1.125rem;
+    white-space: nowrap;
+  }
+
+  .menu-card__description {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .menu-card__ingredients {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0 0; /* Push to bottom */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .menu-card__ingredient {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-stone-600);
+    background-color: rgba(15, 28, 70, 0.04);
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+  }
+
+  .menu-card--highlight .menu-card__ingredient {
+    background-color: rgba(202, 138, 4, 0.08);
+    color: var(--color-accent-amber);
+  }
+</style>

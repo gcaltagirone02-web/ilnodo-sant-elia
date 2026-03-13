@@ -1,0 +1,26 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div class="menu-grid" id={id}>
+  <slot />
+</div>
+
+<style>
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: 640px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

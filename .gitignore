@@ -33,7 +33,6 @@ _bmad-output/
 .agent/
 .bmad/
 .bmad-output/
--
 # Cloudflare
 .wrangler/
 .dev.vars

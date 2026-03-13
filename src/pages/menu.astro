@@ -1,0 +1,502 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import MenuGrid from "../components/MenuGrid.astro";
+import MenuCard from "../components/MenuCard.astro";
+import { sanityClient } from "sanity:client";
+
+// GROQ Query for menu items
+interface MenuItem {
+  name: string;
+  price: string;
+  description?: string;
+  ingredients?: string[];
+  category: string;
+  isHighlight?: boolean;
+}
+
+let items: MenuItem[] = [];
+try {
+  items = await sanityClient.fetch<MenuItem[]>(`*[_type == "menuItem"] | order(orderRank asc, name asc) {
+    name,
+    price,
+    description,
+    ingredients,
+    "category": category->title,
+    isHighlight
+  }`);
+} catch (error) {
+  console.warn("Sanity fetch failed, using fallback data. Check your projectId in astro.config.mjs.", error);
+}
+
+// Categories from inventory
+const categories = ["Cocktails", "Beverages", "Food"];
+
+// Fallback data from menu-inventory.md
+const fallbackData: Record<string, MenuItem[]> = {
+  "Cocktails": [
+    { name: "Alfa", price: "€ 8.00", ingredients: ["Granita", "Aperol", "Bitter Campari", "Gin", "Succo d'arancia"], isHighlight: true, category: "Cocktails" },
+    { name: "Alidas", price: "€ 8.00", ingredients: ["Vodka alla pesca", "Vodka alla fragola", "Cointreau", "Curacao", "Granita"], isHighlight: true, category: "Cocktails" },
+    { name: "Americano", price: "€ 7.00", ingredients: ["Martini Rosso", "Bitter Campari"], isHighlight: false, category: "Cocktails" },
+    { name: "Angelo Azzurro", price: "€ 7.00", ingredients: ["Gin", "Cointreau", "Curacao"], isHighlight: false, category: "Cocktails" },
+    { name: "Aug", price: "€ 8.00", ingredients: ["Cointreau", "Amaretto Disaronno", "Vodka alla pesca", "Succo d'ananas"], isHighlight: false, category: "Cocktails" },
+    { name: "B52", price: "€ 8.00", ingredients: ["Kahlua", "Baileys", "Grand Marnier"], isHighlight: false, category: "Cocktails" },
+    { name: "Balduccio", price: "€ 8.00", ingredients: ["Vodka", "Granita al limone", "Aperol"], isHighlight: true, category: "Cocktails" },
+    { name: "Bellini", price: "€ 7.00", ingredients: ["Prosecco", "Succo alla pesca"], isHighlight: false, category: "Cocktails" },
+    { name: "Black Russian", price: "€ 7.00", ingredients: ["Vodka liscia", "Kahlua"], isHighlight: false, category: "Cocktails" },
+    { name: "Bolt", price: "€ 8.00", ingredients: ["Sambuca", "Midori", "Sciroppo alla fragola"], isHighlight: true, category: "Cocktails" },
+    { name: "Bombardino", price: "€ 8.00", ingredients: ["Gin", "Aperol", "Bitter Campari", "Vodka alla fragola", "Succo d'arancia"], isHighlight: true, category: "Cocktails" },
+    { name: "Caipirinha", price: "€ 8.00", ingredients: ["Cachaça", "Lime", "Zucchero di canna", "Acqua tonica"], isHighlight: false, category: "Cocktails" },
+    { name: "Caipiroska", price: "€ 8.00", ingredients: ["Vodka", "Lime", "Zucchero di canna", "Ghiaccio tritato"], isHighlight: false, category: "Cocktails" },
+    { name: "Cosmopolitan", price: "€ 8.00", ingredients: ["Vodka liscia", "Cointreau", "Succo di limone", "Cranberry"], isHighlight: false, category: "Cocktails" },
+    { name: "Cuba Libre", price: "€ 7.00", ingredients: ["Rum", "Coca-Cola", "Limone spremuto"], isHighlight: false, category: "Cocktails" },
+    { name: "Daiquiri", price: "€ 8.00", ingredients: ["Limone", "Zucchero di canna", "Rum scuro", "Sciroppo di fragola", "Tonica"], isHighlight: false, category: "Cocktails" },
+    { name: "Fantasia", price: "€ 8.00", ingredients: ["Gin", "Rum bianco", "Succo d'ananas", "Granita al limone", "Sciroppo alla fragola"], isHighlight: true, category: "Cocktails" },
+    { name: "Fire Drink", price: "€ 8.00", ingredients: ["Cointreau", "Martini Bianco", "Sciroppo di amarena"], isHighlight: false, category: "Cocktails" },
+    { name: "Flower", price: "€ 8.00", ingredients: ["Vodka liscia", "Vodka alla fragola", "Limoncello", "Granita al limone"], isHighlight: true, category: "Cocktails" },
+    { name: "Garibaldi", price: "€ 7.00", ingredients: ["Succo d'arancia", "Bitter Campari"], isHighlight: false, category: "Cocktails" },
+    { name: "Hugo", price: "€ 8.00", ingredients: ["St. Germain", "Prosecco", "Foglie di menta"], isHighlight: false, category: "Cocktails" },
+    { name: "Il Nodo", price: "€ 8.00", ingredients: ["Martini Bianco", "Rum bianco", "Aperol", "Granita al limone", "Vodka alla fragola"], isHighlight: true, category: "Cocktails" },
+    { name: "Japanese", price: "€ 8.00", ingredients: ["Vodka", "Gin", "Rum bianco", "Midori", "Lime", "Zucchero di canna"], isHighlight: false, category: "Cocktails" },
+    { name: "Lancillotto", price: "€ 8.00", ingredients: ["Bitter Campari", "Aperol", "Gin", "Prosecco"], isHighlight: true, category: "Cocktails" },
+    { name: "Long Island", price: "€ 8.00", ingredients: ["Cointreau", "Gin", "Tequila", "Vodka", "Lime", "Coca-Cola", "Zucchero"], isHighlight: false, category: "Cocktails" },
+    { name: "Lulù", price: "€ 8.00", ingredients: ["Vodka alla pesca", "Vodka liscia", "Cointreau", "Lemon", "Prosecco"], isHighlight: true, category: "Cocktails" },
+    { name: "London Mule", price: "€ 8.00", ingredients: ["Gin", "Ginger beer", "Succo di limone", "Zenzero"], isHighlight: false, category: "Cocktails" },
+    { name: "Malabama", price: "€ 8.00", ingredients: ["Vodka alla fragola", "Vodka liscia", "Succo d'arancia", "Succo d'ananas"], isHighlight: true, category: "Cocktails" },
+    { name: "Manhattan", price: "€ 8.00", ingredients: ["Whiskey", "Vermouth rosso", "Angostura"], isHighlight: false, category: "Cocktails" },
+    { name: "Margarita", price: "€ 7.00", ingredients: ["Tequila", "Cointreau", "Succo di limone"], isHighlight: false, category: "Cocktails" },
+    { name: "Metropolitan", price: "€ 8.00", ingredients: ["Aperol", "Bitter Campari", "Succo d'ananas"], isHighlight: false, category: "Cocktails" },
+    { name: "Midori Sour", price: "€ 7.00", ingredients: ["Midori", "Lime", "Zucchero di canna"], isHighlight: false, category: "Cocktails" },
+    { name: "Mimosa", price: "€ 7.00", ingredients: ["Prosecco", "Spremuta di succo d'arancia"], isHighlight: false, category: "Cocktails" },
+    { name: "White Lady", price: "€ 7.00", ingredients: ["Gin", "Lime", "Cointreau", "Zucchero"], isHighlight: false, category: "Cocktails" },
+    { name: "Mojito", price: "€ 8.00", ingredients: ["Rum", "Lime", "Zucchero di canna", "Menta", "Soda"], isHighlight: false, category: "Cocktails" },
+    { name: "Negroni", price: "€ 7.00", ingredients: ["Bitter Campari", "Gin", "Martini Rosso"], isHighlight: false, category: "Cocktails" },
+    { name: "Negroni Sbagliato", price: "€ 7.00", ingredients: ["Bitter Campari", "Prosecco", "Martini Rosso"], isHighlight: false, category: "Cocktails" },
+    { name: "Negroski", price: "€ 7.00", ingredients: ["Martini Rosso", "Vodka", "Bitter Campari"], isHighlight: false, category: "Cocktails" },
+    { name: "Pazzia", price: "€ 8.00", ingredients: ["Gin", "Rum", "Red Bull", "Granita al limone", "Sciroppo di amarena"], isHighlight: true, category: "Cocktails" },
+    { name: "Pina Colada", price: "€ 8.00", ingredients: ["Rum bianco", "Crema di cocco", "Batida de coco", "Succo ananas"], isHighlight: false, category: "Cocktails" },
+    { name: "Quattro Bianchi", price: "€ 8.00", ingredients: ["Cointreau", "Tequila", "Gin", "Vodka"], isHighlight: false, category: "Cocktails" },
+    { name: "Sex On The Beach", price: "€ 7.00", ingredients: ["Vodka alla pesca", "Succo d'arancia", "Sciroppo alla fragola"], isHighlight: false, category: "Cocktails" },
+    { name: "Siculo", price: "€ 7.00", ingredients: ["Granita", "Vodka liscia", "Limoncello"], isHighlight: true, category: "Cocktails" },
+    { name: "Smash Basil", price: "€ 8.00", ingredients: ["Gin", "Sciroppo di zucchero", "Basilico fresco"], isHighlight: false, category: "Cocktails" },
+    { name: "Spritz", price: "€ 7.00", ingredients: ["Aperol", "Prosecco"], isHighlight: false, category: "Cocktails" },
+    { name: "Tequila Sunrise", price: "€ 7.00", ingredients: ["Succo d'arancia", "Tequila", "Sciroppo di granatina"], isHighlight: false, category: "Cocktails" },
+    { name: "Vaporetto", price: "€ 8.00", ingredients: ["Vodka liscia", "Vodka alla fragola", "Vodka alla pesca", "Gin", "Red Bull"], isHighlight: true, category: "Cocktails" },
+    { name: "Violet", price: "€ 8.00", ingredients: ["Vodka liscia", "Vodka alla fragola", "Vodka alla pesca", "Gin", "Red Bull"], isHighlight: true, category: "Cocktails" },
+    { name: "Moscow Mule", price: "€ 8.00", ingredients: ["Vodka", "Ginger beer", "Succo di limone", "Zenzero"], isHighlight: false, category: "Cocktails" },
+    { name: "Alain", price: "€ 9.00", ingredients: ["Gin Mare", "Acqua tonica", "Midori"], isHighlight: true, category: "Cocktails" },
+    { name: "Analcolico Fruttato", price: "€ 5.00", ingredients: ["Granita al limone", "Succo ananas", "Succo arancia", "Sciroppo di fragola"], isHighlight: false, category: "Cocktails" },
+    { name: "Michelle", price: "€ 5.00", ingredients: ["Schweppes Lemon", "Granita", "Sciroppo pesca & kiwi"], isHighlight: true, category: "Cocktails" },
+    { name: "Trudis", price: "€ 5.00", ingredients: ["Granita", "Red Bull", "Acqua tonica"], isHighlight: true, category: "Cocktails" },
+    { name: "Virgin Colada", price: "€ 5.00", ingredients: ["Succo ananas", "Sciroppo di cocco"], isHighlight: false, category: "Cocktails" },
+    { name: "Virgin Mule", price: "€ 5.00", ingredients: ["Ginger beer", "Lime", "Foglie di menta"], isHighlight: false, category: "Cocktails" },
+    { name: "Virgin Mojito", price: "€ 5.00", ingredients: ["Tonica/Lemon", "Lime", "Zucchero di canna", "Menta"], isHighlight: false, category: "Cocktails" }
+  ],
+  "Beverages": [
+    { name: "Heineken 33cl", price: "€ 3.00", category: "Beverages" },
+    { name: "Birra Messina Cristalli di Sale", price: "€ 4.00", isHighlight: true, category: "Beverages" },
+    { name: "Tennent's 33cl", price: "€ 4.00", category: "Beverages" },
+    { name: "Ichnusa", price: "€ 3.50", category: "Beverages" },
+    { name: "Grillo Nissim (Calice)", price: "€ 7.00", description: "Tenute Orestiadi Gibellina", category: "Beverages" },
+    { name: "Imagredi Prosecco (Bottiglia)", price: "€ 22.00", category: "Beverages" },
+    { name: "Tisana Fredda (Lattina)", price: "€ 3.00", description: "Pesca, menta e finocchio / Aloe e melograno", category: "Beverages" },
+    { name: "Caffè", price: "€ 1.00", category: "Beverages" },
+    { name: "Crema Caffè", price: "€ 2.50", isHighlight: true, category: "Beverages" },
+    { name: "Granita al Limone", price: "€ 2.00", category: "Beverages" },
+    { name: "Granita con Sciroppo", price: "€ 2.50", description: "Menta, kiwi, fragola, amarena, pesca", category: "Beverages" },
+    { name: "Grappa 903 Barricata", price: "€ 4.00", category: "Beverages" },
+    { name: "Amaro del Capo/Montenegro/Averna", price: "€ 4.00", category: "Beverages" },
+    { name: "Sgroppino", price: "€ 6.00", ingredients: ["Granita limone", "Vodka liscia"], category: "Beverages" }
+  ],
+  "Food": [
+    { name: "Tagliere Misto", price: "€ 12.00", description: "Salumi e formaggi misti", isHighlight: true, category: "Food" },
+    { name: "Bruschettone Classico", price: "€ 5.00", ingredients: ["Pomodoro", "olio", "origano", "sale", "pepe"], category: "Food" },
+    { name: "Insalata Solunto", price: "€ 8.00", description: "Bresaola, rucola, scaglie di parmigiano reggiano, limone, sale e pepe", isHighlight: true, category: "Food" },
+    { name: "Insalata Caprese", price: "€ 7.00", ingredients: ["Pomodoro", "mozzarella", "basilico"], category: "Food" },
+    { name: "Panino Solunto", price: "€ 5.00", ingredients: ["Bresaola", "scaglie di grana", "rucola", "olio", "limone", "pepe"], isHighlight: true, category: "Food" },
+    { name: "Panino Il Nodo", price: "€ 5.50", ingredients: ["Salsiccia", "emmental", "funghi"], isHighlight: true, category: "Food" },
+    { name: "A Punta", price: "€ 5.00", ingredients: ["Salsiccia", "mozzarella", "pomodoro", "cipolla"], isHighlight: true, category: "Food" },
+    { name: "Crocicchia", price: "€ 4.00", ingredients: ["Prosciutto crudo", "mozzarella", "pomodoro"], category: "Food" },
+    { name: "Vegetariano", price: "€ 4.00", ingredients: ["Mozzarella", "funghi", "zucchine"], category: "Food" }
+  ]
+};
+
+// Group sanity items by category if available
+const groupedItems = items.reduce((acc, item) => {
+  const cat = item.category || "Other";
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(item);
+  return acc;
+}, {} as Record<string, MenuItem[]>);
+
+const displayData: Record<string, MenuItem[]> = items.length > 0 ? groupedItems : fallbackData;
+---
+
+<Layout 
+  title="Menu Digitale | Il Nodo 2.0" 
+  description="Scopri la nostra selezione di cocktail artigianali, piatti tipici e le famose granite siciliane."
+>
+  <Navbar currentPath="/menu" />
+
+  <main class="menu-page">
+    <section class="menu-hero">
+      <div class="menu-hero__bg">
+        <img src="/hero-desktop.png" alt="" aria-hidden="true" />
+      </div>
+      <div class="menu-hero__overlay"></div>
+      <div class="menu-hero__content">
+        <h1 class="menu-hero__title">Il Nostro Menu</h1>
+        <p class="menu-hero__subtitle">Sapori autentici, vista mozzafiato.</p>
+      </div>
+    </section>
+
+    <div class="menu-container">
+
+    <div class="tabs-system" id="menu-categories">
+      {categories.map((cat, index) => {
+        const id = cat.toLowerCase().split(' ')[0]; // Handle "Beverages" or "Drink & Caffetteria"
+        const finalId = id === 'drink' ? 'beverages' : id; // Normalized ID
+        return (
+          <input 
+            type="radio" 
+            name="menu-tabs" 
+            id={`tab-${finalId}`} 
+            class="tab-input" 
+            checked={index === 0} 
+          />
+        )
+      })}
+
+      <nav class="tabs-nav">
+        <div class="tabs-nav__container">
+          {categories.map((cat) => {
+            const id = cat.toLowerCase().split(' ')[0];
+            const finalId = id === 'drink' ? 'beverages' : id;
+            return (
+              <label 
+                for={`tab-${finalId}`} 
+                class="tab-label"
+                onclick="document.getElementById('menu-categories').scrollIntoView({ behavior: 'smooth' })"
+              >
+                {cat}
+              </label>
+            )
+          })}
+          <div class="tabs-nav__indicator"></div>
+        </div>
+      </nav>
+
+      <div class="tabs-content">
+        {categories.map((cat) => {
+          const id = cat.toLowerCase().split(' ')[0];
+          const finalId = id === 'drink' ? 'beverages' : id;
+          return (
+            <section id={`content-${finalId}`} class="tab-pane">
+              <MenuGrid>
+                {displayData[cat]?.map((item) => (
+                  <MenuCard 
+                    name={item.name}
+                    price={item.price}
+                    description={item.description}
+                    ingredients={item.ingredients}
+                    isHighlight={item.isHighlight}
+                  />
+                ))}
+              </MenuGrid>
+            </section>
+          )
+        })}
+      </div>
+    </div>
+
+    <footer class="menu-footer">
+      <h2 class="menu-footer__title">Note Operative</h2>
+      <ul class="menu-footer__list">
+        <li class="menu-footer__item">
+          <span>Sostituzioni</span>
+          Sostituzione panino con piadina: +€ 0,50
+        </li>
+        <li class="menu-footer__item">
+          <span>Personalizzazioni</span>
+          Ogni singola aggiunta agli ingredienti: +€ 0,50
+        </li>
+        <li class="menu-footer__item">
+          <span>Servizio</span>
+          Coperto a persona: € 0,50
+        </li>
+        <li class="menu-footer__item">
+          <span>Orari</span>
+          Aperto tutti i giorni: 10:00 - 00:00
+        </li>
+      </ul>
+    </footer>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .menu-page {
+    background-color: var(--color-bg-primary);
+  }
+
+  .menu-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F1C46; /* Navy fallback */
+    overflow: hidden;
+    margin-top: -5rem; /* Allow Navbar to overlay */
+    padding-top: 5rem;
+  }
+
+  .menu-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at center, transparent 0%, rgba(15, 28, 70, 0.4) 100%),
+      linear-gradient(to bottom, rgba(15, 28, 70, 0.3) 0%, rgba(15, 28, 70, 0.8) 100%);
+    z-index: 1;
+  }
+
+  .menu-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .menu-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.8);
+  }
+
+  /* Grain texture consistency */
+  .menu-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .menu-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .menu-hero__title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 300;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .menu-hero__subtitle {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.05em;
+  }
+
+  .menu-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  /* Zero-JS Tabs Logic */
+  .tab-input {
+    display: none;
+  }
+
+  .tabs-nav {
+    position: sticky;
+    top: 5rem; /* Navbar height */
+    z-index: 40;
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    background-color: var(--color-bg-primary);
+  }
+
+  .tabs-nav__container {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.25rem;
+    border-radius: 9999px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .tab-label {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-stone-400);
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: color var(--duration-normal);
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .tab-label:hover {
+    color: var(--color-stone-200);
+  }
+
+  .tabs-nav__indicator {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    height: calc(100% - 0.5rem);
+    width: calc(33.333% - 0.25rem); /* Proportional width for 3 tabs */
+    background: linear-gradient(135deg, var(--color-accent), #D19A66);
+    border-radius: 9999px;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Content Display Logic */
+  .tab-pane {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* State: Cocktails */
+  #tab-cocktails:checked ~ .tabs-nav .tab-label:nth-child(1) { color: white; }
+  #tab-cocktails:checked ~ .tabs-nav .tabs-nav__indicator { 
+    transform: translateX(0); 
+  }
+  #tab-cocktails:checked ~ .tabs-content #content-cocktails { 
+    display: block; 
+  }
+
+  /* State: Beverages */
+  #tab-beverages:checked ~ .tabs-nav .tab-label:nth-child(2) { color: white; }
+  #tab-beverages:checked ~ .tabs-nav .tabs-nav__indicator { 
+    transform: translateX(100%); 
+  }
+  #tab-beverages:checked ~ .tabs-content #content-beverages { 
+    display: block; 
+  }
+
+  /* State: Food */
+  #tab-food:checked ~ .tabs-nav .tab-label:nth-child(3) { color: white; }
+  #tab-food:checked ~ .tabs-nav .tabs-nav__indicator { 
+    transform: translateX(200%); 
+  }
+  #tab-food:checked ~ .tabs-content #content-food { 
+    display: block; 
+  }
+
+  /* Operative Notes */
+  .menu-footer {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background-color: var(--color-bg-elevated);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(15, 28, 70, 0.05);
+  }
+
+  .menu-footer__title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .menu-footer__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .menu-footer__item {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    line-height: 1.6;
+  }
+
+  .menu-footer__item span {
+    color: var(--color-accent-amber);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  #menu-categories {
+    scroll-margin-top: 6rem; /* Account for sticky navbar */
+  }
+
+  @media (max-width: 480px) {
+    #menu-categories {
+      scroll-margin-top: 6rem;
+    }
+    
+    .tabs-nav {
+      top: 5.25rem; /* Increased to avoid overlap with main navbar */
+      padding: 0.75rem 0;
+      margin-bottom: 1.5rem;
+      /* Visual separation */
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tabs-nav__container {
+      max-width: none;
+      padding: 0.35rem;
+    }
+
+    .tab-label {
+      font-size: 0.9375rem;
+      padding: 0.875rem 0.25rem;
+      font-weight: 700;
+    }
+
+    .tabs-nav__indicator {
+      top: 0.35rem;
+      left: 0.35rem;
+      height: calc(100% - 0.7rem);
+      width: calc(33.333% - 0.35rem);
+    }
+  }
+</style>
