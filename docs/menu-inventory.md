@@ -114,7 +114,7 @@
 
 ---
 
-## 5. Soft Drinks & Caffetteria
+## 5. Soft Drinks
 **Acqua Naturale/Frizzante Piccola** | - | € 1.00
 **Tisana Fredda (Lattina)** | Pesca, menta e finocchio / Aloe e melograno | € 3.00
 **Caffè** | - | € 1.00
@@ -140,7 +140,7 @@
 
 ---
 
-## 6. Amari & Spirits
+## 6. Amari
 **Grappa 903** | Barricata | € 4.00
 **Martini** | Rosso/Bianco | € 4.00
 **Limoncello** | - | € 4.00
