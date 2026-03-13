@@ -7,30 +7,26 @@ import MenuCard from "../components/MenuCard.astro";
 import { Image } from "astro:assets";
 import desktopHero from "../assets/images/golden-hour-dektop-il-nodo.png";
 import mobileHero from "../assets/images/golden-hour-mobile-il-nodo.png";
-import { sanityClient } from "sanity:client";
+import { getCategories, getMenuItems } from "../lib/sanity/queries";
 
 // GROQ Query for menu items
 interface MenuItem {
   name: string;
+  nameEn?: string;
   price: string;
   description?: string;
+  descriptionEn?: string;
   ingredients?: string[];
+  ingredientsEn?: string[];
   category: string;
   isHighlight?: boolean;
 }
 
 let items: MenuItem[] = [];
+let sanityCategories: any[] = [];
+
 try {
-  items = await sanityClient.fetch<
-    MenuItem[]
-  >(`*[_type == "menuItem"] | order(orderRank asc, name asc) {
-    name,
-    price,
-    description,
-    ingredients,
-    "category": category->title,
-    isHighlight
-  }`);
+  [items, sanityCategories] = await Promise.all([getMenuItems(), getCategories()]);
 } catch (error) {
   console.warn(
     "Sanity fetch failed, using fallback data. Check your projectId in astro.config.mjs.",
@@ -49,8 +45,26 @@ import stuzzichiniImg from "../assets/images/stuzzichini-e-taglieri.webp";
 import insalateImg from "../assets/images/insalate.webp";
 import paniniImg from "../assets/images/panini.webp";
 
+const localCategoryImages: Record<string, any> = {
+  "cocktails-alcolici": cocktailsAlcoliciImg,
+  "cocktails-analcolici": cocktailsAnalcoliciImg,
+  birre: birreImg,
+  vini: viniImg,
+  "soft-drinks": softDrinksImg,
+  amari: amariImg,
+  stuzzichini: stuzzichiniImg,
+  insalate: insalateImg,
+  panini: paniniImg,
+};
+
 // Categories with metadata for grid cards
-const categories = [
+const categories = sanityCategories.length > 0
+  ? sanityCategories.map(cat => ({
+      name: cat.title,
+      slug: cat.slug,
+      image: cat.image || localCategoryImages[cat.slug] || cocktailsAlcoliciImg
+    }))
+  : [
   {
     name: "Cocktails Alcolici",
     slug: "cocktails-alcolici",

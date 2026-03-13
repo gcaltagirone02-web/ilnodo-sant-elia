@@ -24,6 +24,16 @@ const navLinks = [
   { href: "/#galleria", label: "Galleria" },
   { href: "/#dove-siamo", label: "Dove siamo" },
 ];
+
+// Contextual WhatsApp messages
+const whatsappBase = "https://api.whatsapp.com/send?phone=393661770312&text=";
+const messages = {
+  home: "Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20l'aperitivo%20a%20Sant'Elia.",
+  menu: "Ciao!%20Ho%20visto%20il%20vostro%20menu%20online%20e%20vorrei%20prenotare%20un%20tavolo.",
+};
+
+const currentMessage = currentPath === "/menu" ? messages.menu : messages.home;
+const whatsappLink = `${whatsappBase}${currentMessage}`;
 ---
 
 <!-- Scroll sentinel -->
@@ -68,7 +78,7 @@ const navLinks = [
 
     <!-- CTA Button -->
     <a
-      href="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20prenotare%20un%20tavolo."
+      href={whatsappLink}
       class="site-nav__cta"
       target="_blank"
       rel="noopener noreferrer"
@@ -166,7 +176,7 @@ const navLinks = [
     }
     <li style="--stagger: 4">
       <a
-        href="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20prenotare%20un%20tavolo."
+        href={whatsappLink}
         class="mobile-menu__link mobile-menu__link--cta"
         target="_blank"
         rel="noopener noreferrer"

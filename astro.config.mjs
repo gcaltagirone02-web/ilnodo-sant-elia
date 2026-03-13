@@ -13,8 +13,8 @@ export default defineConfig({
   integrations: [
     sitemap(),
     sanity({
-      projectId: "your-project-id", // TODO: replace with actual Sanity project ID
-      dataset: "production",
+      projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || "your-project-id",
+      dataset: import.meta.env.PUBLIC_SANITY_DATASET || "production",
       useCdn: true,
     }),
   ],

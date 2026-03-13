@@ -39,6 +39,7 @@ Sito vetrina ad alte prestazioni per **Il Nodo Cocktail & Beach Bar** situato a 
 - **Hero High Impact:** Visuale mozzafiato del tramonto di Sant'Elia.
 - **Storytelling:** Narrativa del brand con animazioni reveal.
 - **Product Highlights:** Griglia dei prodotti core (Cocktail, Food, Tradizione).
+- **Digital Menu:** Menu dinamico con fetch da Sanity e fallback locale, ottimizzato per QR code.
 - **Sunset Experience:** Sezione esperienziale dedicata al momento clou del bar.
 - **Gallery:** Visualizzazione immersiva della location.
 - **Reviews:** Social proof da clienti soddisfatti.

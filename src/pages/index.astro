@@ -9,8 +9,21 @@ import Gallery from "../components/Gallery.astro";
 import Reviews from "../components/Reviews.astro";
 import Location from "../components/Location.astro";
 import Footer from "../components/Footer.astro";
+import { getSiteSettings } from "../lib/sanity/queries";
 
 const currentPath = Astro.url.pathname;
+
+// Verify Sanity connectivity (AC #3)
+try {
+  const settings = await getSiteSettings();
+  if (settings) {
+    console.log("Sanity Connection Success: Found site title:", settings.title);
+  } else {
+    console.warn("Sanity Connection: Site settings document not found.");
+  }
+} catch (error) {
+  console.error("Sanity Connection Failed:", error);
+}
 ---
 
 <Layout
