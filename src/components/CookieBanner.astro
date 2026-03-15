@@ -1,0 +1,157 @@
+---
+/**
+ * CookieBanner.astro
+ * Lightweight, GDPR-compliant consent banner.
+ * Uses localStorage to persist user choice.
+ * Designed with the Solar/Navy aesthetic.
+ */
+import { useTranslations } from "../i18n/ui";
+
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+---
+
+<div
+  id="cookie-banner"
+  class="cookie-banner hidden"
+  role="alertdialog"
+  aria-modal="true"
+  aria-labelledby="cookie-title"
+  aria-describedby="cookie-desc"
+>
+  <div class="cookie-banner__content">
+    <div class="cookie-banner__header">
+      <h2 id="cookie-title">ðŸª {t("cookie.title")}</h2>
+    </div>
+    <p id="cookie-desc">
+      {t("cookie.desc")}
+      <a href="/privacy-policy" class="underline">{t("footer.privacy")}</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-reject" type="button" class="btn-secondary">{t("cookie.reject")}</button>
+      <button id="cookie-accept" type="button" class="btn-primary">{t("cookie.accept")}</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("cookie-accept");
+    const rejectBtn = document.getElementById("cookie-reject");
+
+    const consentKey = "il-nodo-cookie-consent";
+    const consent = localStorage.getItem(consentKey);
+
+    if (consent === null) {
+      banner.classList.remove("hidden");
+      // Focus management for accessibility
+      setTimeout(() => acceptBtn?.focus(), 500);
+    } else if (consent === "granted") {
+      triggerAnalytics();
+    }
+
+    acceptBtn?.addEventListener("click", () => {
+      localStorage.setItem(consentKey, "granted");
+      banner.classList.add("hidden");
+      triggerAnalytics();
+    });
+
+    rejectBtn?.addEventListener("click", () => {
+      localStorage.setItem(consentKey, "denied");
+      banner.classList.add("hidden");
+    });
+
+    function triggerAnalytics() {
+      // Dispatch event for other scripts to know consent was granted
+      window.dispatchEvent(new CustomEvent("cookie-consent-granted"));
+    }
+  })();
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: 500px;
+    background: color-mix(in srgb, var(--color-brand-blue) 95%, white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    z-index: 9999;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .cookie-banner.hidden {
+    display: none;
+  }
+
+  .cookie-banner__header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .cookie-banner p {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-accent-amber);
+    color: var(--color-brand-blue);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (min-width: 768px) {
+    .cookie-banner {
+      left: 2rem;
+      bottom: 2rem;
+      right: auto;
+    }
+  }
+</style>

@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sanity from "@sanity/astro";
 import sitemap from "@astrojs/sitemap";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,8 +11,21 @@ export default defineConfig({
   output: "static",
   site: "https://ilnodo.it",
 
+  i18n: {
+    defaultLocale: "it",
+    locales: ["it", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+
   integrations: [
     sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
     sanity({
       projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || "your-project-id",
       dataset: import.meta.env.PUBLIC_SANITY_DATASET || "production",

@@ -1,5 +1,19 @@
 ---
 // Footer.astro
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  whatsappLink?: string;
+}
+
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
+const {
+  whatsappLink = "https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo.%20Grazie!",
+} = Astro.props;
+
+const base = lang === "en" ? "/en" : "";
 ---
 
 <footer
@@ -23,8 +37,7 @@
             Il Nodo
           </h2>
           <p class="text-stone-500 text-sm leading-relaxed max-w-xs">
-            Il tuo angolo di paradiso a Sant'Elia. Aperitivi d'autore, vista
-            mozzafiato e l'accoglienza autentica della nostra terra.
+            {t("footer.desc")}
           </p>
         </div>
 
@@ -80,35 +93,35 @@
         <h3
           class="text-stone-100 font-medium uppercase tracking-widest text-xs"
         >
-          Navigazione
+          {t("footer.nav")}
         </h3>
         <ul class="space-y-3">
           <li>
             <a
-              href="#hero"
+              href={`${base}/#hero`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Home</a
+              >{t("nav.home")}</a
             >
           </li>
           <li>
             <a
-              href="#storia"
+              href={`${base}/#storia`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Chi Siamo</a
+              >{t("nav.storia")}</a
             >
           </li>
           <li>
             <a
-              href="/menu"
+              href={`${base}/menu`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Menu</a
+              >{t("nav.menu")}</a
             >
           </li>
           <li>
             <a
-              href="#galleria"
+              href={`${base}/#galleria`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Galleria</a
+              >{t("nav.gallery")}</a
             >
           </li>
         </ul>
@@ -119,30 +132,30 @@
         <ul class="space-y-3">
           <li>
             <a
-              href="#sunset-experience"
+              href={`${base}/#sunset-experience`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Esperienza</a
+              >{t("nav.experience")}</a
             >
           </li>
           <li>
             <a
-              href="#recensioni"
+              href={`${base}/#recensioni`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Recensioni</a
+              >{t("nav.reviews")}</a
             >
           </li>
           <li>
             <a
-              href="#dove-siamo"
+              href={`${base}/#dove-siamo`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
-              >Dove Siamo</a
+              >{t("nav.location")}</a
             >
           </li>
           <li>
             <a
-              href="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo."
+              href={whatsappLink}
               class="text-amber-500 hover:text-amber-400 transition-colors text-sm font-semibold"
-              >Contattaci</a
+              >{t("footer.contact")}</a
             >
           </li>
         </ul>
@@ -153,7 +166,7 @@
         <h3
           class="text-stone-100 font-medium uppercase tracking-widest text-xs"
         >
-          Informazioni
+          {t("footer.info")}
         </h3>
         <ul class="space-y-4 text-sm text-stone-500">
           <li class="flex items-start space-x-3">
@@ -204,26 +217,33 @@
       class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
     >
       <p class="text-stone-600 text-xs italic">
-        &copy; {new Date().getFullYear()} Il Nodo. Tutti i diritti riservati.
+        &copy; {new Date().getFullYear()} Il Nodo. {t("footer.rights")}
       </p>
 
       <div class="flex items-center space-x-6">
         <a
           href="#"
           class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
-          >Privacy Policy</a
+          >{t("footer.privacy")}</a
         >
         <a
           href="#"
           class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
-          >Cookie Policy</a
+          >{t("footer.cookie")}</a
         >
+        <button
+          id="reset-cookies"
+          type="button"
+          class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium cursor-pointer"
+        >
+          {t("footer.manage")}
+        </button>
       </div>
 
       <p
         class="text-stone-600 text-[10px] uppercase tracking-[0.3em] flex items-center gap-3"
       >
-        Design by
+        {t("footer.design")}
         <a
           href="https://www.instagram.com/caltaa_/"
           target="_blank"
@@ -268,3 +288,11 @@
     opacity: 1;
   }
 </style>
+
+<script is:inline>
+  document.getElementById("reset-cookies")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("il-nodo-cookie-consent");
+    window.location.reload();
+  });
+</script>

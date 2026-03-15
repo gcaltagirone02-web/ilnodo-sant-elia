@@ -1,0 +1,1288 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Home" [ref=e3]:
+      - link "Home — Il Nodo 2.0" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Il Nodo Logo" [ref=e5]
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Chi Siamo" [ref=e8] [cursor=pointer]:
+            - /url: /#storia
+            - generic [ref=e9]: Chi Siamo
+        - listitem [ref=e10]:
+          - link "Menu" [ref=e11] [cursor=pointer]:
+            - /url: /menu
+            - generic [ref=e12]: Menu
+        - listitem [ref=e13]:
+          - link "Esperienza" [ref=e14] [cursor=pointer]:
+            - /url: /#sunset-experience
+            - generic [ref=e15]: Esperienza
+        - listitem [ref=e16]:
+          - link "Galleria" [ref=e17] [cursor=pointer]:
+            - /url: /#galleria
+            - generic [ref=e18]: Galleria
+        - listitem [ref=e19]:
+          - link "Dove siamo" [ref=e20] [cursor=pointer]:
+            - /url: /#dove-siamo
+            - generic [ref=e21]: Dove siamo
+      - generic [ref=e22]:
+        - 'button "Lingua attuale: Italiano" [ref=e24] [cursor=pointer]':
+          - img [ref=e25]
+          - generic [ref=e28]: IT
+          - img [ref=e29]
+        - link "Prenota" [ref=e31] [cursor=pointer]:
+          - /url: https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Ho%20visto%20il%20vostro%20menu%20online%20e%20vorrei%20prenotare%20un%20tavolo.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!
+          - img [ref=e33]
+          - generic [ref=e36]: Prenota
+  - main [ref=e37]:
+    - generic [ref=e38]:
+      - img "Vista tramonto Il Nodo" [ref=e40]
+      - generic [ref=e42]:
+        - heading "Il Nostro Menu" [level=1] [ref=e43]
+        - paragraph [ref=e44]: Sapori autentici, vista mozzafiato.
+        - link "Sfoglia il Menu" [ref=e46] [cursor=pointer]:
+          - /url: "#menu-categories"
+          - text: Sfoglia il Menu
+          - img [ref=e47]
+    - generic [ref=e49]:
+      - navigation [ref=e50]:
+        - link "Cocktails Alcolici Cocktails Alcolici" [ref=e51] [cursor=pointer]:
+          - /url: "#cocktails-alcolici"
+          - img "Cocktails Alcolici" [ref=e52]
+          - generic [ref=e53]: Cocktails Alcolici
+        - link "Cocktails Analcolici Cocktails Analcolici" [ref=e54] [cursor=pointer]:
+          - /url: "#cocktails-analcolici"
+          - img "Cocktails Analcolici" [ref=e55]
+          - generic [ref=e56]: Cocktails Analcolici
+        - link "Birre Birre" [ref=e57] [cursor=pointer]:
+          - /url: "#birre"
+          - img "Birre" [ref=e58]
+          - generic [ref=e59]: Birre
+        - link "Vini Vini" [ref=e60] [cursor=pointer]:
+          - /url: "#vini"
+          - img "Vini" [ref=e61]
+          - generic [ref=e62]: Vini
+        - link "Soft Drinks Soft Drinks" [ref=e63] [cursor=pointer]:
+          - /url: "#soft-drinks"
+          - img "Soft Drinks" [ref=e64]
+          - generic [ref=e65]: Soft Drinks
+        - link "Amari Amari" [ref=e66] [cursor=pointer]:
+          - /url: "#amari"
+          - img "Amari" [ref=e67]
+          - generic [ref=e68]: Amari
+        - link "Stuzzichini Stuzzichini" [ref=e69] [cursor=pointer]:
+          - /url: "#stuzzichini"
+          - img "Stuzzichini" [ref=e70]
+          - generic [ref=e71]: Stuzzichini
+        - link "Insalate Insalate" [ref=e72] [cursor=pointer]:
+          - /url: "#insalate"
+          - img "Insalate" [ref=e73]
+          - generic [ref=e74]: Insalate
+        - link "Panini Panini" [ref=e75] [cursor=pointer]:
+          - /url: "#panini"
+          - img "Panini" [ref=e76]
+          - generic [ref=e77]: Panini
+      - generic [ref=e78]:
+        - heading "Cocktails Alcolici" [level=2] [ref=e79]
+        - generic [ref=e80]:
+          - article [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e83]: Signature
+              - generic [ref=e84]:
+                - heading "Alfa" [level=3] [ref=e85]
+                - generic [ref=e86]: € 8.00
+              - list "Ingredienti" [ref=e87]:
+                - listitem [ref=e88]: Granita
+                - listitem [ref=e89]: Aperol
+                - listitem [ref=e90]: Bitter Campari
+                - listitem [ref=e91]: Gin
+                - listitem [ref=e92]: Succo d'arancia
+          - article [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e95]: Signature
+              - generic [ref=e96]:
+                - heading "Alidas" [level=3] [ref=e97]
+                - generic [ref=e98]: € 8.00
+              - list "Ingredienti" [ref=e99]:
+                - listitem [ref=e100]: Vodka alla pesca
+                - listitem [ref=e101]: Vodka alla fragola
+                - listitem [ref=e102]: Cointreau
+                - listitem [ref=e103]: Curacao
+                - listitem [ref=e104]: Granita
+          - article [ref=e105]:
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - heading "Americano" [level=3] [ref=e108]
+                - generic [ref=e109]: € 7.00
+              - list "Ingredienti" [ref=e110]:
+                - listitem [ref=e111]: Martini Rosso
+                - listitem [ref=e112]: Bitter Campari
+          - article [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - heading "Angelo Azzurro" [level=3] [ref=e116]
+                - generic [ref=e117]: € 7.00
+              - list "Ingredienti" [ref=e118]:
+                - listitem [ref=e119]: Gin
+                - listitem [ref=e120]: Cointreau
+                - listitem [ref=e121]: Curacao
+          - article [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - heading "Aug" [level=3] [ref=e125]
+                - generic [ref=e126]: € 8.00
+              - list "Ingredienti" [ref=e127]:
+                - listitem [ref=e128]: Cointreau
+                - listitem [ref=e129]: Amaretto Disaronno
+                - listitem [ref=e130]: Vodka alla pesca
+                - listitem [ref=e131]: Succo d'ananas
+          - article [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]:
+                - heading "B52" [level=3] [ref=e135]
+                - generic [ref=e136]: € 8.00
+              - list "Ingredienti" [ref=e137]:
+                - listitem [ref=e138]: Kahlua
+                - listitem [ref=e139]: Baileys
+                - listitem [ref=e140]: Grand Marnier
+          - article [ref=e141]:
+            - generic [ref=e142]:
+              - generic [ref=e143]: Signature
+              - generic [ref=e144]:
+                - heading "Balduccio" [level=3] [ref=e145]
+                - generic [ref=e146]: € 8.00
+              - list "Ingredienti" [ref=e147]:
+                - listitem [ref=e148]: Vodka
+                - listitem [ref=e149]: Granita al limone
+                - listitem [ref=e150]: Aperol
+          - article [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153]:
+                - heading "Bellini" [level=3] [ref=e154]
+                - generic [ref=e155]: € 7.00
+              - list "Ingredienti" [ref=e156]:
+                - listitem [ref=e157]: Prosecco
+                - listitem [ref=e158]: Succo alla pesca
+          - article [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e161]:
+                - heading "Black Russian" [level=3] [ref=e162]
+                - generic [ref=e163]: € 7.00
+              - list "Ingredienti" [ref=e164]:
+                - listitem [ref=e165]: Vodka liscia
+                - listitem [ref=e166]: Kahlua
+          - article [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]: Signature
+              - generic [ref=e170]:
+                - heading "Bolt" [level=3] [ref=e171]
+                - generic [ref=e172]: € 8.00
+              - list "Ingredienti" [ref=e173]:
+                - listitem [ref=e174]: Sambuca
+                - listitem [ref=e175]: Midori
+                - listitem [ref=e176]: Sciroppo alla fragola
+          - article [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e179]: Signature
+              - generic [ref=e180]:
+                - heading "Bombardino" [level=3] [ref=e181]
+                - generic [ref=e182]: € 8.00
+              - list "Ingredienti" [ref=e183]:
+                - listitem [ref=e184]: Gin
+                - listitem [ref=e185]: Aperol
+                - listitem [ref=e186]: Bitter Campari
+                - listitem [ref=e187]: Vodka alla fragola
+                - listitem [ref=e188]: Succo d'arancia
+          - article [ref=e189]:
+            - generic [ref=e190]:
+              - generic [ref=e191]:
+                - heading "Caipirinha" [level=3] [ref=e192]
+                - generic [ref=e193]: € 8.00
+              - list "Ingredienti" [ref=e194]:
+                - listitem [ref=e195]: Cachaça
+                - listitem [ref=e196]: Lime
+                - listitem [ref=e197]: Zucchero di canna
+                - listitem [ref=e198]: Acqua tonica
+          - article [ref=e199]:
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - heading "Caipiroska" [level=3] [ref=e202]
+                - generic [ref=e203]: € 8.00
+              - list "Ingredienti" [ref=e204]:
+                - listitem [ref=e205]: Vodka
+                - listitem [ref=e206]: Lime
+                - listitem [ref=e207]: Zucchero di canna
+                - listitem [ref=e208]: Ghiaccio tritato
+          - article [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - heading "Cosmopolitan" [level=3] [ref=e212]
+                - generic [ref=e213]: € 8.00
+              - list "Ingredienti" [ref=e214]:
+                - listitem [ref=e215]: Vodka liscia
+                - listitem [ref=e216]: Cointreau
+                - listitem [ref=e217]: Succo di limone
+                - listitem [ref=e218]: Cranberry
+          - article [ref=e219]:
+            - generic [ref=e220]:
+              - generic [ref=e221]:
+                - heading "Cuba Libre" [level=3] [ref=e222]
+                - generic [ref=e223]: € 7.00
+              - list "Ingredienti" [ref=e224]:
+                - listitem [ref=e225]: Rum
+                - listitem [ref=e226]: Coca-Cola
+                - listitem [ref=e227]: Limone spremuto
+          - article [ref=e228]:
+            - generic [ref=e229]:
+              - generic [ref=e230]:
+                - heading "Daiquiri" [level=3] [ref=e231]
+                - generic [ref=e232]: € 8.00
+              - list "Ingredienti" [ref=e233]:
+                - listitem [ref=e234]: Limone
+                - listitem [ref=e235]: Zucchero di canna
+                - listitem [ref=e236]: Rum scuro
+                - listitem [ref=e237]: Sciroppo di fragola
+                - listitem [ref=e238]: Tonica
+          - article [ref=e239]:
+            - generic [ref=e240]:
+              - generic [ref=e241]: Signature
+              - generic [ref=e242]:
+                - heading "Fantasia" [level=3] [ref=e243]
+                - generic [ref=e244]: € 8.00
+              - list "Ingredienti" [ref=e245]:
+                - listitem [ref=e246]: Gin
+                - listitem [ref=e247]: Rum bianco
+                - listitem [ref=e248]: Succo d'ananas
+                - listitem [ref=e249]: Granita al limone
+                - listitem [ref=e250]: Sciroppo alla fragola
+          - article [ref=e251]:
+            - generic [ref=e252]:
+              - generic [ref=e253]:
+                - heading "Fire Drink" [level=3] [ref=e254]
+                - generic [ref=e255]: € 8.00
+              - list "Ingredienti" [ref=e256]:
+                - listitem [ref=e257]: Cointreau
+                - listitem [ref=e258]: Martini Bianco
+                - listitem [ref=e259]: Sciroppo di amarena
+          - article [ref=e260]:
+            - generic [ref=e261]:
+              - generic [ref=e262]: Signature
+              - generic [ref=e263]:
+                - heading "Flower" [level=3] [ref=e264]
+                - generic [ref=e265]: € 8.00
+              - list "Ingredienti" [ref=e266]:
+                - listitem [ref=e267]: Vodka liscia
+                - listitem [ref=e268]: Vodka alla fragola
+                - listitem [ref=e269]: Limoncello
+                - listitem [ref=e270]: Granita al limone
+          - article [ref=e271]:
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - heading "Garibaldi" [level=3] [ref=e274]
+                - generic [ref=e275]: € 7.00
+              - list "Ingredienti" [ref=e276]:
+                - listitem [ref=e277]: Succo d'arancia
+                - listitem [ref=e278]: Bitter Campari
+          - article [ref=e279]:
+            - generic [ref=e280]:
+              - generic [ref=e281]:
+                - heading "Hugo" [level=3] [ref=e282]
+                - generic [ref=e283]: € 8.00
+              - list "Ingredienti" [ref=e284]:
+                - listitem [ref=e285]: St. Germain
+                - listitem [ref=e286]: Prosecco
+                - listitem [ref=e287]: Foglie di menta
+          - article [ref=e288]:
+            - generic [ref=e289]:
+              - generic [ref=e290]: Signature
+              - generic [ref=e291]:
+                - heading "Il Nodo" [level=3] [ref=e292]
+                - generic [ref=e293]: € 8.00
+              - list "Ingredienti" [ref=e294]:
+                - listitem [ref=e295]: Martini Bianco
+                - listitem [ref=e296]: Rum bianco
+                - listitem [ref=e297]: Aperol
+                - listitem [ref=e298]: Granita al limone
+                - listitem [ref=e299]: Vodka alla fragola
+          - article [ref=e300]:
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - heading "Japanese" [level=3] [ref=e303]
+                - generic [ref=e304]: € 8.00
+              - list "Ingredienti" [ref=e305]:
+                - listitem [ref=e306]: Vodka
+                - listitem [ref=e307]: Gin
+                - listitem [ref=e308]: Rum bianco
+                - listitem [ref=e309]: Midori
+                - listitem [ref=e310]: Lime
+                - listitem [ref=e311]: Zucchero di canna
+          - article [ref=e312]:
+            - generic [ref=e313]:
+              - generic [ref=e314]: Signature
+              - generic [ref=e315]:
+                - heading "Lancillotto" [level=3] [ref=e316]
+                - generic [ref=e317]: € 8.00
+              - list "Ingredienti" [ref=e318]:
+                - listitem [ref=e319]: Bitter Campari
+                - listitem [ref=e320]: Aperol
+                - listitem [ref=e321]: Gin
+                - listitem [ref=e322]: Prosecco
+          - article [ref=e323]:
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - heading "Long Island" [level=3] [ref=e326]
+                - generic [ref=e327]: € 8.00
+              - list "Ingredienti" [ref=e328]:
+                - listitem [ref=e329]: Cointreau
+                - listitem [ref=e330]: Gin
+                - listitem [ref=e331]: Tequila
+                - listitem [ref=e332]: Vodka
+                - listitem [ref=e333]: Lime
+                - listitem [ref=e334]: Coca-Cola
+                - listitem [ref=e335]: Zucchero
+          - article [ref=e336]:
+            - generic [ref=e337]:
+              - generic [ref=e338]: Signature
+              - generic [ref=e339]:
+                - heading "Lulù" [level=3] [ref=e340]
+                - generic [ref=e341]: € 8.00
+              - list "Ingredienti" [ref=e342]:
+                - listitem [ref=e343]: Vodka alla pesca
+                - listitem [ref=e344]: Vodka liscia
+                - listitem [ref=e345]: Cointreau
+                - listitem [ref=e346]: Lemon
+                - listitem [ref=e347]: Prosecco
+          - article [ref=e348]:
+            - generic [ref=e349]:
+              - generic [ref=e350]:
+                - heading "London Mule" [level=3] [ref=e351]
+                - generic [ref=e352]: € 8.00
+              - list "Ingredienti" [ref=e353]:
+                - listitem [ref=e354]: Gin
+                - listitem [ref=e355]: Ginger beer
+                - listitem [ref=e356]: Succo di limone
+                - listitem [ref=e357]: Zenzero
+          - article [ref=e358]:
+            - generic [ref=e359]:
+              - generic [ref=e360]: Signature
+              - generic [ref=e361]:
+                - heading "Malabama" [level=3] [ref=e362]
+                - generic [ref=e363]: € 8.00
+              - list "Ingredienti" [ref=e364]:
+                - listitem [ref=e365]: Vodka alla fragola
+                - listitem [ref=e366]: Vodka liscia
+                - listitem [ref=e367]: Succo d'arancia
+                - listitem [ref=e368]: Succo d'ananas
+          - article [ref=e369]:
+            - generic [ref=e370]:
+              - generic [ref=e371]:
+                - heading "Manhattan" [level=3] [ref=e372]
+                - generic [ref=e373]: € 8.00
+              - list "Ingredienti" [ref=e374]:
+                - listitem [ref=e375]: Whiskey
+                - listitem [ref=e376]: Vermouth rosso
+                - listitem [ref=e377]: Angostura
+          - article [ref=e378]:
+            - generic [ref=e379]:
+              - generic [ref=e380]:
+                - heading "Margarita" [level=3] [ref=e381]
+                - generic [ref=e382]: € 7.00
+              - list "Ingredienti" [ref=e383]:
+                - listitem [ref=e384]: Tequila
+                - listitem [ref=e385]: Cointreau
+                - listitem [ref=e386]: Succo di limone
+          - article [ref=e387]:
+            - generic [ref=e388]:
+              - generic [ref=e389]:
+                - heading "Metropolitan" [level=3] [ref=e390]
+                - generic [ref=e391]: € 8.00
+              - list "Ingredienti" [ref=e392]:
+                - listitem [ref=e393]: Aperol
+                - listitem [ref=e394]: Bitter Campari
+                - listitem [ref=e395]: Succo d'ananas
+          - article [ref=e396]:
+            - generic [ref=e397]:
+              - generic [ref=e398]:
+                - heading "Midori Sour" [level=3] [ref=e399]
+                - generic [ref=e400]: € 7.00
+              - list "Ingredienti" [ref=e401]:
+                - listitem [ref=e402]: Midori
+                - listitem [ref=e403]: Lime
+                - listitem [ref=e404]: Zucchero di canna
+          - article [ref=e405]:
+            - generic [ref=e406]:
+              - generic [ref=e407]:
+                - heading "Mimosa" [level=3] [ref=e408]
+                - generic [ref=e409]: € 7.00
+              - list "Ingredienti" [ref=e410]:
+                - listitem [ref=e411]: Prosecco
+                - listitem [ref=e412]: Spremuta di succo d'arancia
+          - article [ref=e413]:
+            - generic [ref=e414]:
+              - generic [ref=e415]:
+                - heading "White Lady" [level=3] [ref=e416]
+                - generic [ref=e417]: € 7.00
+              - list "Ingredienti" [ref=e418]:
+                - listitem [ref=e419]: Gin
+                - listitem [ref=e420]: Lime
+                - listitem [ref=e421]: Cointreau
+                - listitem [ref=e422]: Zucchero
+          - article [ref=e423]:
+            - generic [ref=e424]:
+              - generic [ref=e425]:
+                - heading "Mojito" [level=3] [ref=e426]
+                - generic [ref=e427]: € 8.00
+              - list "Ingredienti" [ref=e428]:
+                - listitem [ref=e429]: Rum
+                - listitem [ref=e430]: Lime
+                - listitem [ref=e431]: Zucchero di canna
+                - listitem [ref=e432]: Menta
+                - listitem [ref=e433]: Soda
+          - article [ref=e434]:
+            - generic [ref=e435]:
+              - generic [ref=e436]:
+                - heading "Negroni" [level=3] [ref=e437]
+                - generic [ref=e438]: € 7.00
+              - list "Ingredienti" [ref=e439]:
+                - listitem [ref=e440]: Bitter Campari
+                - listitem [ref=e441]: Gin
+                - listitem [ref=e442]: Martini Rosso
+          - article [ref=e443]:
+            - generic [ref=e444]:
+              - generic [ref=e445]:
+                - heading "Negroni Sbagliato" [level=3] [ref=e446]
+                - generic [ref=e447]: € 7.00
+              - list "Ingredienti" [ref=e448]:
+                - listitem [ref=e449]: Bitter Campari
+                - listitem [ref=e450]: Prosecco
+                - listitem [ref=e451]: Martini Rosso
+          - article [ref=e452]:
+            - generic [ref=e453]:
+              - generic [ref=e454]:
+                - heading "Negroski" [level=3] [ref=e455]
+                - generic [ref=e456]: € 7.00
+              - list "Ingredienti" [ref=e457]:
+                - listitem [ref=e458]: Martini Rosso
+                - listitem [ref=e459]: Vodka
+                - listitem [ref=e460]: Bitter Campari
+          - article [ref=e461]:
+            - generic [ref=e462]:
+              - generic [ref=e463]: Signature
+              - generic [ref=e464]:
+                - heading "Pazzia" [level=3] [ref=e465]
+                - generic [ref=e466]: € 8.00
+              - list "Ingredienti" [ref=e467]:
+                - listitem [ref=e468]: Gin
+                - listitem [ref=e469]: Rum
+                - listitem [ref=e470]: Red Bull
+                - listitem [ref=e471]: Granita al limone
+                - listitem [ref=e472]: Sciroppo di amarena
+          - article [ref=e473]:
+            - generic [ref=e474]:
+              - generic [ref=e475]:
+                - heading "Pina Colada" [level=3] [ref=e476]
+                - generic [ref=e477]: € 8.00
+              - list "Ingredienti" [ref=e478]:
+                - listitem [ref=e479]: Rum bianco
+                - listitem [ref=e480]: Crema di cocco
+                - listitem [ref=e481]: Batida de coco
+                - listitem [ref=e482]: Succo ananas
+          - article [ref=e483]:
+            - generic [ref=e484]:
+              - generic [ref=e485]:
+                - heading "Quattro Bianchi" [level=3] [ref=e486]
+                - generic [ref=e487]: € 8.00
+              - list "Ingredienti" [ref=e488]:
+                - listitem [ref=e489]: Cointreau
+                - listitem [ref=e490]: Tequila
+                - listitem [ref=e491]: Gin
+                - listitem [ref=e492]: Vodka
+          - article [ref=e493]:
+            - generic [ref=e494]:
+              - generic [ref=e495]:
+                - heading "Red Bull & Vodka" [level=3] [ref=e496]
+                - generic [ref=e497]: € 7.00
+              - list "Ingredienti" [ref=e498]:
+                - listitem [ref=e499]: Red Bull
+                - listitem [ref=e500]: Vodka alla fragola o Disaronno
+          - article [ref=e501]:
+            - generic [ref=e502]:
+              - generic [ref=e503]: Signature
+              - generic [ref=e504]:
+                - heading "Riky" [level=3] [ref=e505]
+                - generic [ref=e506]: € 8.00
+              - list "Ingredienti" [ref=e507]:
+                - listitem [ref=e508]: Blue Curacao
+                - listitem [ref=e509]: Vodka
+                - listitem [ref=e510]: Limone
+                - listitem [ref=e511]: Cointreau
+                - listitem [ref=e512]: Granatina
+          - article [ref=e513]:
+            - generic [ref=e514]:
+              - generic [ref=e515]:
+                - heading "Sex On The Beach" [level=3] [ref=e516]
+                - generic [ref=e517]: € 7.00
+              - list "Ingredienti" [ref=e518]:
+                - listitem [ref=e519]: Vodka alla pesca
+                - listitem [ref=e520]: Succo d'arancia
+                - listitem [ref=e521]: Sciroppo alla fragola
+          - article [ref=e522]:
+            - generic [ref=e523]:
+              - generic [ref=e524]: Signature
+              - generic [ref=e525]:
+                - heading "Siculo" [level=3] [ref=e526]
+                - generic [ref=e527]: € 7.00
+              - list "Ingredienti" [ref=e528]:
+                - listitem [ref=e529]: Granita
+                - listitem [ref=e530]: Vodka liscia
+                - listitem [ref=e531]: Limoncello
+          - article [ref=e532]:
+            - generic [ref=e533]:
+              - generic [ref=e534]:
+                - heading "Smash Basil" [level=3] [ref=e535]
+                - generic [ref=e536]: € 8.00
+              - list "Ingredienti" [ref=e537]:
+                - listitem [ref=e538]: Gin
+                - listitem [ref=e539]: Sciroppo di zucchero
+                - listitem [ref=e540]: Basilico fresco
+          - article [ref=e541]:
+            - generic [ref=e542]:
+              - generic [ref=e543]:
+                - heading "Spritz" [level=3] [ref=e544]
+                - generic [ref=e545]: € 7.00
+              - list "Ingredienti" [ref=e546]:
+                - listitem [ref=e547]: Aperol
+                - listitem [ref=e548]: Prosecco
+          - article [ref=e549]:
+            - generic [ref=e550]:
+              - generic [ref=e551]:
+                - heading "Tequila Sunrise" [level=3] [ref=e552]
+                - generic [ref=e553]: € 7.00
+              - list "Ingredienti" [ref=e554]:
+                - listitem [ref=e555]: Succo d'arancia
+                - listitem [ref=e556]: Tequila
+                - listitem [ref=e557]: Sciroppo di granatina
+          - article [ref=e558]:
+            - generic [ref=e559]:
+              - generic [ref=e560]: Signature
+              - generic [ref=e561]:
+                - heading "Vaporetto" [level=3] [ref=e562]
+                - generic [ref=e563]: € 8.00
+              - list "Ingredienti" [ref=e564]:
+                - listitem [ref=e565]: Vodka liscia
+                - listitem [ref=e566]: Vodka alla fragola
+                - listitem [ref=e567]: Vodka alla pesca
+                - listitem [ref=e568]: Gin
+                - listitem [ref=e569]: Red Bull
+          - article [ref=e570]:
+            - generic [ref=e571]:
+              - generic [ref=e572]: Signature
+              - generic [ref=e573]:
+                - heading "Violet" [level=3] [ref=e574]
+                - generic [ref=e575]: € 8.00
+              - list "Ingredienti" [ref=e576]:
+                - listitem [ref=e577]: Vodka liscia
+                - listitem [ref=e578]: Vodka alla fragola
+                - listitem [ref=e579]: Vodka alla pesca
+                - listitem [ref=e580]: Gin
+                - listitem [ref=e581]: Red Bull
+          - article [ref=e582]:
+            - generic [ref=e583]:
+              - generic [ref=e584]:
+                - heading "Moscow Mule" [level=3] [ref=e585]
+                - generic [ref=e586]: € 8.00
+              - list "Ingredienti" [ref=e587]:
+                - listitem [ref=e588]: Vodka
+                - listitem [ref=e589]: Ginger beer
+                - listitem [ref=e590]: Succo di limone
+                - listitem [ref=e591]: Zenzero
+          - article [ref=e592]:
+            - generic [ref=e593]:
+              - generic [ref=e594]: Signature
+              - generic [ref=e595]:
+                - heading "Alain" [level=3] [ref=e596]
+                - generic [ref=e597]: € 9.00
+              - list "Ingredienti" [ref=e598]:
+                - listitem [ref=e599]: Gin Mare
+                - listitem [ref=e600]: Acqua tonica
+                - listitem [ref=e601]: Midori
+          - article [ref=e602]:
+            - generic [ref=e603]:
+              - generic [ref=e604]:
+                - heading "Gin Tonic" [level=3] [ref=e605]
+                - generic [ref=e606]: € 6.00
+              - paragraph [ref=e607]: Gin base, tonica classica
+          - article [ref=e608]:
+            - generic [ref=e609]:
+              - generic [ref=e610]:
+                - heading "Gin Lemon" [level=3] [ref=e611]
+                - generic [ref=e612]: € 6.00
+              - paragraph [ref=e613]: Gin base, lemon
+          - article [ref=e614]:
+            - generic [ref=e615]:
+              - generic [ref=e616]:
+                - heading "Gin Tonic Bombay/Tanqueray" [level=3] [ref=e617]
+                - generic [ref=e618]: € 8.00
+              - paragraph [ref=e619]: Tonica classica
+          - article [ref=e620]:
+            - generic [ref=e621]:
+              - generic [ref=e622]:
+                - heading "Gin Tonic Hendrick's/Mare/Etna" [level=3] [ref=e623]
+                - generic [ref=e624]: € 10.00
+              - paragraph [ref=e625]: Tonica classica
+          - article [ref=e626]:
+            - generic [ref=e627]:
+              - generic [ref=e628]:
+                - heading "Portofino" [level=3] [ref=e629]
+                - generic [ref=e630]: € 11.00
+              - paragraph [ref=e631]: Tonica classica
+          - article [ref=e632]:
+            - generic [ref=e633]:
+              - generic [ref=e634]:
+                - heading "Porzione Gin Tanqueray/Bombay" [level=3] [ref=e635]
+                - generic [ref=e636]: € 6.00
+              - paragraph [ref=e637]: Porzione singola
+          - article [ref=e638]:
+            - generic [ref=e639]:
+              - generic [ref=e640]:
+                - heading "Porzione Gin Mare/Etna/Hendrick's" [level=3] [ref=e641]
+                - generic [ref=e642]: € 8.00
+              - paragraph [ref=e643]: Porzione singola
+          - article [ref=e644]:
+            - generic [ref=e645]:
+              - generic [ref=e646]:
+                - heading "Vodka Tonica/Lemon" [level=3] [ref=e647]
+                - generic [ref=e648]: € 6.00
+              - paragraph [ref=e649]: Tonica classica
+          - article [ref=e650]:
+            - generic [ref=e651]:
+              - generic [ref=e652]:
+                - heading "Vodka Absolut" [level=3] [ref=e653]
+                - generic [ref=e654]: € 8.00
+              - paragraph [ref=e655]: Tonica/Lemon
+          - article [ref=e656]:
+            - generic [ref=e657]:
+              - generic [ref=e658]:
+                - heading "Vodka Moskovskaya" [level=3] [ref=e659]
+                - generic [ref=e660]: € 8.00
+              - paragraph [ref=e661]: Tonica/Lemon
+          - article [ref=e662]:
+            - generic [ref=e663]:
+              - generic [ref=e664]:
+                - heading "Porzione Vodka Absolut/Moskovskaya" [level=3] [ref=e665]
+                - generic [ref=e666]: € 6.00
+              - paragraph [ref=e667]: Porzione singola
+      - generic [ref=e668]:
+        - heading "Cocktails Analcolici" [level=2] [ref=e669]
+        - generic [ref=e670]:
+          - article [ref=e671]:
+            - generic [ref=e672]:
+              - generic [ref=e673]:
+                - heading "Analcolico Fruttato" [level=3] [ref=e674]
+                - generic [ref=e675]: € 5.00
+              - list "Ingredienti" [ref=e676]:
+                - listitem [ref=e677]: Granita al limone
+                - listitem [ref=e678]: Succo ananas
+                - listitem [ref=e679]: Succo arancia
+                - listitem [ref=e680]: Sciroppo di fragola
+          - article [ref=e681]:
+            - generic [ref=e682]:
+              - generic [ref=e683]: Signature
+              - generic [ref=e684]:
+                - heading "Michelle" [level=3] [ref=e685]
+                - generic [ref=e686]: € 5.00
+              - list "Ingredienti" [ref=e687]:
+                - listitem [ref=e688]: Schweppes Lemon
+                - listitem [ref=e689]: Granita
+                - listitem [ref=e690]: Sciroppo pesca & kiwi
+          - article [ref=e691]:
+            - generic [ref=e692]:
+              - generic [ref=e693]: Signature
+              - generic [ref=e694]:
+                - heading "Trudis" [level=3] [ref=e695]
+                - generic [ref=e696]: € 5.00
+              - list "Ingredienti" [ref=e697]:
+                - listitem [ref=e698]: Granita
+                - listitem [ref=e699]: Red Bull
+                - listitem [ref=e700]: Acqua tonica
+          - article [ref=e701]:
+            - generic [ref=e702]:
+              - generic [ref=e703]:
+                - heading "Virgin Colada" [level=3] [ref=e704]
+                - generic [ref=e705]: € 5.00
+              - list "Ingredienti" [ref=e706]:
+                - listitem [ref=e707]: Succo ananas
+                - listitem [ref=e708]: Sciroppo di cocco
+          - article [ref=e709]:
+            - generic [ref=e710]:
+              - generic [ref=e711]:
+                - heading "Virgin Mule" [level=3] [ref=e712]
+                - generic [ref=e713]: € 5.00
+              - list "Ingredienti" [ref=e714]:
+                - listitem [ref=e715]: Ginger beer
+                - listitem [ref=e716]: Lime
+                - listitem [ref=e717]: Foglie di menta
+          - article [ref=e718]:
+            - generic [ref=e719]:
+              - generic [ref=e720]:
+                - heading "Virgin Mojito" [level=3] [ref=e721]
+                - generic [ref=e722]: € 5.00
+              - list "Ingredienti" [ref=e723]:
+                - listitem [ref=e724]: Tonica/Lemon
+                - listitem [ref=e725]: Lime
+                - listitem [ref=e726]: Zucchero di canna
+                - listitem [ref=e727]: Menta
+      - generic [ref=e728]:
+        - heading "Birre" [level=2] [ref=e729]
+        - generic [ref=e730]:
+          - article [ref=e731]:
+            - generic [ref=e733]:
+              - heading "Heineken 33cl" [level=3] [ref=e734]
+              - generic [ref=e735]: € 3.00
+          - article [ref=e736]:
+            - generic [ref=e738]:
+              - heading "Beck's 33cl" [level=3] [ref=e739]
+              - generic [ref=e740]: € 3.00
+          - article [ref=e741]:
+            - generic [ref=e743]:
+              - heading "Nastro Azzurro 33cl" [level=3] [ref=e744]
+              - generic [ref=e745]: € 3.00
+          - article [ref=e746]:
+            - generic [ref=e748]:
+              - heading "Corona 33cl" [level=3] [ref=e749]
+              - generic [ref=e750]: € 4.00
+          - article [ref=e751]:
+            - generic [ref=e753]:
+              - heading "Ceres 33cl" [level=3] [ref=e754]
+              - generic [ref=e755]: € 4.00
+          - article [ref=e756]:
+            - generic [ref=e758]:
+              - heading "Tennent's 33cl" [level=3] [ref=e759]
+              - generic [ref=e760]: € 4.00
+          - article [ref=e761]:
+            - generic [ref=e762]:
+              - generic [ref=e763]: Signature
+              - generic [ref=e764]:
+                - heading "Birra Messina Cristalli di Sale" [level=3] [ref=e765]
+                - generic [ref=e766]: € 4.00
+          - article [ref=e767]:
+            - generic [ref=e769]:
+              - heading "Birra Senza Glutine" [level=3] [ref=e770]
+              - generic [ref=e771]: € 4.00
+          - article [ref=e772]:
+            - generic [ref=e774]:
+              - heading "Paulaner" [level=3] [ref=e775]
+              - generic [ref=e776]: € 5.00
+          - article [ref=e777]:
+            - generic [ref=e779]:
+              - heading "Leffe Rossa" [level=3] [ref=e780]
+              - generic [ref=e781]: € 5.00
+          - article [ref=e782]:
+            - generic [ref=e784]:
+              - heading "Ichnusa" [level=3] [ref=e785]
+              - generic [ref=e786]: € 3.50
+      - generic [ref=e787]:
+        - heading "Vini" [level=2] [ref=e788]
+        - generic [ref=e789]:
+          - article [ref=e790]:
+            - generic [ref=e792]:
+              - heading "Imagredi Prosecco (Calice)" [level=3] [ref=e793]
+              - generic [ref=e794]: € 6.00
+          - article [ref=e795]:
+            - generic [ref=e797]:
+              - heading "Valdo Iki (Calice)" [level=3] [ref=e798]
+              - generic [ref=e799]: € 5.00
+          - article [ref=e800]:
+            - generic [ref=e801]:
+              - generic [ref=e802]:
+                - heading "Grillo Nissim (Calice)" [level=3] [ref=e803]
+                - generic [ref=e804]: € 7.00
+              - paragraph [ref=e805]: Tenute Orestiadi Gibellina
+          - article [ref=e806]:
+            - generic [ref=e808]:
+              - heading "Charme (Calice)" [level=3] [ref=e809]
+              - generic [ref=e810]: € 6.00
+          - article [ref=e811]:
+            - generic [ref=e813]:
+              - heading "Calice Rosso" [level=3] [ref=e814]
+              - generic [ref=e815]: € 6.00
+          - article [ref=e816]:
+            - generic [ref=e818]:
+              - heading "Imagredi Prosecco (Bottiglia)" [level=3] [ref=e819]
+              - generic [ref=e820]: € 22.00
+          - article [ref=e821]:
+            - generic [ref=e823]:
+              - heading "Valdo Iki (Bottiglia)" [level=3] [ref=e824]
+              - generic [ref=e825]: € 20.00
+          - article [ref=e826]:
+            - generic [ref=e827]:
+              - generic [ref=e828]:
+                - heading "Grillo Nissim (Bottiglia)" [level=3] [ref=e829]
+                - generic [ref=e830]: € 23.00
+              - paragraph [ref=e831]: Tenute Orestiadi Gibellina
+          - article [ref=e832]:
+            - generic [ref=e834]:
+              - heading "Charme (Bottiglia)" [level=3] [ref=e835]
+              - generic [ref=e836]: € 22.00
+          - article [ref=e837]:
+            - generic [ref=e838]:
+              - generic [ref=e839]:
+                - heading "Syrah/Nero d'Avola Bottiglia" [level=3] [ref=e840]
+                - generic [ref=e841]: € 20.00
+              - paragraph [ref=e842]: Calanica Rosso
+      - generic [ref=e843]:
+        - heading "Soft Drinks" [level=2] [ref=e844]
+        - generic [ref=e845]:
+          - article [ref=e846]:
+            - generic [ref=e847]:
+              - generic [ref=e848]:
+                - heading "Acqua Piccola" [level=3] [ref=e849]
+                - generic [ref=e850]: € 1.00
+              - paragraph [ref=e851]: Naturale, Frizzante
+          - article [ref=e852]:
+            - generic [ref=e853]:
+              - generic [ref=e854]:
+                - heading "Tisana Fredda (Lattina)" [level=3] [ref=e855]
+                - generic [ref=e856]: € 3.00
+              - paragraph [ref=e857]: Pesca, menta e finocchio, Aloe e melograno
+          - article [ref=e858]:
+            - generic [ref=e860]:
+              - heading "Caffè" [level=3] [ref=e861]
+              - generic [ref=e862]: € 1.00
+          - article [ref=e863]:
+            - generic [ref=e865]:
+              - heading "Caffè Ginseng" [level=3] [ref=e866]
+              - generic [ref=e867]: € 2.00
+          - article [ref=e868]:
+            - generic [ref=e869]:
+              - generic [ref=e870]: Signature
+              - generic [ref=e871]:
+                - heading "Crema Caffè" [level=3] [ref=e872]
+                - generic [ref=e873]: € 2.50
+          - article [ref=e874]:
+            - generic [ref=e876]:
+              - heading "Caffè Macchiato/Decaffeinato" [level=3] [ref=e877]
+              - generic [ref=e878]: € 1.20
+          - article [ref=e879]:
+            - generic [ref=e881]:
+              - heading "Cappuccino/Caffè Americano" [level=3] [ref=e882]
+              - generic [ref=e883]: € 2.50
+          - article [ref=e884]:
+            - generic [ref=e886]:
+              - heading "Thé Pesca/Limone (San Benedetto)" [level=3] [ref=e887]
+              - generic [ref=e888]: € 2.00
+          - article [ref=e889]:
+            - generic [ref=e891]:
+              - heading "Estathè Pesca/Limone" [level=3] [ref=e892]
+              - generic [ref=e893]: € 2.50
+          - article [ref=e894]:
+            - generic [ref=e896]:
+              - heading "Granita al Limone" [level=3] [ref=e897]
+              - generic [ref=e898]: € 2.00
+          - article [ref=e899]:
+            - generic [ref=e900]:
+              - generic [ref=e901]:
+                - heading "Granita con Sciroppo" [level=3] [ref=e902]
+                - generic [ref=e903]: € 2.50
+              - paragraph [ref=e904]: Menta, kiwi, fragola, amarena, pesca
+          - article [ref=e905]:
+            - generic [ref=e907]:
+              - heading "Thé con Granita" [level=3] [ref=e908]
+              - generic [ref=e909]: € 3.00
+          - article [ref=e910]:
+            - generic [ref=e911]:
+              - generic [ref=e912]:
+                - heading "Thé/Thé Verde (Caldo)" [level=3] [ref=e913]
+                - generic [ref=e914]: € 2.00
+              - paragraph [ref=e915]: Tisana zenzero
+          - article [ref=e916]:
+            - generic [ref=e918]:
+              - heading "Succo di Frutta" [level=3] [ref=e919]
+              - generic [ref=e920]: € 2.00
+          - article [ref=e921]:
+            - generic [ref=e923]:
+              - heading "Succo Mirtillo" [level=3] [ref=e924]
+              - generic [ref=e925]: € 2.50
+          - article [ref=e926]:
+            - generic [ref=e928]:
+              - heading "Lattina (Coca Cola - Coca Zero - Chinotto)" [level=3] [ref=e929]
+              - generic [ref=e930]: € 2.00
+          - article [ref=e931]:
+            - generic [ref=e933]:
+              - heading "Bottiglie in Vetro 33cl Fanta/Sprite" [level=3] [ref=e934]
+              - generic [ref=e935]: € 2.50
+          - article [ref=e936]:
+            - generic [ref=e938]:
+              - heading "Bitter/Crodino" [level=3] [ref=e939]
+              - generic [ref=e940]: € 2.50
+          - article [ref=e941]:
+            - generic [ref=e943]:
+              - heading "Ginger Beer" [level=3] [ref=e944]
+              - generic [ref=e945]: € 4.00
+          - article [ref=e946]:
+            - generic [ref=e948]:
+              - heading "Schweppes Tonica/Lemon" [level=3] [ref=e949]
+              - generic [ref=e950]: € 2.50
+          - article [ref=e951]:
+            - generic [ref=e953]:
+              - heading "Tonica Fever Tree" [level=3] [ref=e954]
+              - generic [ref=e955]: € 3.50
+          - article [ref=e956]:
+            - generic [ref=e958]:
+              - heading "Red Bull" [level=3] [ref=e959]
+              - generic [ref=e960]: € 3.00
+      - generic [ref=e961]:
+        - heading "Amari" [level=2] [ref=e962]
+        - generic [ref=e963]:
+          - article [ref=e964]:
+            - generic [ref=e966]:
+              - heading "Grappa 903 Barricata" [level=3] [ref=e967]
+              - generic [ref=e968]: € 4.00
+          - article [ref=e969]:
+            - generic [ref=e971]:
+              - heading "Martini Rosso/Bianco" [level=3] [ref=e972]
+              - generic [ref=e973]: € 4.00
+          - article [ref=e974]:
+            - generic [ref=e976]:
+              - heading "Limoncello" [level=3] [ref=e977]
+              - generic [ref=e978]: € 4.00
+          - article [ref=e979]:
+            - generic [ref=e981]:
+              - heading "Amaro (Disaronno, Amaro del Capo, Jägermeister, Averna, Montenegro)" [level=3] [ref=e982]
+              - generic [ref=e983]: € 4.00
+          - article [ref=e984]:
+            - generic [ref=e986]:
+              - heading "Sambuca" [level=3] [ref=e987]
+              - generic [ref=e988]: € 4.00
+          - article [ref=e989]:
+            - generic [ref=e991]:
+              - heading "Rum Havana 7" [level=3] [ref=e992]
+              - generic [ref=e993]: € 4.00
+          - article [ref=e994]:
+            - generic [ref=e996]:
+              - heading "Tequila Sale & Limone" [level=3] [ref=e997]
+              - generic [ref=e998]: € 4.00
+          - article [ref=e999]:
+            - generic [ref=e1001]:
+              - heading "Baileys" [level=3] [ref=e1002]
+              - generic [ref=e1003]: € 4.00
+          - article [ref=e1004]:
+            - generic [ref=e1006]:
+              - heading "Glen Grant" [level=3] [ref=e1007]
+              - generic [ref=e1008]: € 4.00
+          - article [ref=e1009]:
+            - generic [ref=e1011]:
+              - heading "Jack Daniel's" [level=3] [ref=e1012]
+              - generic [ref=e1013]: € 5.00
+          - article [ref=e1014]:
+            - generic [ref=e1016]:
+              - heading "Pastis" [level=3] [ref=e1017]
+              - generic [ref=e1018]: € 5.00
+          - article [ref=e1019]:
+            - generic [ref=e1021]:
+              - heading "Campari & Gin" [level=3] [ref=e1022]
+              - generic [ref=e1023]: € 6.00
+          - article [ref=e1024]:
+            - generic [ref=e1025]:
+              - generic [ref=e1026]:
+                - heading "Sgroppino" [level=3] [ref=e1027]
+                - generic [ref=e1028]: € 6.00
+              - list "Ingredienti" [ref=e1029]:
+                - listitem [ref=e1030]: Granita limone
+                - listitem [ref=e1031]: Vodka liscia
+      - generic [ref=e1032]:
+        - heading "Stuzzichini" [level=2] [ref=e1033]
+        - generic [ref=e1034]:
+          - article [ref=e1035]:
+            - generic [ref=e1037]:
+              - heading "Patatine in Busta" [level=3] [ref=e1038]
+              - generic [ref=e1039]: € 2.00
+          - article [ref=e1040]:
+            - generic [ref=e1041]:
+              - generic [ref=e1042]:
+                - heading "Bruschettone Classico" [level=3] [ref=e1043]
+                - generic [ref=e1044]: € 5.00
+              - list "Ingredienti" [ref=e1045]:
+                - listitem [ref=e1046]: Pomodoro
+                - listitem [ref=e1047]: olio
+                - listitem [ref=e1048]: origano
+                - listitem [ref=e1049]: sale
+                - listitem [ref=e1050]: pepe
+          - article [ref=e1051]:
+            - generic [ref=e1052]:
+              - generic [ref=e1053]:
+                - heading "Bruschettone a Scelta" [level=3] [ref=e1054]
+                - generic [ref=e1055]: € 8.00
+              - paragraph [ref=e1056]: Trasforma il tuo panino in un bruschettone
+          - article [ref=e1057]:
+            - generic [ref=e1058]:
+              - generic [ref=e1059]: Signature
+              - generic [ref=e1060]:
+                - heading "Tagliere Misto" [level=3] [ref=e1061]
+                - generic [ref=e1062]: € 12.00
+              - paragraph [ref=e1063]: Salumi e formaggi misti
+          - article [ref=e1064]:
+            - generic [ref=e1066]:
+              - heading "Porzione di Würstel" [level=3] [ref=e1067]
+              - generic [ref=e1068]: € 2.00
+      - generic [ref=e1069]:
+        - heading "Insalate" [level=2] [ref=e1070]
+        - generic [ref=e1071]:
+          - article [ref=e1072]:
+            - generic [ref=e1073]:
+              - generic [ref=e1074]:
+                - heading "Insalata Caprese" [level=3] [ref=e1075]
+                - generic [ref=e1076]: € 7.00
+              - list "Ingredienti" [ref=e1077]:
+                - listitem [ref=e1078]: Pomodoro
+                - listitem [ref=e1079]: mozzarella
+                - listitem [ref=e1080]: basilico
+          - article [ref=e1081]:
+            - generic [ref=e1082]:
+              - generic [ref=e1083]:
+                - heading "Insalata Mista" [level=3] [ref=e1084]
+                - generic [ref=e1085]: € 8.00
+              - paragraph [ref=e1086]: Lattuga, pomodoro, mozzarella, cipolla, prosciutto crudo o cotto a scelta
+          - article [ref=e1087]:
+            - generic [ref=e1088]:
+              - generic [ref=e1089]: Signature
+              - generic [ref=e1090]:
+                - heading "Insalata Solunto" [level=3] [ref=e1091]
+                - generic [ref=e1092]: € 8.00
+              - paragraph [ref=e1093]: Bresaola, rucola, scaglie di parmigiano reggiano, limone, sale e pepe
+          - article [ref=e1094]:
+            - generic [ref=e1095]:
+              - generic [ref=e1096]:
+                - heading "Insalata Vegetariana" [level=3] [ref=e1097]
+                - generic [ref=e1098]: € 8.00
+              - paragraph [ref=e1099]: Tonno, lattuga, pomodoro, rucola, mais
+      - generic [ref=e1100]:
+        - heading "Panini" [level=2] [ref=e1101]
+        - generic [ref=e1102]:
+          - article [ref=e1103]:
+            - generic [ref=e1104]:
+              - generic [ref=e1105]:
+                - heading "Cartoccio" [level=3] [ref=e1106]
+                - generic [ref=e1107]: € 4.00
+              - list "Ingredienti" [ref=e1108]:
+                - listitem [ref=e1109]: Prosciutto cotto
+                - listitem [ref=e1110]: mozzarella
+          - article [ref=e1111]:
+            - generic [ref=e1112]:
+              - generic [ref=e1113]:
+                - heading "Hot Dog" [level=3] [ref=e1114]
+                - generic [ref=e1115]: € 3.50
+              - list "Ingredienti" [ref=e1116]:
+                - listitem [ref=e1117]: Wurstel
+          - article [ref=e1118]:
+            - generic [ref=e1119]:
+              - generic [ref=e1120]:
+                - heading "Formica" [level=3] [ref=e1121]
+                - generic [ref=e1122]: € 4.00
+              - list "Ingredienti" [ref=e1123]:
+                - listitem [ref=e1124]: Pomodoro
+                - listitem [ref=e1125]: tonno
+                - listitem [ref=e1126]: lattuga
+                - listitem [ref=e1127]: maionese
+          - article [ref=e1128]:
+            - generic [ref=e1129]:
+              - generic [ref=e1130]:
+                - heading "Crocicchia" [level=3] [ref=e1131]
+                - generic [ref=e1132]: € 4.00
+              - list "Ingredienti" [ref=e1133]:
+                - listitem [ref=e1134]: Prosciutto crudo
+                - listitem [ref=e1135]: mozzarella
+                - listitem [ref=e1136]: pomodoro
+          - article [ref=e1137]:
+            - generic [ref=e1138]:
+              - generic [ref=e1139]:
+                - heading "Topolino" [level=3] [ref=e1140]
+                - generic [ref=e1141]: € 4.50
+              - list "Ingredienti" [ref=e1142]:
+                - listitem [ref=e1143]: Wurstel
+                - listitem [ref=e1144]: prosciutto cotto
+                - listitem [ref=e1145]: mozzarella
+          - article [ref=e1146]:
+            - generic [ref=e1147]:
+              - generic [ref=e1148]: Signature
+              - generic [ref=e1149]:
+                - heading "Panino Solunto" [level=3] [ref=e1150]
+                - generic [ref=e1151]: € 5.00
+              - list "Ingredienti" [ref=e1152]:
+                - listitem [ref=e1153]: Bresaola
+                - listitem [ref=e1154]: scaglie di grana
+                - listitem [ref=e1155]: rucola
+                - listitem [ref=e1156]: olio
+                - listitem [ref=e1157]: limone
+                - listitem [ref=e1158]: pepe
+          - article [ref=e1159]:
+            - generic [ref=e1160]:
+              - generic [ref=e1161]: Signature
+              - generic [ref=e1162]:
+                - heading "A Punta" [level=3] [ref=e1163]
+                - generic [ref=e1164]: € 5.00
+              - list "Ingredienti" [ref=e1165]:
+                - listitem [ref=e1166]: Salsiccia
+                - listitem [ref=e1167]: mozzarella
+                - listitem [ref=e1168]: pomodoro
+                - listitem [ref=e1169]: cipolla
+          - article [ref=e1170]:
+            - generic [ref=e1171]:
+              - generic [ref=e1172]:
+                - heading "Panino Caprese" [level=3] [ref=e1173]
+                - generic [ref=e1174]: € 4.00
+              - list "Ingredienti" [ref=e1175]:
+                - listitem [ref=e1176]: Pomodoro
+                - listitem [ref=e1177]: mozzarella
+          - article [ref=e1178]:
+            - generic [ref=e1179]:
+              - generic [ref=e1180]: Signature
+              - generic [ref=e1181]:
+                - heading "Panino Il Nodo" [level=3] [ref=e1182]
+                - generic [ref=e1183]: € 5.50
+              - list "Ingredienti" [ref=e1184]:
+                - listitem [ref=e1185]: Salsiccia
+                - listitem [ref=e1186]: emmental
+                - listitem [ref=e1187]: funghi
+          - article [ref=e1188]:
+            - generic [ref=e1189]:
+              - generic [ref=e1190]:
+                - heading "La Caletta" [level=3] [ref=e1191]
+                - generic [ref=e1192]: € 4.50
+              - list "Ingredienti" [ref=e1193]:
+                - listitem [ref=e1194]: Prosciutto cotto
+                - listitem [ref=e1195]: mozzarella
+                - listitem [ref=e1196]: funghi
+                - listitem [ref=e1197]: pomodoro
+          - article [ref=e1198]:
+            - generic [ref=e1199]:
+              - generic [ref=e1200]:
+                - heading "Santa Nicolicchia" [level=3] [ref=e1201]
+                - generic [ref=e1202]: € 4.50
+              - list "Ingredienti" [ref=e1203]:
+                - listitem [ref=e1204]: Salame piccante
+                - listitem [ref=e1205]: mozzarella
+                - listitem [ref=e1206]: funghi
+          - article [ref=e1207]:
+            - generic [ref=e1208]:
+              - generic [ref=e1209]:
+                - heading "Casetta Bianca" [level=3] [ref=e1210]
+                - generic [ref=e1211]: € 4.00
+              - list "Ingredienti" [ref=e1212]:
+                - listitem [ref=e1213]: Prosciutto crudo
+                - listitem [ref=e1214]: mozzarella
+                - listitem [ref=e1215]: funghi
+          - article [ref=e1216]:
+            - generic [ref=e1217]:
+              - generic [ref=e1218]:
+                - heading "Panino Il Faro" [level=3] [ref=e1219]
+                - generic [ref=e1220]: € 5.00
+              - list "Ingredienti" [ref=e1221]:
+                - listitem [ref=e1222]: Bresaola
+                - listitem [ref=e1223]: pomodoro
+                - listitem [ref=e1224]: emmental
+          - article [ref=e1225]:
+            - generic [ref=e1226]:
+              - generic [ref=e1227]:
+                - heading "Vegetariano" [level=3] [ref=e1228]
+                - generic [ref=e1229]: € 4.00
+              - list "Ingredienti" [ref=e1230]:
+                - listitem [ref=e1231]: Mozzarella
+                - listitem [ref=e1232]: funghi
+                - listitem [ref=e1233]: zucchine
+      - generic [ref=e1234]:
+        - heading "Note Operative" [level=2] [ref=e1235]
+        - list [ref=e1236]:
+          - listitem [ref=e1237]:
+            - generic [ref=e1238]: Sostituzioni
+            - text: "Sostituzione panino con piadina: +€ 0,50"
+          - listitem [ref=e1239]:
+            - generic [ref=e1240]: Personalizzazioni
+            - text: "Ogni aggiunta singolo ingrediente: +€ 0,50"
+          - listitem [ref=e1241]:
+            - generic [ref=e1242]: Servizio
+            - text: "Coperto a persona: € 0,50"
+          - listitem [ref=e1243]:
+            - generic [ref=e1244]: Orari
+            - text: "Aperti tutti i giorni: 10:00 - 00:00"
+  - contentinfo [ref=e1245]:
+    - generic [ref=e1247]:
+      - generic [ref=e1248]:
+        - generic [ref=e1249]:
+          - generic [ref=e1250]:
+            - heading "Il Nodo" [level=2] [ref=e1251]
+            - paragraph [ref=e1252]: Il tuo angolo di paradiso a Sant'Elia. Aperitivi d'autore, vista mozzafiato e l'accoglienza autentica della nostra terra.
+          - generic [ref=e1253]:
+            - link "Instagram" [ref=e1254] [cursor=pointer]:
+              - /url: https://www.instagram.com/il_nodo_beach_bar/
+              - img [ref=e1255]
+            - link "Facebook" [ref=e1258] [cursor=pointer]:
+              - /url: https://www.facebook.com/chioscoilnodo
+              - img [ref=e1259]
+        - generic [ref=e1261]:
+          - heading "Navigazione" [level=3] [ref=e1262]
+          - list [ref=e1263]:
+            - listitem [ref=e1264]:
+              - link "Home" [ref=e1265] [cursor=pointer]:
+                - /url: /#hero
+            - listitem [ref=e1266]:
+              - link "Chi Siamo" [ref=e1267] [cursor=pointer]:
+                - /url: /#storia
+            - listitem [ref=e1268]:
+              - link "Menu" [ref=e1269] [cursor=pointer]:
+                - /url: /menu
+            - listitem [ref=e1270]:
+              - link "Galleria" [ref=e1271] [cursor=pointer]:
+                - /url: /#galleria
+        - list [ref=e1273]:
+          - listitem [ref=e1274]:
+            - link "Esperienza" [ref=e1275] [cursor=pointer]:
+              - /url: /#sunset-experience
+          - listitem [ref=e1276]:
+            - link "Recensioni" [ref=e1277] [cursor=pointer]:
+              - /url: /#recensioni
+          - listitem [ref=e1278]:
+            - link "Dove siamo" [ref=e1279] [cursor=pointer]:
+              - /url: /#dove-siamo
+          - listitem [ref=e1280]:
+            - link "Contattaci" [ref=e1281] [cursor=pointer]:
+              - /url: https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo.%20Grazie!
+        - generic [ref=e1282]:
+          - heading "Informazioni" [level=3] [ref=e1283]
+          - list [ref=e1284]:
+            - listitem [ref=e1285]:
+              - img [ref=e1286]
+              - generic [ref=e1289]:
+                - text: Via dei Cantieri, snc
+                - text: Sant'Elia, PA 90017
+            - listitem [ref=e1290]:
+              - img [ref=e1291]
+              - link "+39 366 177 0312" [ref=e1293] [cursor=pointer]:
+                - /url: tel:+393661770312
+      - generic [ref=e1294]:
+        - paragraph [ref=e1295]: © 2026 Il Nodo. Tutti i diritti riservati.
+        - generic [ref=e1296]:
+          - link "Privacy Policy" [ref=e1297] [cursor=pointer]:
+            - /url: "#"
+          - link "Cookie Policy" [ref=e1298] [cursor=pointer]:
+            - /url: "#"
+          - button "Gestisci Cookie" [ref=e1299] [cursor=pointer]
+        - paragraph [ref=e1300]:
+          - text: Design by
+          - link "Calta" [ref=e1301] [cursor=pointer]:
+            - /url: https://www.instagram.com/caltaa_/
+  - generic [ref=e1304]:
+    - button "Menu" [ref=e1305]:
+      - img [ref=e1307]
+      - generic: Menu
+    - button "Inspect" [ref=e1311]:
+      - img [ref=e1313]
+      - generic: Inspect
+    - button "Audit" [ref=e1315]:
+      - generic [ref=e1316]:
+        - img [ref=e1317]
+        - img [ref=e1320]
+      - generic: Audit
+    - button "Settings" [ref=e1323]:
+      - img [ref=e1325]
+      - generic: Settings

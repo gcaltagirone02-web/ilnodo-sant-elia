@@ -3,34 +3,35 @@ import { Image } from "astro:assets";
 import cocktailImg from "../assets/images/cocktail-2.png";
 import foodImg from "../assets/images/bruschettone-macro.png";
 import traditionImg from "../assets/images/cocktail-basilico.png";
+import { useTranslations } from "../i18n/ui";
 
 interface Props {
   id?: string;
 }
 
-const { id = "esperienze" } = Astro.props;
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
+const { id = lang === "en" ? "experiences" : "esperienze" } = Astro.props;
 
 const highlights = [
   {
-    title: "La Mixology",
-    description:
-      "Dove il mare incontra il bancone. Cocktail curati, ingredienti freschi e il sapore del tramonto.",
+    title: t("highlights.mixology.title"),
+    description: t("highlights.mixology.desc"),
     image: cocktailImg,
-    label: "Cocktail Artigianali",
+    label: t("highlights.mixology.label"),
   },
   {
-    title: "Il Sapore",
-    description:
-      "Stuzzichini e taglieri che sanno di Sicilia. La semplicità della materia prima, la bellezza del mare.",
+    title: t("highlights.flavor.title"),
+    description: t("highlights.flavor.desc"),
     image: foodImg,
-    label: "Aperitivo Siciliano",
+    label: t("highlights.flavor.label"),
   },
   {
-    title: "La Tradizione",
-    description:
-      "Profumi di basilico fresco e colori delle maioliche siciliane. Un brindisi autentico alle nostre radici, al ritmo lento del mare.",
+    title: t("highlights.tradition.title"),
+    description: t("highlights.tradition.desc"),
     image: traditionImg,
-    label: "Sapori del Borgo",
+    label: t("highlights.tradition.label"),
   },
 ];
 ---
@@ -38,10 +39,10 @@ const highlights = [
 <section id={id} class="product-highlights">
   <div class="container">
     <div class="product-highlights__header reveal">
-      <span class="product-highlights__label">L'Arte del Momento</span>
+      <span class="product-highlights__label">{t("highlights.label")}</span>
       <h2 class="product-highlights__title">
-        Ogni particolare racconta <br />
-        <span class="italic text-accent">una storia di cura.</span>
+        {t("highlights.title")} <br />
+        <span class="italic text-accent">{t("highlights.accent")}</span>
       </h2>
     </div>
 

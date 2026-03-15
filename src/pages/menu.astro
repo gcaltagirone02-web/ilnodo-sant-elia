@@ -8,6 +8,10 @@ import { Image } from "astro:assets";
 import desktopHero from "../assets/images/golden-hour-dektop-il-nodo.png";
 import mobileHero from "../assets/images/golden-hour-mobile-il-nodo.png";
 import { getCategories, getMenuItems } from "../lib/sanity/queries";
+import { useTranslations } from "../i18n/ui";
+
+const lang = "it";
+const t = useTranslations(lang);
 
 // GROQ Query for menu items
 interface MenuItem {
@@ -18,7 +22,7 @@ interface MenuItem {
   descriptionEn?: string;
   ingredients?: string[];
   ingredientsEn?: string[];
-  category: string;
+  categorySlug: string;
   isHighlight?: boolean;
 }
 
@@ -26,7 +30,7 @@ let items: MenuItem[] = [];
 let sanityCategories: any[] = [];
 
 try {
-  [items, sanityCategories] = await Promise.all([getMenuItems(), getCategories()]);
+  [items, sanityCategories] = await Promise.all([getMenuItems('it'), getCategories('it')]);
 } catch (error) {
   console.warn(
     "Sanity fetch failed, using fallback data. Check your projectId in astro.config.mjs.",
@@ -66,31 +70,31 @@ const categories = sanityCategories.length > 0
     }))
   : [
   {
-    name: "Cocktails Alcolici",
+    name: t("menu.cat.cocktails"),
     slug: "cocktails-alcolici",
     image: cocktailsAlcoliciImg,
   },
   {
-    name: "Cocktails Analcolici",
+    name: t("menu.cat.mocktails"),
     slug: "cocktails-analcolici",
     image: cocktailsAnalcoliciImg,
   },
-  { name: "Birre", slug: "birre", image: birreImg },
-  { name: "Vini", slug: "vini", image: viniImg },
+  { name: t("menu.cat.beers"), slug: "birre", image: birreImg },
+  { name: t("menu.cat.wines"), slug: "vini", image: viniImg },
   {
-    name: "Soft Drinks",
+    name: t("menu.cat.soft"),
     slug: "soft-drinks",
     image: softDrinksImg,
   },
-  { name: "Amari", slug: "amari", image: amariImg },
-  { name: "Stuzzichini", slug: "stuzzichini", image: stuzzichiniImg },
-  { name: "Insalate", slug: "insalate", image: insalateImg },
-  { name: "Panini", slug: "panini", image: paniniImg },
+  { name: t("menu.cat.spirits"), slug: "amari", image: amariImg },
+  { name: t("menu.cat.appetizers"), slug: "stuzzichini", image: stuzzichiniImg },
+  { name: t("menu.cat.salads"), slug: "insalate", image: insalateImg },
+  { name: t("menu.cat.sandwiches"), slug: "panini", image: paniniImg },
 ];
 
 // Fallback data from menu-inventory.md - 9 categories
 const fallbackData: Record<string, MenuItem[]> = {
-  "Cocktails Alcolici": [
+  "cocktails-alcolici": [
     {
       name: "Alfa",
       price: "€ 8.00",
@@ -102,7 +106,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Succo d'arancia",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Alidas",
@@ -115,21 +119,21 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Granita",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Americano",
       price: "€ 7.00",
       ingredients: ["Martini Rosso", "Bitter Campari"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Angelo Azzurro",
       price: "€ 7.00",
       ingredients: ["Gin", "Cointreau", "Curacao"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Aug",
@@ -141,42 +145,42 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Succo d'ananas",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "B52",
       price: "€ 8.00",
       ingredients: ["Kahlua", "Baileys", "Grand Marnier"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Balduccio",
       price: "€ 8.00",
       ingredients: ["Vodka", "Granita al limone", "Aperol"],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Bellini",
       price: "€ 7.00",
       ingredients: ["Prosecco", "Succo alla pesca"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Black Russian",
       price: "€ 7.00",
       ingredients: ["Vodka liscia", "Kahlua"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Bolt",
       price: "€ 8.00",
       ingredients: ["Sambuca", "Midori", "Sciroppo alla fragola"],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Bombardino",
@@ -189,21 +193,21 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Succo d'arancia",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Caipirinha",
       price: "€ 8.00",
       ingredients: ["Cachaça", "Lime", "Zucchero di canna", "Acqua tonica"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Caipiroska",
       price: "€ 8.00",
       ingredients: ["Vodka", "Lime", "Zucchero di canna", "Ghiaccio tritato"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Cosmopolitan",
@@ -215,14 +219,14 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Cranberry",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Cuba Libre",
       price: "€ 7.00",
       ingredients: ["Rum", "Coca-Cola", "Limone spremuto"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Daiquiri",
@@ -235,7 +239,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Tonica",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Fantasia",
@@ -248,14 +252,14 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Sciroppo alla fragola",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Fire Drink",
       price: "€ 8.00",
       ingredients: ["Cointreau", "Martini Bianco", "Sciroppo di amarena"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Flower",
@@ -267,21 +271,21 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Granita al limone",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Garibaldi",
       price: "€ 7.00",
       ingredients: ["Succo d'arancia", "Bitter Campari"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Hugo",
       price: "€ 8.00",
       ingredients: ["St. Germain", "Prosecco", "Foglie di menta"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Il Nodo",
@@ -294,7 +298,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Vodka alla fragola",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Japanese",
@@ -308,14 +312,14 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Zucchero di canna",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Lancillotto",
       price: "€ 8.00",
       ingredients: ["Bitter Campari", "Aperol", "Gin", "Prosecco"],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Long Island",
@@ -330,7 +334,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Zucchero",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Lulù",
@@ -343,14 +347,14 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Prosecco",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "London Mule",
       price: "€ 8.00",
       ingredients: ["Gin", "Ginger beer", "Succo di limone", "Zenzero"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Malabama",
@@ -362,77 +366,77 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Succo d'ananas",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Manhattan",
       price: "€ 8.00",
       ingredients: ["Whiskey", "Vermouth rosso", "Angostura"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Margarita",
       price: "€ 7.00",
       ingredients: ["Tequila", "Cointreau", "Succo di limone"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Metropolitan",
       price: "€ 8.00",
       ingredients: ["Aperol", "Bitter Campari", "Succo d'ananas"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Midori Sour",
       price: "€ 7.00",
       ingredients: ["Midori", "Lime", "Zucchero di canna"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Mimosa",
       price: "€ 7.00",
       ingredients: ["Prosecco", "Spremuta di succo d'arancia"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "White Lady",
       price: "€ 7.00",
       ingredients: ["Gin", "Lime", "Cointreau", "Zucchero"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Mojito",
       price: "€ 8.00",
       ingredients: ["Rum", "Lime", "Zucchero di canna", "Menta", "Soda"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Negroni",
       price: "€ 7.00",
       ingredients: ["Bitter Campari", "Gin", "Martini Rosso"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Negroni Sbagliato",
       price: "€ 7.00",
       ingredients: ["Bitter Campari", "Prosecco", "Martini Rosso"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Negroski",
       price: "€ 7.00",
       ingredients: ["Martini Rosso", "Vodka", "Bitter Campari"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Pazzia",
@@ -445,7 +449,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Sciroppo di amarena",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Pina Colada",
@@ -457,21 +461,21 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Succo ananas",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Quattro Bianchi",
       price: "€ 8.00",
       ingredients: ["Cointreau", "Tequila", "Gin", "Vodka"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Red Bull & Vodka",
       price: "€ 7.00",
       ingredients: ["Red Bull", "Vodka alla fragola o Disaronno"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Riky",
@@ -484,7 +488,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Granatina",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Sex On The Beach",
@@ -495,35 +499,35 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Sciroppo alla fragola",
       ],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Siculo",
       price: "€ 7.00",
       ingredients: ["Granita", "Vodka liscia", "Limoncello"],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Smash Basil",
       price: "€ 8.00",
       ingredients: ["Gin", "Sciroppo di zucchero", "Basilico fresco"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Spritz",
       price: "€ 7.00",
       ingredients: ["Aperol", "Prosecco"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Tequila Sunrise",
       price: "€ 7.00",
       ingredients: ["Succo d'arancia", "Tequila", "Sciroppo di granatina"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Vaporetto",
@@ -536,7 +540,7 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Red Bull",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Violet",
@@ -549,101 +553,101 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Red Bull",
       ],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Moscow Mule",
       price: "€ 8.00",
       ingredients: ["Vodka", "Ginger beer", "Succo di limone", "Zenzero"],
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Alain",
       price: "€ 9.00",
       ingredients: ["Gin Mare", "Acqua tonica", "Midori"],
       isHighlight: true,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Gin Tonic",
       price: "€ 6.00",
       description: "Gin base, tonica classica",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Gin Lemon",
       price: "€ 6.00",
       description: "Gin base, lemon",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Gin Tonic Bombay/Tanqueray",
       price: "€ 8.00",
       description: "Tonica classica",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Gin Tonic Hendrick's/Mare/Etna",
       price: "€ 10.00",
       description: "Tonica classica",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Portofino",
       price: "€ 11.00",
       description: "Tonica classica",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Porzione Gin Tanqueray/Bombay",
       price: "€ 6.00",
       description: "Porzione singola",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Porzione Gin Mare/Etna/Hendrick's",
       price: "€ 8.00",
       description: "Porzione singola",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Vodka Tonica/Lemon",
       price: "€ 6.00",
       description: "Tonica classica",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Vodka Absolut",
       price: "€ 8.00",
       description: "Tonica/Lemon",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Vodka Moskovskaya",
       price: "€ 8.00",
       description: "Tonica/Lemon",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
     {
       name: "Porzione Vodka Absolut/Moskovskaya",
       price: "€ 6.00",
       description: "Porzione singola",
       isHighlight: false,
-      category: "Cocktails Alcolici",
+      categorySlug: "cocktails-alcolici",
     },
   ],
-  "Cocktails Analcolici": [
+  "cocktails-analcolici": [
     {
       name: "Analcolico Fruttato",
       price: "€ 5.00",
@@ -654,282 +658,282 @@ const fallbackData: Record<string, MenuItem[]> = {
         "Sciroppo di fragola",
       ],
       isHighlight: false,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
     {
       name: "Michelle",
       price: "€ 5.00",
       ingredients: ["Schweppes Lemon", "Granita", "Sciroppo pesca & kiwi"],
       isHighlight: true,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
     {
       name: "Trudis",
       price: "€ 5.00",
       ingredients: ["Granita", "Red Bull", "Acqua tonica"],
       isHighlight: true,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
     {
       name: "Virgin Colada",
       price: "€ 5.00",
       ingredients: ["Succo ananas", "Sciroppo di cocco"],
       isHighlight: false,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
     {
       name: "Virgin Mule",
       price: "€ 5.00",
       ingredients: ["Ginger beer", "Lime", "Foglie di menta"],
       isHighlight: false,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
     {
       name: "Virgin Mojito",
       price: "€ 5.00",
       ingredients: ["Tonica/Lemon", "Lime", "Zucchero di canna", "Menta"],
       isHighlight: false,
-      category: "Cocktails Analcolici",
+      categorySlug: "cocktails-analcolici",
     },
   ],
-  Birre: [
-    { name: "Heineken 33cl", price: "€ 3.00", category: "Birre" },
-    { name: "Beck's 33cl", price: "€ 3.00", category: "Birre" },
-    { name: "Nastro Azzurro 33cl", price: "€ 3.00", category: "Birre" },
-    { name: "Corona 33cl", price: "€ 4.00", category: "Birre" },
-    { name: "Ceres 33cl", price: "€ 4.00", category: "Birre" },
-    { name: "Tennent's 33cl", price: "€ 4.00", category: "Birre" },
+  birre: [
+    { name: "Heineken 33cl", price: "€ 3.00", categorySlug: "birre" },
+    { name: "Beck's 33cl", price: "€ 3.00", categorySlug: "birre" },
+    { name: "Nastro Azzurro 33cl", price: "€ 3.00", categorySlug: "birre" },
+    { name: "Corona 33cl", price: "€ 4.00", categorySlug: "birre" },
+    { name: "Ceres 33cl", price: "€ 4.00", categorySlug: "birre" },
+    { name: "Tennent's 33cl", price: "€ 4.00", categorySlug: "birre" },
     {
       name: "Birra Messina Cristalli di Sale",
       price: "€ 4.00",
       isHighlight: true,
-      category: "Birre",
+      categorySlug: "birre",
     },
-    { name: "Birra Senza Glutine", price: "€ 4.00", category: "Birre" },
-    { name: "Paulaner", price: "€ 5.00", category: "Birre" },
-    { name: "Leffe Rossa", price: "€ 5.00", category: "Birre" },
-    { name: "Ichnusa", price: "€ 3.50", category: "Birre" },
+    { name: "Birra Senza Glutine", price: "€ 4.00", categorySlug: "birre" },
+    { name: "Paulaner", price: "€ 5.00", categorySlug: "birre" },
+    { name: "Leffe Rossa", price: "€ 5.00", categorySlug: "birre" },
+    { name: "Ichnusa", price: "€ 3.50", categorySlug: "birre" },
   ],
-  Vini: [
+  vini: [
     {
       name: "Imagredi Prosecco (Calice)",
       price: "€ 6.00",
-      category: "Vini",
+      categorySlug: "vini",
     },
-    { name: "Valdo Iki (Calice)", price: "€ 5.00", category: "Vini" },
+    { name: "Valdo Iki (Calice)", price: "€ 5.00", categorySlug: "vini" },
     {
       name: "Grillo Nissim (Calice)",
       price: "€ 7.00",
       description: "Tenute Orestiadi Gibellina",
-      category: "Vini",
+      categorySlug: "vini",
     },
-    { name: "Charme (Calice)", price: "€ 6.00", category: "Vini" },
-    { name: "Calice Rosso", price: "€ 6.00", category: "Vini" },
+    { name: "Charme (Calice)", price: "€ 6.00", categorySlug: "vini" },
+    { name: "Calice Rosso", price: "€ 6.00", categorySlug: "vini" },
     {
       name: "Imagredi Prosecco (Bottiglia)",
       price: "€ 22.00",
-      category: "Vini",
+      categorySlug: "vini",
     },
-    { name: "Valdo Iki (Bottiglia)", price: "€ 20.00", category: "Vini" },
+    { name: "Valdo Iki (Bottiglia)", price: "€ 20.00", categorySlug: "vini" },
     {
       name: "Grillo Nissim (Bottiglia)",
       price: "€ 23.00",
       description: "Tenute Orestiadi Gibellina",
-      category: "Vini",
+      categorySlug: "vini",
     },
-    { name: "Charme (Bottiglia)", price: "€ 22.00", category: "Vini" },
+    { name: "Charme (Bottiglia)", price: "€ 22.00", categorySlug: "vini" },
     {
       name: "Syrah/Nero d'Avola Bottiglia",
       price: "€ 20.00",
       description: "Calanica Rosso",
-      category: "Vini",
+      categorySlug: "vini",
     },
   ],
-  "Soft Drinks": [
+  "soft-drinks": [
     {
       name: "Acqua Piccola",
       description: "Naturale, Frizzante",
       price: "€ 1.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Tisana Fredda (Lattina)",
       price: "€ 3.00",
       description: "Pesca, menta e finocchio, Aloe e melograno",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
-    { name: "Caffè", price: "€ 1.00", category: "Soft Drinks" },
+    { name: "Caffè", price: "€ 1.00", categorySlug: "soft-drinks" },
     {
       name: "Caffè Ginseng",
       price: "€ 2.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Crema Caffè",
       price: "€ 2.50",
       isHighlight: true,
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Caffè Macchiato/Decaffeinato",
       price: "€ 1.20",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Cappuccino/Caffè Americano",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Thé Pesca/Limone (San Benedetto)",
       price: "€ 2.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Estathè Pesca/Limone",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Granita al Limone",
       price: "€ 2.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Granita con Sciroppo",
       price: "€ 2.50",
       description: "Menta, kiwi, fragola, amarena, pesca",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Thé con Granita",
       price: "€ 3.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Thé/Thé Verde (Caldo)",
       price: "€ 2.00",
       description: "Tisana zenzero",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Succo di Frutta",
       price: "€ 2.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Succo Mirtillo",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Lattina (Coca Cola - Coca Zero - Chinotto)",
       price: "€ 2.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Bottiglie in Vetro 33cl Fanta/Sprite",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Bitter/Crodino",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Ginger Beer",
       price: "€ 4.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Schweppes Tonica/Lemon",
       price: "€ 2.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Tonica Fever Tree",
       price: "€ 3.50",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
     {
       name: "Red Bull",
       price: "€ 3.00",
-      category: "Soft Drinks",
+      categorySlug: "soft-drinks",
     },
   ],
-  Amari: [
+  amari: [
     {
       name: "Grappa 903 Barricata",
       price: "€ 4.00",
-      category: "Amari",
+      categorySlug: "amari",
     },
     {
       name: "Martini Rosso/Bianco",
       price: "€ 4.00",
-      category: "Amari",
+      categorySlug: "amari",
     },
-    { name: "Limoncello", price: "€ 4.00", category: "Amari" },
+    { name: "Limoncello", price: "€ 4.00", categorySlug: "amari" },
     {
       name: "Amaro (Disaronno, Amaro del Capo, Jägermeister, Averna, Montenegro)",
       price: "€ 4.00",
-      category: "Amari",
+      categorySlug: "amari",
     },
-    { name: "Sambuca", price: "€ 4.00", category: "Amari" },
-    { name: "Rum Havana 7", price: "€ 4.00", category: "Amari" },
+    { name: "Sambuca", price: "€ 4.00", categorySlug: "amari" },
+    { name: "Rum Havana 7", price: "€ 4.00", categorySlug: "amari" },
     {
       name: "Tequila Sale & Limone",
       price: "€ 4.00",
-      category: "Amari",
+      categorySlug: "amari",
     },
-    { name: "Baileys", price: "€ 4.00", category: "Amari" },
-    { name: "Glen Grant", price: "€ 4.00", category: "Amari" },
-    { name: "Jack Daniel's", price: "€ 5.00", category: "Amari" },
-    { name: "Pastis", price: "€ 5.00", category: "Amari" },
-    { name: "Campari & Gin", price: "€ 6.00", category: "Amari" },
+    { name: "Baileys", price: "€ 4.00", categorySlug: "amari" },
+    { name: "Glen Grant", price: "€ 4.00", categorySlug: "amari" },
+    { name: "Jack Daniel's", price: "€ 5.00", categorySlug: "amari" },
+    { name: "Pastis", price: "€ 5.00", categorySlug: "amari" },
+    { name: "Campari & Gin", price: "€ 6.00", categorySlug: "amari" },
     {
       name: "Sgroppino",
       price: "€ 6.00",
       ingredients: ["Granita limone", "Vodka liscia"],
-      category: "Amari",
+      categorySlug: "amari",
     },
   ],
-  Stuzzichini: [
-    { name: "Patatine in Busta", price: "€ 2.00", category: "Stuzzichini" },
+  stuzzichini: [
+    { name: "Patatine in Busta", price: "€ 2.00", categorySlug: "stuzzichini" },
     {
       name: "Bruschettone Classico",
       price: "€ 5.00",
       ingredients: ["Pomodoro", "olio", "origano", "sale", "pepe"],
-      category: "Stuzzichini",
+      categorySlug: "stuzzichini",
     },
     {
       name: "Bruschettone a Scelta",
       price: "€ 8.00",
       description: "Trasforma il tuo panino in un bruschettone",
-      category: "Stuzzichini",
+      categorySlug: "stuzzichini",
     },
     {
       name: "Tagliere Misto",
       price: "€ 12.00",
       description: "Salumi e formaggi misti",
       isHighlight: true,
-      category: "Stuzzichini",
+      categorySlug: "stuzzichini",
     },
-    { name: "Porzione di Würstel", price: "€ 2.00", category: "Stuzzichini" },
+    { name: "Porzione di Würstel", price: "€ 2.00", categorySlug: "stuzzichini" },
   ],
-  Insalate: [
+  insalate: [
     {
       name: "Insalata Caprese",
       price: "€ 7.00",
       ingredients: ["Pomodoro", "mozzarella", "basilico"],
-      category: "Insalate",
+      categorySlug: "insalate",
     },
     {
       name: "Insalata Mista",
       price: "€ 8.00",
       description:
         "Lattuga, pomodoro, mozzarella, cipolla, prosciutto crudo o cotto a scelta",
-      category: "Insalate",
+      categorySlug: "insalate",
     },
     {
       name: "Insalata Solunto",
@@ -937,45 +941,45 @@ const fallbackData: Record<string, MenuItem[]> = {
       description:
         "Bresaola, rucola, scaglie di parmigiano reggiano, limone, sale e pepe",
       isHighlight: true,
-      category: "Insalate",
+      categorySlug: "insalate",
     },
     {
       name: "Insalata Vegetariana",
       price: "€ 8.00",
       description: "Tonno, lattuga, pomodoro, rucola, mais",
-      category: "Insalate",
+      categorySlug: "insalate",
     },
   ],
-  Panini: [
+  panini: [
     {
       name: "Cartoccio",
       price: "€ 4.00",
       ingredients: ["Prosciutto cotto", "mozzarella"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Hot Dog",
       price: "€ 3.50",
       ingredients: ["Wurstel"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Formica",
       price: "€ 4.00",
       ingredients: ["Pomodoro", "tonno", "lattuga", "maionese"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Crocicchia",
       price: "€ 4.00",
       ingredients: ["Prosciutto crudo", "mozzarella", "pomodoro"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Topolino",
       price: "€ 4.50",
       ingredients: ["Wurstel", "prosciutto cotto", "mozzarella"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Panino Solunto",
@@ -989,57 +993,57 @@ const fallbackData: Record<string, MenuItem[]> = {
         "pepe",
       ],
       isHighlight: true,
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "A Punta",
       price: "€ 5.00",
       ingredients: ["Salsiccia", "mozzarella", "pomodoro", "cipolla"],
       isHighlight: true,
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Panino Caprese",
       price: "€ 4.00",
       ingredients: ["Pomodoro", "mozzarella"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Panino Il Nodo",
       price: "€ 5.50",
       ingredients: ["Salsiccia", "emmental", "funghi"],
       isHighlight: true,
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "La Caletta",
       price: "€ 4.50",
       ingredients: ["Prosciutto cotto", "mozzarella", "funghi", "pomodoro"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Santa Nicolicchia",
       price: "€ 4.50",
       ingredients: ["Salame piccante", "mozzarella", "funghi"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Casetta Bianca",
       price: "€ 4.00",
       ingredients: ["Prosciutto crudo", "mozzarella", "funghi"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Panino Il Faro",
       price: "€ 5.00",
       ingredients: ["Bresaola", "pomodoro", "emmental"],
-      category: "Panini",
+      categorySlug: "panini",
     },
     {
       name: "Vegetariano",
       price: "€ 4.00",
       ingredients: ["Mozzarella", "funghi", "zucchine"],
-      category: "Panini",
+      categorySlug: "panini",
     },
   ],
 };
@@ -1047,9 +1051,9 @@ const fallbackData: Record<string, MenuItem[]> = {
 // Group sanity items by category if available
 const groupedItems = items.reduce(
   (acc, item) => {
-    const cat = item.category || "Other";
-    if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(item);
+    const catSlug = item.categorySlug || "altro";
+    if (!acc[catSlug]) acc[catSlug] = [];
+    acc[catSlug].push(item);
     return acc;
   },
   {} as Record<string, MenuItem[]>,
@@ -1060,10 +1064,10 @@ const displayData: Record<string, MenuItem[]> =
 ---
 
 <Layout
-  title="Menu Digitale | Il Nodo 2.0"
-  description="Scopri la nostra selezione di cocktail artigianali, piatti tipici e le famose granite siciliane."
+  title="Menu Digitale | Cocktail, Food & Granite — Il Nodo 2.0"
+  description="Esplora il nostro menu online: dai cocktail artigianali ai taglieri misti, panini e le famose granite siciliane. Tutto il sapore di Il Nodo 2.0."
 >
-  <Navbar currentPath="/menu" />
+  <Navbar />
 
   <main class="menu-page">
     <section class="menu-hero">
@@ -1083,12 +1087,13 @@ const displayData: Record<string, MenuItem[]> =
       </div>
       <div class="menu-hero__overlay"></div>
       <div class="menu-hero__content">
-        <h1 class="menu-hero__title">Il Nostro Menu</h1>
-        <p class="menu-hero__subtitle">Sapori autentici, vista mozzafiato.</p>
+        <h1 class="menu-hero__title">{t("menu.hero.title")}</h1>
+        <p class="menu-hero__subtitle">{t("menu.hero.subtitle")}</p>
         <div class="menu-hero__actions">
           <a href="#menu-categories" class="btn-browse">
-            Sfoglia il Menù
+            {t("menu.hero.cta")}
             <svg
+
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -1133,7 +1138,7 @@ const displayData: Record<string, MenuItem[]> =
           <section id={cat.slug} class="menu-section">
             <h2 class="menu-section__title">{cat.name}</h2>
             <MenuGrid>
-              {displayData[cat.name]?.map((item) => (
+              {displayData[cat.slug]?.map((item) => (
                 <MenuCard
                   name={item.name}
                   price={item.price}
@@ -1148,23 +1153,23 @@ const displayData: Record<string, MenuItem[]> =
       }
 
       <footer class="menu-footer">
-        <h2 class="menu-footer__title">Note Operative</h2>
+        <h2 class="menu-footer__title">{t("menu.footer.title")}</h2>
         <ul class="menu-footer__list">
           <li class="menu-footer__item">
-            <span>Sostituzioni</span>
-            Sostituzione panino con piadina: +€ 0,50
+            <span>{t("menu.footer.substitutions.label")}</span>
+            {t("menu.footer.substitutions.text")}
           </li>
           <li class="menu-footer__item">
-            <span>Personalizzazioni</span>
-            Ogni singola aggiunta agli ingredienti: +€ 0,50
+            <span>{t("menu.footer.custom.label")}</span>
+            {t("menu.footer.custom.text")}
           </li>
           <li class="menu-footer__item">
-            <span>Servizio</span>
-            Coperto a persona: € 0,50
+            <span>{t("menu.footer.service.label")}</span>
+            {t("menu.footer.service.text")}
           </li>
           <li class="menu-footer__item">
-            <span>Orari</span>
-            Aperto tutti i giorni: 10:00 - 00:00
+            <span>{t("menu.footer.hours.label")}</span>
+            {t("menu.footer.hours.text")}
           </li>
         </ul>
       </footer>
@@ -1175,7 +1180,7 @@ const displayData: Record<string, MenuItem[]> =
       href="#menu-categories"
       id="back-to-grid"
       class="sticky-back-btn"
-      aria-label="Torna alle categorie"
+      aria-label={t("menu.back")}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -1188,7 +1193,7 @@ const displayData: Record<string, MenuItem[]> =
         stroke-linecap="round"
         stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg
       >
-      <span>Categorie</span>
+      <span>{t("menu.back")}</span>
     </a>
   </main>
 
@@ -1202,15 +1207,15 @@ const displayData: Record<string, MenuItem[]> =
 
   .menu-hero {
     position: relative;
-    height: 50vh;
-    min-height: 450px;
+    height: 65vh; /* Aumentato da 50vh */
+    min-height: 550px; /* Aumentato da 450px */
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #0f1c46; /* Navy fallback */
     overflow: hidden;
     margin-top: -5rem; /* Allow Navbar to overlay */
-    padding-top: 5rem;
+    padding-top: 8rem; /* Aumentato da 5rem per dare piÃ¹ respiro alla nav */
   }
 
   .menu-hero__overlay {
@@ -1280,15 +1285,18 @@ const displayData: Record<string, MenuItem[]> =
     font-size: clamp(3rem, 10vw, 5rem);
     font-weight: 300;
     color: white;
-    margin-bottom: 0.5rem;
-    line-height: 1;
+    margin-bottom: 2rem;
+    line-height: 1.1;
   }
 
   .menu-hero__subtitle {
     font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
     letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 45rem;
+    margin: 0 auto;
   }
 
   .menu-container {
@@ -1442,7 +1450,7 @@ const displayData: Record<string, MenuItem[]> =
 
   /* Hero Actions */
   .menu-hero__actions {
-    margin-top: 2rem;
+    margin-top: 3.5rem;
     animation: fadeInUp 0.8s ease-out 0.4s both;
   }
 

@@ -1,4 +1,6 @@
 ---
+import { useTranslations } from "../i18n/ui";
+
 interface Props {
   name: string;
   price: string;
@@ -8,11 +10,13 @@ interface Props {
 }
 
 const { name, price, description, ingredients, isHighlight = false } = Astro.props;
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
 ---
 
 <article class:list={["menu-card", { "menu-card--highlight": isHighlight }]}>
   <div class="menu-card__content">
-    {isHighlight && <span class="menu-card__badge">Signature</span>}
+    {isHighlight && <span class="menu-card__badge">{t("menu.card.signature")}</span>}
     <div class="menu-card__header">
       <h3 class="menu-card__name">{name}</h3>
       <span class="menu-card__price">{price}</span>
@@ -21,7 +25,7 @@ const { name, price, description, ingredients, isHighlight = false } = Astro.pro
     {description && <p class="menu-card__description">{description}</p>}
     
     {ingredients && ingredients.length > 0 && (
-      <ul class="menu-card__ingredients" aria-label="Ingredienti">
+      <ul class="menu-card__ingredients" aria-label={t("menu.card.ingredients")}>
         {ingredients.map((ingredient) => (
           <li class="menu-card__ingredient">{ingredient}</li>
         ))}

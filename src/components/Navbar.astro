@@ -10,42 +10,70 @@
  */
 import { Image } from "astro:assets";
 import logoImg from "../assets/images/Logo.png";
+import { useTranslations, languages } from "../i18n/ui";
+import LanguagePicker from "./LanguagePicker.astro";
 
 interface Props {
   currentPath?: string;
 }
 
-const { currentPath = "/" } = Astro.props;
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const base = lang === "en" ? "/en" : "";
 
 const navLinks = [
-  { href: "/#storia", label: "Chi Siamo" },
-  { href: "/menu", label: "Menu" },
-  { href: "/#sunset-experience", label: "Esperienza" },
-  { href: "/#galleria", label: "Galleria" },
-  { href: "/#dove-siamo", label: "Dove siamo" },
+  { href: `${base}/#storia`, label: t("nav.storia") },
+  { href: `${base}/menu`, label: t("nav.menu") },
+  { href: `${base}/#sunset-experience`, label: t("nav.experience") },
+  { href: `${base}/#galleria`, label: t("nav.gallery") },
+  { href: lang === "en" ? "/en/#location" : "/#dove-siamo", label: t("nav.location") },
 ];
 
 // Contextual WhatsApp messages
 const whatsappBase = "https://api.whatsapp.com/send?phone=393661770312&text=";
 const messages = {
-  home: "Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20l'aperitivo%20a%20Sant'Elia.",
-  menu: "Ciao!%20Ho%20visto%20il%20vostro%20menu%20online%20e%20vorrei%20prenotare%20un%20tavolo.",
+  it: {
+    home: "Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20l'aperitivo%20a%20Sant'Elia.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!",
+    menu: "Ciao!%20Ho%20visto%20il%20vostro%20menu%20online%20e%20vorrei%20prenotare%20un%20tavolo.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!",
+  },
+  en: {
+    home: "Hi!%20I'd%20like%20to%20book%20a%20table%20for%20an%20aperitif%20in%20Sant'Elia.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
+    menu: "Hi!%20I%20saw%20your%20online%20menu%20and%20I'd%20like%20to%20book%20a%20table.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
+  },
 };
 
-const currentMessage = currentPath === "/menu" ? messages.menu : messages.home;
+const currentMessage =
+  currentPath.includes("/menu") ? messages[lang].menu : messages[lang].home;
 const whatsappLink = `${whatsappBase}${currentMessage}`;
+
+// Helper to switch language keeping the same path
+const getSwitchPath = (targetLang: string) => {
+  const segments = currentPath.split("/").filter(Boolean);
+  if (targetLang === "en") {
+    if (segments[0] !== "en") return `/en${currentPath}`;
+    return currentPath;
+  } else {
+    if (segments[0] === "en") {
+      const newPath = "/" + segments.slice(1).join("/");
+      return newPath === "" ? "/" : newPath;
+    }
+    return currentPath;
+  }
+};
 ---
 
 <!-- Scroll sentinel -->
 <div id="nav-sentinel" class="nav-sentinel" aria-hidden="true"></div>
 
 <header id="site-header" class="site-header" role="banner">
-  <nav class="site-nav" aria-label="Navigazione principale">
+  <nav class="site-nav" aria-label={t("nav.home")}>
     <!-- Logo -->
     <a
-      href="/"
+      href={lang === "en" ? "/en" : "/"}
       class="site-nav__logo"
-      aria-label="Il Nodo 2.0 — torna alla homepage"
+      aria-label={`${t("nav.home")} — Il Nodo 2.0`}
     >
       <Image
         src={logoImg}
@@ -76,36 +104,42 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
       }
     </ul>
 
-    <!-- CTA Button -->
-    <a
-      href={whatsappLink}
-      class="site-nav__cta"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Prenota via WhatsApp"
-    >
-      <span class="site-nav__cta-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
-          ></path>
-          <path
-            d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.534 5.847L0 24l6.335-1.518C8.02 23.447 9.972 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.66-.523-5.168-1.43l-.368-.217-3.762.902.934-3.664-.24-.38C2.517 15.614 2 13.865 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
-          ></path>
-        </svg>
-      </span>
-      <span>Prenota</span>
-    </a>
+    <div class="site-nav__actions">
+      <!-- Premium Language Picker -->
+      <LanguagePicker />
+
+      <!-- CTA Button -->
+      <a
+        href={whatsappLink}
+        class="site-nav__cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t("nav.book")}
+      >
+        <span class="site-nav__cta-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path>
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.534 5.847L0 24l6.335-1.518C8.02 23.447 9.972 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.66-.523-5.168-1.43l-.368-.217-3.762.902.934-3.664-.24-.38C2.517 15.614 2 13.865 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+            ></path>
+          </svg>
+        </span>
+        <span>{t("nav.book")}</span>
+      </a>
+    </div>
 
     <!-- Mobile hamburger -->
     <button
+      type="button"
       class="site-nav__hamburger"
       id="nav-toggle"
       aria-expanded="false"
@@ -127,10 +161,12 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
   class="mobile-menu"
   aria-hidden="true"
   role="dialog"
+  aria-modal="true"
   aria-label="Menu mobile"
 >
   <!-- Close button inside menu -->
   <button
+    type="button"
     class="mobile-menu__close"
     id="mobile-menu-close"
     aria-label="Chiudi menu"
@@ -196,8 +232,11 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
             d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.534 5.847L0 24l6.335-1.518C8.02 23.447 9.972 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.66-.523-5.168-1.43l-.368-.217-3.762.902.934-3.664-.24-.38C2.517 15.614 2 13.865 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
           ></path>
         </svg>
-        <span class="mobile-menu__text">Prenota ora</span>
+        <span class="mobile-menu__text">{lang === 'en' ? 'Book Now' : 'Prenota ora'}</span>
       </a>
+    </li>
+    <li style="--stagger: 5" class="mobile-menu__lang">
+      <LanguagePicker />
     </li>
   </ul>
 </div>
@@ -429,6 +468,12 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
   .site-nav__link--active {
     color: var(--color-accent-light);
     font-weight: 600;
+  }
+
+  .site-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .site-nav__link-text {
@@ -751,6 +796,13 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
   .mobile-menu__link--cta svg {
     color: var(--color-cta);
     flex-shrink: 0;
+  }
+
+  .mobile-menu__lang {
+    margin-top: 3.5rem;
+    padding-bottom: 3rem;
+    display: flex;
+    justify-content: center;
   }
 
   /* ---- Responsive ---- */

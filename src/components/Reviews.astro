@@ -1,48 +1,52 @@
 ---
+import { useTranslations } from "../i18n/ui";
+
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
 const reviews = [
   {
     name: "Santina C.",
-    date: "Agosto 2025",
+    date: lang === 'en' ? "August 2025" : "Agosto 2025",
     stars: 5,
-    text: "Prima volta a Sant'Elia per visitare la splendida caletta, facendosi ora di pranzo abbiamo deciso di fermarci in questo chiosco con i tavoli sulla spiaggia. Al di là delle nostre aspettative è stata un'ottima scelta. Atmosfera rilassante al fresco della pergola e col profumo del mare...",
+    text: lang === 'en' ? "First time in Sant'Elia to visit the splendid cove, as it became lunchtime we decided to stop at this kiosk with tables on the beach. Beyond our expectations, it was an excellent choice. Relaxing atmosphere in the cool of the pergola and with the scent of the sea..." : "Prima volta a Sant'Elia per visitare la splendida caletta, facendosi ora di pranzo abbiamo deciso di fermarci in questo chiosco con i tavoli sulla spiaggia. Al di là delle nostre aspettative è stata un'ottima scelta. Atmosfera rilassante al fresco della pergola e col profumo del mare...",
     source: "Google Reviews",
   },
   {
     name: "Francesca Brun",
-    date: "Luglio 2025",
+    date: lang === 'en' ? "July 2025" : "Luglio 2025",
     stars: 5,
-    text: "Nella semplicità del loro menù, abbiamo trovato qualità dei prodotti, cortesia e simpatia. Un bel posto dove trascorrere un pranzo veloce di una soleggiata domenica. Ci ritorneremo!",
+    text: lang === 'en' ? "In the simplicity of their menu, we found quality products, courtesy and friendliness. A nice place to spend a quick lunch on a sunny Sunday. We will return!" : "Nella semplicità del loro menù, abbiamo trovato qualità dei prodotti, cortesia e simpatia. Un bel posto dove trascorrere un pranzo veloce di una soleggiata domenica. Ci ritorneremo!",
     source: "Google Reviews",
   },
   {
     name: "Giuseppe Ceruso",
-    date: "Settembre 2025",
+    date: lang === 'en' ? "September 2025" : "Settembre 2025",
     stars: 5,
-    text: "Proprio sulla spiaggia di Sant'Elia, Personale giovane e cordiale & menu semplice preparato fesh su ordinazione. Prezzi molto ragionevoli, un autentico locale preferito. Parcheggio a pagamento nelle vicinanze con noleggio lettini molto ragionevole sulla spiaggia, semplicemente superba. Raccomandato!",
+    text: lang === 'en' ? "Right on the beach of Sant'Elia, young & friendly staff & simple menu prepared fresh to order. Very reasonable prices, an authentic local favorite. Paid parking nearby with very reasonable sunbed rental on the beach, simply superb. Recommended!" : "Proprio sulla spiaggia di Sant'Elia, Personale giovane e cordiale & menu semplice preparato fesh su ordinazione. Prezzi molto ragionevoli, un autentico locale preferito. Parcheggio a pagamento nelle vicinanze con noleggio lettini molto ragionevole sulla spiaggia, semplicemente superba. Raccomandato!",
     source: "Facebook",
   },
   {
     name: "Sofia Gagliardi",
-    date: "Agosto 2025",
+    date: lang === 'en' ? "August 2025" : "Agosto 2025",
     stars: 5,
-    text: "Posto magico. La vista sulla casa bianca sugli scogli al tramonto è impagabile. Ottimo anche il tagliere di prodotti locali.",
+    text: lang === 'en' ? "Magical place. The view of the white house on the rocks at sunset is priceless. Also excellent platter of local products." : "Posto magico. La vista sulla casa bianca sugli scogli al tramonto è impagabile. Ottimo anche il tagliere di prodotti locali.",
     source: "TripAdvisor",
   },
 ];
 ---
 
-<section id="recensioni" class="py-24 bg-stone-100 overflow-hidden">
+<section id={lang === 'en' ? 'reviews' : 'recensioni'} class="py-24 bg-stone-100 overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16 space-y-4" data-aos="fade-up">
       <h2 class="text-amber-600 font-medium tracking-widest uppercase text-sm">
-        Social Proof
+        {t("reviews.label")}
       </h2>
       <h3 class="text-4xl md:text-5xl font-serif text-stone-900">
-        Dicono di Noi
+        {t("reviews.title")}
       </h3>
       <p class="text-stone-500 max-w-2xl mx-auto italic">
-        "Non siamo noi a dirlo, ma chi vive Il Nodo ogni giorno. La vostra
-        soddisfazione è il nostro miglior cocktail."
+        {t("reviews.desc")}
       </p>
     </div>
 
@@ -93,14 +97,14 @@ const reviews = [
 
     <div class="mt-16 text-center" data-aos="fade-up">
       <p class="text-stone-400 text-sm mb-4">
-        Hai vissuto un momento magico con noi?
+        {t("reviews.question")}
       </p>
       <a
         href="https://maps.app.goo.gl/9uwPwxciv7T9GPoR6"
         target="_blank"
         class="inline-flex items-center space-x-2 text-amber-600 font-semibold hover:text-amber-700 transition-colors underline decoration-amber-500/30 underline-offset-8 decoration-2 hover:decoration-amber-700"
       >
-        <span>Lascia la tua recensione su Google</span>
+        <span>{t("reviews.cta")}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="w-4 h-4"

@@ -9,57 +9,61 @@ import spiaggia from "../assets/images/spiaggia-sant-elia.png";
 import cocktail from "../assets/images/caletta-sant-elia.png";
 import panorama from "../assets/images/blue-cocktails-il-nodo.png";
 import goldenHour from "../assets/images/gin-tonic-il-nodo.png";
+import { useTranslations } from "../i18n/ui";
 
 interface Props {
   id?: string;
 }
 
-const { id = "galleria" } = Astro.props;
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
+const { id = lang === "en" ? "gallery" : "galleria" } = Astro.props;
 
 const images = [
   {
     src: cocktail, // caletta-sant-elia.png
-    alt: "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar.",
+    alt: lang === 'en' ? "Secret glimpses: the enchanted cove just steps from our Beach Bar." : "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar.",
     span: "large",
   },
   {
     src: gallery2, // overview-il-nodo.png
-    alt: "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo.",
+    alt: lang === 'en' ? "An overview: where the blue of the sky meets the unique style of Il Nodo." : "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo.",
     span: "tall",
   },
   {
     src: gallery3, // il-nodo-cocktail-macro.png
-    alt: "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink.",
+    alt: lang === 'en' ? "The art of mixology: fresh ingredients and artisanal garnishes for every drink." : "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink.",
     span: "small",
   },
   {
     src: gallery1, // tramonto-gallery.png
-    alt: "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza.",
+    alt: lang === 'en' ? "The warm reflections of the Sicilian sunset embracing our terrace." : "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza.",
     span: "small",
   },
   {
     src: tramonto, // terrazza-golen-hour-sant-elia.png
-    alt: "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro.",
+    alt: lang === 'en' ? "Breathtaking view from our terrace during the golden hour." : "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro.",
     span: "tall",
   },
   {
     src: spiaggia, // spiaggia-sant-elia.png
-    alt: "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale.",
+    alt: lang === 'en' ? "The crystalline beach of Sant'Elia, the beating heart of our coast." : "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale.",
     span: "wide",
   },
   {
     src: panorama, // blue-cocktails-il-nodo.png
-    alt: "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo.",
+    alt: lang === 'en' ? "Signature cocktails inspired by the colors and flavors of the Mediterranean." : "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo.",
     span: "small",
   },
   {
     src: goldenHour, // gin-tonic-il-nodo.png
-    alt: "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare.",
+    alt: lang === 'en' ? "The perfect companion for your relaxation: an ice-cold Gin Tonic with a sea view." : "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare.",
     span: "small",
   },
   {
     src: gallery5, // pink-sky-gallery-il-nodo.png
-    alt: "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia.",
+    alt: lang === 'en' ? "Shades of pink and lavender: the most magical hour of the day in Sant'Elia." : "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia.",
     span: "small",
   },
 ];
@@ -68,10 +72,10 @@ const images = [
 <section id={id} class="gallery">
   <div class="container">
     <div class="gallery__header reveal">
-      <span class="gallery__label">I Nostri Momenti</span>
+      <span class="gallery__label">{t("gallery.label")}</span>
       <h2 class="gallery__title">
-        Cattura l'essenza della <br />
-        <span class="italic text-accent">vita sul mare.</span>
+        {t("gallery.title")} <br />
+        <span class="italic text-accent">{t("gallery.accent")}</span>
       </h2>
     </div>
 
@@ -79,7 +83,7 @@ const images = [
     <div class="gallery__wrapper">
       {/* Scroll indicator for mobile */}
       <div class="gallery__scroll-hint mobile-only">
-        <span>Scorri per esplorare</span>
+        <span>{t("gallery.scroll")}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -116,6 +120,7 @@ const images = [
                     image.span === "large" || image.span === "wide" ? 1200 : 800
                   }
                   loading="lazy"
+                  decoding="async"
                 />
                 <div class="gallery__overlay">
                   <div class="gallery__info">
@@ -150,7 +155,7 @@ const images = [
   <dialog id="gallery-lightbox" class="lightbox">
     <div class="lightbox__content">
       <form method="dialog">
-        <button class="lightbox__close" aria-label="Chiudi galleria">
+        <button type="button" class="lightbox__close" aria-label="Chiudi galleria" id="close-lightbox">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -185,6 +190,7 @@ const images = [
     ) as HTMLImageElement;
     const lightboxCaption = document.getElementById("lightbox-caption");
     const galleryItems = document.querySelectorAll("[data-gallery-item]");
+    const closeBtn = document.getElementById("close-lightbox");
 
     if (!dialog || !lightboxImg || !lightboxCaption) return;
 
@@ -199,8 +205,13 @@ const images = [
           lightboxCaption.textContent = alt;
           dialog.showModal();
           document.body.style.overflow = "hidden";
+          setTimeout(() => closeBtn?.focus(), 100);
         }
       });
+    });
+
+    closeBtn?.addEventListener("click", () => {
+        dialog.close();
     });
 
     dialog.addEventListener("close", () => {

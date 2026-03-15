@@ -1,8 +1,12 @@
 ---
 // Location.astro
+import { useTranslations } from "../i18n/ui";
+
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
 ---
 
-<section id="dove-siamo" class="py-24 bg-stone-950 overflow-hidden relative">
+<section id={lang === 'en' ? 'location' : 'dove-siamo'} class="py-24 bg-stone-950 overflow-hidden relative">
   <!-- Subtle background texture -->
   <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E');"></div>
 
@@ -12,10 +16,10 @@
       <!-- Content Column -->
       <div class="space-y-12" data-aos="fade-right">
         <div class="space-y-4">
-          <h2 class="text-amber-500 font-medium tracking-widest uppercase text-sm">Coordinate di Bellezza</h2>
-          <h3 class="text-4xl md:text-5xl font-serif text-stone-100">Vieni a trovarci a <span class="italic text-stone-400">Sant'Elia</span></h3>
+          <h2 class="text-amber-500 font-medium tracking-widest uppercase text-sm">{t("location.label")}</h2>
+          <h3 class="text-4xl md:text-5xl font-serif text-stone-100">{t("location.title")} <span class="italic text-stone-400">Sant'Elia</span></h3>
           <p class="text-stone-400 text-lg leading-relaxed max-w-lg">
-            Siamo incastonati nel suggestivo borgo di Sant'Elia, dove il mare lambisce le antiche case dei pescatori. Un angolo di Sicilia autentica che aspetta solo di essere scoperto.
+            {t("location.desc")}
           </p>
         </div>
 
@@ -27,7 +31,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span>Indirizzo</span>
+              <span>{t("location.address")}</span>
             </div>
             <p class="text-stone-300">Via dei Cantieri, snc<br/>90017 Sant'Elia (PA)</p>
             <a 
@@ -35,7 +39,7 @@
               target="_blank" 
               class="inline-block text-amber-500 hover:text-amber-400 text-sm font-semibold transition-colors decoration-amber-500/30 underline underline-offset-4"
             >
-              Link Google Maps →
+              {t("location.maps")} →
             </a>
           </div>
 
@@ -45,23 +49,23 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Orari</span>
+              <span>{t("location.hours")}</span>
             </div>
             <ul class="text-stone-300 text-sm space-y-1">
-              <li class="flex justify-between"><span>Lun - Gio:</span> <span>16:00 - 01:00</span></li>
-              <li class="flex justify-between"><span>Ven - Dom:</span> <span>16:00 - 02:00</span></li>
-              <li class="text-stone-500 mt-2 italic">* Gli orari possono variare in base alla stagione.</li>
+              <li class="flex justify-between"><span>{lang === 'en' ? 'Mon - Thu' : 'Lun - Gio'}:</span> <span>16:00 - 01:00</span></li>
+              <li class="flex justify-between"><span>{lang === 'en' ? 'Fri - Sun' : 'Ven - Dom'}:</span> <span>16:00 - 02:00</span></li>
+              <li class="text-stone-500 mt-2 italic">* {lang === 'en' ? 'Hours may vary by season.' : 'Gli orari possono variare in base alla stagione.'}</li>
             </ul>
           </div>
         </div>
 
         <div class="pt-8 border-t border-stone-800 flex flex-wrap gap-6">
            <div>
-             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">Telefono</span>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">{t("location.phone")}</span>
              <a href="tel:+393661770312" class="text-stone-200 hover:text-amber-500 transition-colors">+39 366 177 0312</a>
            </div>
            <div>
-             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">Email</span>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">{t("location.email")}</span>
              <a href="mailto:info@ilnodo-santelia.it" class="text-stone-200 hover:text-amber-500 transition-colors">info@ilnodo-santelia.it</a>
            </div>
         </div>

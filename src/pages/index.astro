@@ -10,8 +10,10 @@ import Reviews from "../components/Reviews.astro";
 import Location from "../components/Location.astro";
 import Footer from "../components/Footer.astro";
 import { getSiteSettings } from "../lib/sanity/queries";
+import { useTranslations } from "../i18n/ui";
 
-const currentPath = Astro.url.pathname;
+const lang = "it";
+const t = useTranslations(lang);
 
 // Verify Sanity connectivity (AC #3)
 try {
@@ -27,10 +29,10 @@ try {
 ---
 
 <Layout
-  title="Il Nodo 2.0 — Beach Bar a Sant'Elia | Aperitivo al Tramonto"
-  description="Aperitivo al tramonto a Sant'Elia. Il Nodo 2.0: cocktail artigianali, musica e tramonti siciliani direttamente sul mare. Prenota il tuo tavolo via WhatsApp."
+  title={t("hero.title") + " " + t("hero.subtitle") + " — Il Nodo 2.0"}
+  description="L'aperitivo perfetto sul mare siciliano. Scopri Il Nodo 2.0 a Sant'Elia (Santa Flavia): cocktail artigianali, musica e tramonti mozzafiato. Prenota il tuo tavolo!"
 >
-  <Navbar currentPath={currentPath} />
+  <Navbar />
   <main>
     <Hero />
     <Storytelling id="storia" />

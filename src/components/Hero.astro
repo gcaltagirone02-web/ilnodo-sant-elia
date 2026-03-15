@@ -11,14 +11,20 @@
 import { getImage } from "astro:assets";
 import desktopImg from "../assets/images/hero-desktop.png";
 import mobileImg from "../assets/images/hero-mobile.png";
+import { useTranslations } from "../i18n/ui";
 
 interface Props {
   /** Alt text for the hero background image */
   imageAlt?: string;
 }
 
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
 const {
-  imageAlt = "Vista panoramica del beach bar Il Nodo 2.0 a Sant'Elia con la celebre casa bianca sugli scogli e un Aperol Spritz sul bancone",
+  imageAlt = lang === "en" 
+    ? "Panoramic view of Il Nodo 2.0 beach bar in Sant'Elia with the famous white house on the rocks and an Aperol Spritz on the counter"
+    : "Vista panoramica del beach bar Il Nodo 2.0 a Sant'Elia con la celebre casa bianca sugli scogli e un Aperol Spritz sul bancone",
 } = Astro.props;
 
 // Ottimizziamo le immagini per le diverse viewport usando getImage
@@ -83,45 +89,45 @@ const desktopRetina = await getImage({
     <div class="hero__inner">
       <!-- Primary heading (LCP element) - Più emozionale -->
       <h1 id="hero-heading" class="hero__heading hero-anim hero-anim--2">
-        Il tuo posto<br />
-        sul mare
+        {t("hero.title").split(" ").slice(0, 2).join(" ")}<br />
+        {t("hero.title").split(" ").slice(2).join(" ")}
       </h1>
 
       <!-- Script corsivo -->
       <p class="hero__script hero-anim hero-anim--2-5">
-        ti aspetta. <br class="mobile-only" /><span class="hero__location-sub"
-          >a Sant'Elia, Palermo</span
+        {t("hero.subtitle")} <br class="mobile-only" /><span class="hero__location-sub"
+          >{t("hero.location")}</span
         >
       </p>
 
       <!-- Supporting tagline -->
       <p class="hero__tagline hero-anim hero-anim--3">
-        Siediti. Il tramonto è già pronto per te.
+        {t("hero.tagline")}
       </p>
 
       <!-- CTA group -->
       <div
         class="hero__cta-group hero-anim hero-anim--4"
         role="group"
-        aria-label="Azioni principali"
+        aria-label={lang === 'en' ? 'Main actions' : 'Azioni principali'}
       >
         <a
           href="https://api.whatsapp.com/send?phone=393478669358&text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto."
           class="hero__cta-primary"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Prenota via WhatsApp (apre in una nuova scheda)"
+          aria-label={t("hero.cta")}
         >
-          <span>Prenota il tuo tavolo</span>
+          <span>{t("hero.cta")}</span>
           <span class="hero__cta-primary-shine" aria-hidden="true"></span>
         </a>
 
         <a
-          href="/menu"
+          href={lang === 'en' ? '/en/menu' : '/menu'}
           class="hero__cta-secondary"
-          aria-label="Scopri il nostro menu"
+          aria-label={t("hero.menu")}
         >
-          <span>Scopri il menu</span>
+          <span>{t("hero.menu")}</span>
         </a>
       </div>
     </div>

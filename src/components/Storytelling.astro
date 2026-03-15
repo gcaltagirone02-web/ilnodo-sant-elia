@@ -1,12 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import storytellingImg from "../assets/images/storytelling-golden-hour.png";
+import { useTranslations } from "../i18n/ui";
 
 interface Props {
   id?: string;
 }
 
-const { id = "chi-siamo" } = Astro.props;
+const lang = (Astro.currentLocale as "it" | "en") || "it";
+const t = useTranslations(lang);
+
+const { id = lang === "en" ? "about" : "chi-siamo" } = Astro.props;
 ---
 
 <section id={id} class="storytelling">
@@ -17,7 +21,7 @@ const { id = "chi-siamo" } = Astro.props;
         <div class="storytelling__image-wrapper">
           <Image
             src={storytellingImg}
-            alt="Atmosfera rilassata de Il Nodo 2.0 con vista mare"
+            alt={lang === 'en' ? 'Relaxed atmosphere at Il Nodo 2.0 with sea view' : 'Atmosfera rilassata de Il Nodo 2.0 con vista mare'}
             class="storytelling__image"
             format="avif"
             width={800}
@@ -31,29 +35,17 @@ const { id = "chi-siamo" } = Astro.props;
       <!-- Content Column -->
       <div class="storytelling__content reveal">
         <div class="storytelling__inner">
-          <span class="storytelling__label">La Nostra Storia</span>
+          <span class="storytelling__label">{t("story.label")}</span>
           <h2 class="storytelling__title">
-            Hai il mare davanti. <br />
-            Il tuo tavolo è pronto. <br />
-            <span class="italic text-accent">Questo è il tuo posto.</span>
+            {t("story.title").split(". ")[0]}. <br />
+            {t("story.title").split(". ")[1]} <br />
+            <span class="italic text-accent">{t("story.accent")}</span>
           </h2>
 
           <div class="storytelling__text">
-            <p>
-              Il Nodo non è solo un bar. È il battito di Sant'Elia, un rifugio
-              dove il tempo rallenta e il sapore del salmastro si sposa con
-              l'eccellenza della cura.
-            </p>
-            <p>
-              Nato dalla passione per l’ospitalità autentica, il nostro "nodo"
-              rappresenta il legame indissolubile tra la terra e il mare, tra
-              chi accoglie e chi desidera lasciarsi cullare dalla bellezza di
-              uno dei borghi più suggestivi della Sicilia.
-            </p>
-            <p class="storytelling__quote">
-              "Siamo amici del mare, custodi di tramonti e compagni dei vostri
-              momenti più cari."
-            </p>
+            <p>{t("story.p1")}</p>
+            <p>{t("story.p2")}</p>
+            <p class="storytelling__quote">{t("story.quote")}</p>
           </div>
         </div>
       </div>

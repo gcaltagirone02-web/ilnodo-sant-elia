@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import SEO from "../components/SEO.astro";
+import CookieBanner from "../components/CookieBanner.astro";
 
 interface Props {
   title?: string;
@@ -8,42 +10,19 @@ interface Props {
 }
 
 const {
-  title = "Il Nodo 2.0 — Beach Bar a Sant'Elia",
-  description = "Aperitivo al tramonto a Sant'Elia. Il tuo beach bar sul mare siciliano: cocktail, musica e tramonti indimenticabili.",
-  image = "/og-image.jpg",
+  title,
+  description,
+  image,
 } = Astro.props;
 
-const canonicalURL = new URL(
-  Astro.url.pathname,
-  Astro.site ?? "https://ilnodo.it",
-);
+const lang = Astro.currentLocale || "it";
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- SEO -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:locale" content="it_IT" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <SEO title={title} description={description} ogImage={image} />
 
     <!-- Fonts: preconnect first, then load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,35 +31,9 @@ const canonicalURL = new URL(
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&family=Mrs+Saint+Delafield&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Favicon placeholder -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Schema.org: LocalBusiness (Beach Bar) -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "FoodEstablishment",
-        "name": "Il Nodo 2.0",
-        "description": "Beach bar sul mare siciliano, specializzato in aperitivi al tramonto a Sant'Elia.",
-        "servesCuisine": "Cocktail bar",
-        "url": "https://ilnodo.it",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Sant'Elia",
-          "addressRegion": "Sicilia",
-          "addressCountry": "IT"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "37.5183",
-          "longitude": "15.1163"
-        },
-        "priceRange": "€€"
-      }
-    </script>
   </head>
   <body>
     <slot />
+    <CookieBanner />
   </body>
 </html>
