@@ -1,8 +1,8 @@
 import { createClient } from "@sanity/client";
 
 export const client = createClient({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
-  useCdn: true, // `false` if you want to ensure fresh data
-  apiVersion: "2024-03-08", // Set to a recent date
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || "r3e9n3a3",
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET || "production",
+  useCdn: true,
+  apiVersion: "2024-03-08",
 });
