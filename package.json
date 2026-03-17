@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/cloudflare": "^13.1.2",
+    "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/sitemap": "^3.7.1",
     "@jop-software/astro-cookieconsent": "^3.0.1",
     "@sanity/astro": "^3.2.11",
@@ -18,7 +18,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.5",
     "astro-seo": "^1.1.0",
-    "sanity": "^5.15.0",
+    "sanity": "^5.14.1",
     "styled-components": "^6.3.11",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
