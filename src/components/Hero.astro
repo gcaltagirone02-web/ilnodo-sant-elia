@@ -18,13 +18,11 @@ interface Props {
   imageAlt?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
 const {
-  imageAlt = lang === "en" 
-    ? "Panoramic view of Il Nodo 2.0 beach bar in Sant'Elia with the famous white house on the rocks and an Aperol Spritz on the counter"
-    : "Vista panoramica del beach bar Il Nodo 2.0 a Sant'Elia con la celebre casa bianca sugli scogli e un Aperol Spritz sul bancone",
+  imageAlt = t('hero.alt'),
 } = Astro.props;
 
 // Ottimizziamo le immagini per le diverse viewport usando getImage
@@ -95,7 +93,8 @@ const desktopRetina = await getImage({
 
       <!-- Script corsivo -->
       <p class="hero__script hero-anim hero-anim--2-5">
-        {t("hero.subtitle")} <br class="mobile-only" /><span class="hero__location-sub"
+        {t("hero.subtitle")}
+        <br class="mobile-only" /><span class="hero__location-sub"
           >{t("hero.location")}</span
         >
       </p>
@@ -109,10 +108,18 @@ const desktopRetina = await getImage({
       <div
         class="hero__cta-group hero-anim hero-anim--4"
         role="group"
-        aria-label={lang === 'en' ? 'Main actions' : 'Azioni principali'}
+        aria-label={lang === "en"
+          ? "Main actions"
+          : lang === "fr"
+            ? "Actions principales"
+            : "Azioni principali"}
       >
         <a
-          href="https://api.whatsapp.com/send?phone=393478669358&text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto."
+          href={lang === "en"
+            ? "https://api.whatsapp.com/send?phone=393661770312&text=Hi!%20I'd%20like%20information%20or%20to%20book%20a%20table%20for%20a%20sunset%20aperitif."
+            : lang === "fr"
+              ? "https://api.whatsapp.com/send?phone=393661770312&text=Bonjour!%20Je%20souhaiterais%20des%20informations%20ou%20réserver%20une%20table%20pour%20un%20apéritif%20au%20couché%20du%20soleil."
+              : "https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto."}
           class="hero__cta-primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -123,7 +130,7 @@ const desktopRetina = await getImage({
         </a>
 
         <a
-          href={lang === 'en' ? '/en/menu' : '/menu'}
+          href={lang === "it" ? "/menu" : `/${lang}/menu`}
           class="hero__cta-secondary"
           aria-label={t("hero.menu")}
         >

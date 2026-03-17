@@ -15,55 +15,55 @@ interface Props {
   id?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = lang === "en" ? "gallery" : "galleria" } = Astro.props;
+const { id = t('gallery.id') } = Astro.props;
 
 const images = [
   {
     src: cocktail, // caletta-sant-elia.png
-    alt: lang === 'en' ? "Secret glimpses: the enchanted cove just steps from our Beach Bar." : "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar.",
+    alt: t('gallery.alt.1'),
     span: "large",
   },
   {
     src: gallery2, // overview-il-nodo.png
-    alt: lang === 'en' ? "An overview: where the blue of the sky meets the unique style of Il Nodo." : "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo.",
+    alt: t('gallery.alt.2'),
     span: "tall",
   },
   {
     src: gallery3, // il-nodo-cocktail-macro.png
-    alt: lang === 'en' ? "The art of mixology: fresh ingredients and artisanal garnishes for every drink." : "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink.",
+    alt: t('gallery.alt.3'),
     span: "small",
   },
   {
     src: gallery1, // tramonto-gallery.png
-    alt: lang === 'en' ? "The warm reflections of the Sicilian sunset embracing our terrace." : "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza.",
+    alt: t('gallery.alt.4'),
     span: "small",
   },
   {
     src: tramonto, // terrazza-golen-hour-sant-elia.png
-    alt: lang === 'en' ? "Breathtaking view from our terrace during the golden hour." : "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro.",
+    alt: t('gallery.alt.5'),
     span: "tall",
   },
   {
     src: spiaggia, // spiaggia-sant-elia.png
-    alt: lang === 'en' ? "The crystalline beach of Sant'Elia, the beating heart of our coast." : "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale.",
+    alt: t('gallery.alt.6'),
     span: "wide",
   },
   {
     src: panorama, // blue-cocktails-il-nodo.png
-    alt: lang === 'en' ? "Signature cocktails inspired by the colors and flavors of the Mediterranean." : "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo.",
+    alt: t('gallery.alt.7'),
     span: "small",
   },
   {
     src: goldenHour, // gin-tonic-il-nodo.png
-    alt: lang === 'en' ? "The perfect companion for your relaxation: an ice-cold Gin Tonic with a sea view." : "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare.",
+    alt: t('gallery.alt.8'),
     span: "small",
   },
   {
     src: gallery5, // pink-sky-gallery-il-nodo.png
-    alt: lang === 'en' ? "Shades of pink and lavender: the most magical hour of the day in Sant'Elia." : "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia.",
+    alt: t('gallery.alt.9'),
     span: "small",
   },
 ];

@@ -11,13 +11,13 @@ import Location from "../../components/Location.astro";
 import Footer from "../../components/Footer.astro";
 import { useTranslations } from "../../i18n/ui";
 
-const lang = "en";
+const lang = "fr";
 const t = useTranslations(lang);
 ---
 
 <Layout
   title={t("hero.title") + " " + t("hero.subtitle") + " — Il Nodo 2.0"}
-  description="The perfect aperitif by the Sicilian sea. Discover Il Nodo 2.0 in Sant'Elia (Santa Flavia): craft cocktails, music, and breathtaking sunsets. Book your table!"
+  description="L'apéritif parfait sur la mer sicilienne. Découvrez Il Nodo 2.0 à Sant'Elia : cocktails signature, musique et couchers de soleil imprenables. Réservez votre table!"
 >
   <Navbar />
   <main>

@@ -16,12 +16,9 @@ const t = useTranslations(lang);
 // GROQ Query for menu items
 interface MenuItem {
   name: string;
-  nameEn?: string;
   price: string;
   description?: string;
-  descriptionEn?: string;
   ingredients?: string[];
-  ingredientsEn?: string[];
   categorySlug: string;
   isHighlight?: boolean;
 }
@@ -30,7 +27,10 @@ let items: MenuItem[] = [];
 let sanityCategories: any[] = [];
 
 try {
-  [items, sanityCategories] = await Promise.all([getMenuItems('it'), getCategories('it')]);
+  [items, sanityCategories] = await Promise.all([
+    getMenuItems(lang),
+    getCategories(lang),
+  ]);
 } catch (error) {
   console.warn(
     "Sanity fetch failed, using fallback data. Check your projectId in astro.config.mjs.",
@@ -62,37 +62,38 @@ const localCategoryImages: Record<string, any> = {
 };
 
 // Categories with metadata for grid cards
-const categories = sanityCategories.length > 0
-  ? sanityCategories.map(cat => ({
-      name: cat.title,
-      slug: cat.slug,
-      image: cat.image || localCategoryImages[cat.slug] || cocktailsAlcoliciImg
-    }))
-  : [
-  {
-    name: t("menu.cat.cocktails"),
-    slug: "cocktails-alcolici",
-    image: cocktailsAlcoliciImg,
-  },
-  {
-    name: t("menu.cat.mocktails"),
-    slug: "cocktails-analcolici",
-    image: cocktailsAnalcoliciImg,
-  },
-  { name: t("menu.cat.beers"), slug: "birre", image: birreImg },
-  { name: t("menu.cat.wines"), slug: "vini", image: viniImg },
-  {
-    name: t("menu.cat.soft"),
-    slug: "soft-drinks",
-    image: softDrinksImg,
-  },
-  { name: t("menu.cat.spirits"), slug: "amari", image: amariImg },
-  { name: t("menu.cat.appetizers"), slug: "stuzzichini", image: stuzzichiniImg },
-  { name: t("menu.cat.salads"), slug: "insalate", image: insalateImg },
-  { name: t("menu.cat.sandwiches"), slug: "panini", image: paniniImg },
-];
+const categories =
+  sanityCategories.length > 0
+    ? sanityCategories.map((cat) => ({
+        name: cat.title,
+        slug: cat.slug,
+        image: cat.image || localCategoryImages[cat.slug] || cocktailsAlcoliciImg,
+      }))
+    : [
+        {
+          name: t("menu.cat.cocktails"),
+          slug: "cocktails-alcolici",
+          image: cocktailsAlcoliciImg,
+        },
+        {
+          name: t("menu.cat.mocktails"),
+          slug: "cocktails-analcolici",
+          image: cocktailsAnalcoliciImg,
+        },
+        { name: t("menu.cat.beers"), slug: "birre", image: birreImg },
+        { name: t("menu.cat.wines"), slug: "vini", image: viniImg },
+        {
+          name: t("menu.cat.soft"),
+          slug: "soft-drinks",
+          image: softDrinksImg,
+        },
+        { name: t("menu.cat.spirits"), slug: "amari", image: amariImg },
+        { name: t("menu.cat.appetizers"), slug: "stuzzichini", image: stuzzichiniImg },
+        { name: t("menu.cat.salads"), slug: "insalate", image: insalateImg },
+        { name: t("menu.cat.sandwiches"), slug: "panini", image: paniniImg },
+      ];
 
-// Fallback data from menu-inventory.md - 9 categories
+// Fallback data
 const fallbackData: Record<string, MenuItem[]> = {
   "cocktails-alcolici": [
     {
@@ -1048,10 +1049,10 @@ const fallbackData: Record<string, MenuItem[]> = {
   ],
 };
 
-// Group sanity items by category if available
+// Group items by category
 const groupedItems = items.reduce(
   (acc, item) => {
-    const catSlug = item.categorySlug || "altro";
+    const catSlug = item.categorySlug || "other";
     if (!acc[catSlug]) acc[catSlug] = [];
     acc[catSlug].push(item);
     return acc;
@@ -1061,11 +1062,38 @@ const groupedItems = items.reduce(
 
 const displayData: Record<string, MenuItem[]> =
   items.length > 0 ? groupedItems : fallbackData;
+
+// JSON-LD Menu Schema
+const menuSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": t("menu.hero.title"),
+  "description": t("menu.hero.subtitle"),
+  "publisher": {
+    "@type": "BarOrPub",
+    "name": "Il Nodo 2.0",
+    "url": "https://ilnodo.it"
+  },
+  "hasMenuSection": categories.map(cat => ({
+    "@type": "MenuSection",
+    "name": cat.name,
+    "hasMenuItem": (displayData[cat.slug] || []).map(item => ({
+      "@type": "MenuItem",
+      "name": item.name,
+      "description": item.description || (item.ingredients ? item.ingredients.join(", ") : ""),
+      "offers": {
+        "@type": "Offer",
+        "price": item.price.replace(/[^\d.,]/g, "").replace(",", "."),
+        "priceCurrency": "EUR"
+      }
+    }))
+  }))
+};
 ---
 
 <Layout
-  title="Menu Digitale | Cocktail, Food & Granite — Il Nodo 2.0"
-  description="Esplora il nostro menu online: dai cocktail artigianali ai taglieri misti, panini e le famose granite siciliane. Tutto il sapore di Il Nodo 2.0."
+  title={t("menu.title")}
+  description={t("menu.desc")}
 >
   <Navbar />
 
@@ -1093,7 +1121,6 @@ const displayData: Record<string, MenuItem[]> =
           <a href="#menu-categories" class="btn-browse">
             {t("menu.hero.cta")}
             <svg
-
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -1196,6 +1223,8 @@ const displayData: Record<string, MenuItem[]> =
       <span>{t("menu.back")}</span>
     </a>
   </main>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(menuSchema)} />
 
   <Footer />
 </Layout>
@@ -1450,7 +1479,7 @@ const displayData: Record<string, MenuItem[]> =
 
   /* Hero Actions */
   .menu-hero__actions {
-    margin-top: 3.5rem;
+    margin-top: 4.5rem;
     animation: fadeInUp 0.8s ease-out 0.4s both;
   }
 

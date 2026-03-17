@@ -1,0 +1,48 @@
+---
+// src/components/SchemaLocalBusiness.astro
+const lang = Astro.currentLocale || "it";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "Il Nodo 2.0",
+  "url": "https://ilnodo.it",
+  "telephone": "+393661770312",
+  "image": "https://ilnodo.it/images/social-preview.png",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via dei Cantieri, snc",
+    "addressLocality": "Sant'Elia",
+    "addressRegion": "PA",
+    "postalCode": "90017",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 38.0960,
+    "longitude": 13.5365
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "16:00",
+      "closes": "01:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+      "opens": "16:00",
+      "closes": "02:00"
+    }
+  ],
+  "menu": "https://ilnodo.it/menu",
+  "servesCuisine": lang === "en" ? "Cocktails, Drinks, Aperitif" : "Cocktail, Aperitivi, Drink",
+  "sameAs": [
+    "https://www.instagram.com/il_nodo_beach_bar/",
+    "https://www.facebook.com/chioscoilnodo"
+  ]
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

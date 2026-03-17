@@ -9,10 +9,10 @@ interface Props {
   id?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = lang === "en" ? "experiences" : "esperienze" } = Astro.props;
+const { id = t('highlights.id') } = Astro.props;
 
 const highlights = [
   {

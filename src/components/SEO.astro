@@ -1,5 +1,6 @@
 ---
 import { SEO as AstroSEO } from "astro-seo";
+import { useTranslations, defaultLang } from "../i18n/ui";
 
 interface Props {
   title?: string;
@@ -9,16 +10,21 @@ interface Props {
   type?: "website" | "article" | "restaurant";
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || defaultLang;
+const t = useTranslations(lang);
+
+// Map locales to OG locales
+const ogLocaleMap = {
+  it: "it_IT",
+  en: "en_US",
+  fr: "fr_FR",
+};
+const ogLocale = ogLocaleMap[lang as keyof typeof ogLocaleMap] || "it_IT";
 
 const {
-  title = lang === "en" 
-    ? "Il Nodo 2.0 — Beach Bar in Sant'Elia | Sunset Aperitif"
-    : "Il Nodo 2.0 — Beach Bar a Sant'Elia | Aperitivo al Tramonto",
-  description = lang === "en"
-    ? "Sunset aperitif in Sant'Elia. Il Nodo 2.0: craft cocktails, music, and Sicilian sunsets directly by the sea. Book your table via WhatsApp."
-    : "Aperitivo al tramonto a Sant'Elia. Il Nodo 2.0: cocktail artigianali, musica e tramonti siciliani direttamente sul mare. Prenota il tuo tavolo via WhatsApp.",
-  ogImage = "/images/social-preview.jpg",
+  title = t('seo.home.title'),
+  description = t('seo.home.desc'),
+  ogImage = "/images/social-preview.png",
   canonicalURL = Astro.url.href,
   type = "website",
 } = Astro.props;
@@ -27,38 +33,44 @@ const {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Bar",
-  "name": "Il Nodo 2.0",
-  "description": lang === "en"
-    ? "Beach bar and cocktail bar in Sant'Elia (Santa Flavia), famous for its sunset aperitifs on the Sicilian sea."
-    : "Beach bar e cocktail bar a Sant'Elia (Santa Flavia), famoso per i suoi aperitivi al tramonto sul mare siciliano.",
-  "url": "https://ilnodo.it",
-  "telephone": "+393661770312",
-  "address": {
+  name: "Il Nodo",
+  description: t('seo.business.description'),
+  url: "https://ilnodosantelia.it",
+  telephone: "+393661770312",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Via dei Cantieri, snc",
-    "addressLocality": "Sant'Elia",
-    "addressRegion": "PA",
-    "postalCode": "90017",
-    "addressCountry": "IT"
+    streetAddress: "Via dei Cantieri, snc",
+    addressLocality: "Sant'Elia",
+    addressRegion: "PA",
+    postalCode: "90017",
+    addressCountry: "IT",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": "38.1091",
-    "longitude": "13.5332"
+    latitude: "38.1091",
+    longitude: "13.5332",
   },
-  "priceRange": "€€",
-  "openingHoursSpecification": [
+  priceRange: "€€",
+  openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "10:00",
-      "closes": "00:00"
-    }
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "10:00",
+      closes: "00:00",
+    },
   ],
-  "sameAs": [
-    "https://www.instagram.com/il_nodo_beach_bar/",
-    "https://www.facebook.com/chioscoilnodo"
-  ]
+  sameAs: [
+    "https://www.instagram.com/il_nodo_santelia/",
+    "https://www.facebook.com/chioscoilnodo/",
+  ],
 };
 ---
 
@@ -73,14 +85,14 @@ const localBusinessSchema = {
       image: ogImage,
     },
     optional: {
-      siteName: "Il Nodo 2.0",
-      locale: lang === "en" ? "en_US" : "it_IT",
+      siteName: "Il Nodo",
+      locale: ogLocale,
     },
     image: {
-      alt: lang === "en" ? "Il Nodo 2.0 — Sunset in Sant'Elia" : "Il Nodo 2.0 — Tramonto a Sant'Elia",
+      alt: t('seo.og_alt'),
       width: 1200,
       height: 630,
-    }
+    },
   }}
   twitter={{
     card: "summary_large_image",
@@ -88,48 +100,28 @@ const localBusinessSchema = {
     title: title,
     description: description,
     image: ogImage,
+    imageAlt: t('seo.og_alt'),
   }}
   extend={{
     link: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "sitemap", href: "/sitemap-index.xml" }
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "sitemap", href: "/sitemap-index.xml" },
     ],
     meta: [
       { name: "viewport", content: "width=device-width" },
       { name: "generator", content: Astro.generator },
       { name: "theme-color", content: "#0F1C46" },
       { name: "author", content: "Calta" },
-      { name: "keywords", content: "aperitivo sant'elia, cocktail bar santa flavia, beach bar sicilia, tramonto mare palermo, il nodo beach bar" }
+      {
+        name: "keywords",
+        content: t('seo.keywords'),
+      },
     ],
   }}
 />
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)} />
-
-<!-- Google Analytics 4 via Partytown (Conditional) -->
-<script type="text/partytown" is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-393661770312'); // Placeholder ID, replace with real one
-</script>
-
-<script is:inline>
-  // Script to load GA only after consent
-  (function() {
-    function loadGA() {
-      const script = document.createElement('script');
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-393661770312';
-      script.type = 'text/partytown';
-      document.head.appendChild(script);
-    }
-
-    if (localStorage.getItem('il-nodo-cookie-consent') === 'granted') {
-      loadGA();
-    }
-
-    window.addEventListener('cookie-consent-granted', () => {
-      loadGA();
-    });
-  })();
-</script>
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(localBusinessSchema)}
+/>

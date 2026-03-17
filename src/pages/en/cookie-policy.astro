@@ -1,0 +1,112 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = "en";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Cookie Policy — Il Nodo 2.0"
+  description="Information on the use of cookies for the website ilnodosantelia.it."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Cookie Policy
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          Information on the use of cookies and similar technologies
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">What are cookies</h2>
+          <p>
+            Cookies are small text files that websites visited by users send to their terminals, where they are stored and then retransmitted to the same sites upon the next visit by the same user. While browsing a site, users may also receive cookies from third-party sites or web servers on their terminal (so-called "third-party" cookies).
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Types of cookies used</h2>
+          <p>
+            Our site exclusively uses the following categories of cookies and similar technologies:
+          </p>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">1. Technical Cookies (Necessary)</h3>
+              <p>
+                These cookies are essential for the proper functioning of the site and to enable navigation. Without them, the site might not work correctly.
+                We use a <strong>Cookie Consent</strong> solution to store your preferences regarding the cookies themselves.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">2. Cloudflare Web Analytics (Privacy-First)</h3>
+              <p>
+                We use Cloudflare Web Analytics to monitor site traffic in an aggregate manner. This technology <strong>does not use cookies</strong>, does not collect personally identifiable data, and does not track users across different sites. It allows us to understand how the site is used while ensuring maximum privacy.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">3. Third-Party Cookies (Google Maps)</h3>
+              <p>
+                The site integrates Google Maps. Interaction with these maps may involve the installation of cookies by Google LLC for purposes related to service display and user preferences.
+                These cookies are installed <strong>only with your prior consent</strong>.
+              </p>
+              <button 
+                data-cc="show-preferences"
+                class="mt-4 px-6 py-2 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-sm font-medium rounded hover:bg-amber-500/20 transition-all"
+              >
+                Manage cookie preferences
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">How to manage or disable cookies</h2>
+          <p>
+            You can change your preferences at any time by clicking the "Manage cookie preferences" button on this page or in the footer of the site.
+          </p>
+          <p>
+            Alternatively, you can configure your browser to refuse cookies or to alert you when a cookie is sent to your device. Every browser is different, so we invite you to consult your specific browser's guide:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" class="hover:text-amber-500 transition-colors">Google Chrome</a></li>
+            <li><a href="https://support.apple.com/en-us/guide/safari/sfri11471/mac" target="_blank" class="hover:text-amber-500 transition-colors">Safari</a></li>
+            <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" class="hover:text-amber-500 transition-colors">Mozilla Firefox</a></li>
+            <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" class="hover:text-amber-500 transition-colors">Microsoft Edge</a></li>
+          </ul>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">More information</h2>
+          <p>
+            For more information on the processing of personal data, we invite you to consult our <a href="/en/privacy-policy" class="text-amber-500 hover:text-amber-400 underline decoration-amber-500/30 underline-offset-4">Privacy Policy</a>.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Last updated: March 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>

@@ -1,0 +1,24 @@
+
+> build
+> astro build
+
+[2m00:50:07[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m00:50:07[22m [34m[types][39m Generated [2m115ms[22m
+[2m00:50:07[22m [34m[build][39m output: [34m"static"[39m
+[2m00:50:07[22m [34m[build][39m mode: [34m"static"[39m
+[2m00:50:07[22m [34m[build][39m directory: [34mD:\Il-nodo_2.0\dist\[39m
+[2m00:50:07[22m [34m[build][39m Collecting build info...
+[2m00:50:07[22m [34m[build][39m [32mÔ£ô Completed in 138ms.[39m
+[2m00:50:07[22m [34m[build][39m Building static entrypoints...
+00:50:08 [ERROR] [vite] Ô£ù Build failed in 659ms
+[vite]: Rollup failed to resolve import "vanilla-cookieconsent/dist/cookieconsent.css" from "astro:scripts/page-ssr.js".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rollupOptions.external`
+  Location:
+    D:\Il-nodo_2.0\node_modules\vite\dist\node\chunks\config.js:33635:57
+  Stack trace:
+    at viteLog (file:///D:/Il-nodo_2.0/node_modules/vite/dist/node/chunks/config.js:33635:57)
+    at onLog (file:///D:/Il-nodo_2.0/node_modules/vite/dist/node/chunks/config.js:33467:4)
+    at Object.logger [as onLog] (file:///D:/Il-nodo_2.0/node_modules/rollup/dist/es/shared/node-entry.js:22968:9)
+    at file:///D:/Il-nodo_2.0/node_modules/rollup/dist/es/shared/node-entry.js:21670:26

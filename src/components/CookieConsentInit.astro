@@ -1,0 +1,35 @@
+---
+/**
+ * CookieConsentInit.astro
+ * Handles client-side events for @jop-software/astro-cookieconsent (Vanilla CookieConsent v3)
+ *
+ * Note: Google Analytics integration removed - not currently implemented.
+ * When GA is added in the future, add Google Consent Mode v2 integration here.
+ */
+---
+
+<script>
+  import * as CookieConsent from 'vanilla-cookieconsent';
+  
+  // Expose to window for other scripts (like Location.astro)
+  window.CookieConsent = CookieConsent;
+
+  // Global listener for preferences buttons
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (
+      target instanceof HTMLElement && (
+        target.closest("#manage-cookies-btn") ||
+        target.closest('[data-cc="show-preferences"]')
+      )
+    ) {
+      e.preventDefault();
+      CookieConsent.showPreferences();
+    }
+  });
+
+  // Re-emit events for scripts that might have missed the initial load
+  if (CookieConsent.validConsent()) {
+     window.dispatchEvent(new CustomEvent('cc:onConsent'));
+  }
+</script>

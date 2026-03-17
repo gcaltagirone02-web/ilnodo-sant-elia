@@ -1,0 +1,112 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = "fr";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Politique des Cookies — Il Nodo 2.0"
+  description="Informations sur l'utilisation des cookies pour le site ilnodosantelia.it."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Politique des Cookies
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          Informations sur l'utilisation des cookies et des technologies similaires
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Que sont les cookies</h2>
+          <p>
+            Les cookies sont de petits fichiers texte que les sites visités par l'utilisateur envoient à son terminal, où ils sont stockés pour être ensuite retransmis aux mêmes sites lors de la visite suivante du même utilisateur. Au cours de la navigation sur un site, l'utilisateur peut également recevoir sur son terminal des cookies de sites ou de serveurs web tiers (dits cookies "tiers").
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Types de cookies utilisés</h2>
+          <p>
+            Notre site utilise exclusivement les catégories de cookies et technologies similaires suivantes :
+          </p>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">1. Cookies Techniques (Nécessaires)</h3>
+              <p>
+                Ces cookies sont essentiels au bon fonctionnement du site et pour permettre la navigation. Sans eux, le site pourrait ne pas fonctionner correctement.
+                Nous utilisons une solution de <strong>Cookie Consent</strong> pour enregistrer vos préférences concernant les cookies eux-mêmes.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">2. Cloudflare Web Analytics (Respectueux de la vie privée)</h3>
+              <p>
+                Nous utilisons Cloudflare Web Analytics pour surveiller le trafic du site de manière agrégée. Cette technologie <strong>n'utilise pas de cookies</strong>, ne collecte pas de données personnelles identifiables et ne suit pas les utilisateurs sur différents sites. Elle nous permet de comprendre comment le site est utilisé tout en garantissant une confidentialité maximale.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">3. Cookies Tiers (Google Maps)</h3>
+              <p>
+                Le site intègre les cartes de Google Maps. L'interaction avec ces cartes peut entraîner l'installation de cookies par Google LLC à des fins liées à l'affichage du service et aux préférences de l'utilisateur.
+                Ces cookies ne sont installés <strong>qu'avec votre consentement préalable</strong>.
+              </p>
+              <button 
+                data-cc="show-preferences"
+                class="mt-4 px-6 py-2 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-sm font-medium rounded hover:bg-amber-500/20 transition-all"
+              >
+                Gérer les préférences des cookies
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Comment gérer ou désactiver les cookies</h2>
+          <p>
+            Vous pouvez modifier vos préférences à tout moment en cliquant sur le bouton "Gérer les préférences des cookies" sur cette page ou dans le pied de page du site.
+          </p>
+          <p>
+            Alternativement, vous pouvez configurer votre navigateur pour refuser les cookies ou pour vous avertir lorsqu'un cookie est envoyé à votre appareil. Chaque navigateur est différent, nous vous invitons donc à consulter le guide de votre navigateur spécifique :
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" class="hover:text-amber-500 transition-colors">Google Chrome</a></li>
+            <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" class="hover:text-amber-500 transition-colors">Safari</a></li>
+            <li><a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-le-pistage-dans-firefox-pour-ordinateur" target="_blank" class="hover:text-amber-500 transition-colors">Mozilla Firefox</a></li>
+            <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" class="hover:text-amber-500 transition-colors">Microsoft Edge</a></li>
+          </ul>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Plus d'informations</h2>
+          <p>
+            Pour plus d'informations sur le traitement des données personnelles, nous vous invitons à consulter notre <a href="/fr/privacy-policy" class="text-amber-500 hover:text-amber-400 underline decoration-amber-500/30 underline-offset-4">Politique de Confidentialité</a>.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Dernière mise à jour : mars 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>

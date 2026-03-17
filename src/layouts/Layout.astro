@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
 import SEO from "../components/SEO.astro";
-import CookieBanner from "../components/CookieBanner.astro";
+import CookieConsentInit from "../components/CookieConsentInit.astro";
+import SchemaLocalBusiness from "../components/SchemaLocalBusiness.astro";
 
 interface Props {
   title?: string;
@@ -9,11 +10,7 @@ interface Props {
   image?: string;
 }
 
-const {
-  title,
-  description,
-  image,
-} = Astro.props;
+const { title, description, image } = Astro.props;
 
 const lang = Astro.currentLocale || "it";
 ---
@@ -22,18 +19,18 @@ const lang = Astro.currentLocale || "it";
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <SEO title={title} description={description} ogImage={image} />
-
-    <!-- Fonts: preconnect first, then load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&family=Mrs+Saint+Delafield&display=swap"
-      rel="stylesheet"
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.sanity.io https://api.sanity.io; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"
     />
+    <SEO title={title} description={description} ogImage={image} />
+    <SchemaLocalBusiness />
+
+    <!-- Fonts: self-hosted in global.css -->
+
   </head>
   <body>
     <slot />
-    <CookieBanner />
+    <CookieConsentInit />
   </body>
 </html>

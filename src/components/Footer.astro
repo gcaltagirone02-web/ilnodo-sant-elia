@@ -6,14 +6,14 @@ interface Props {
   whatsappLink?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
 const {
   whatsappLink = "https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo.%20Grazie!",
 } = Astro.props;
 
-const base = lang === "en" ? "/en" : "";
+const base = lang === "en" ? "/en" : lang === "fr" ? "/fr" : "";
 ---
 
 <footer
@@ -105,7 +105,7 @@ const base = lang === "en" ? "/en" : "";
           </li>
           <li>
             <a
-              href={`${base}/#storia`}
+              href={`${base}/#${t('story.id')}`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
               >{t("nav.storia")}</a
             >
@@ -119,7 +119,7 @@ const base = lang === "en" ? "/en" : "";
           </li>
           <li>
             <a
-              href={`${base}/#galleria`}
+              href={`${base}/#${t('gallery.id')}`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
               >{t("nav.gallery")}</a
             >
@@ -132,21 +132,21 @@ const base = lang === "en" ? "/en" : "";
         <ul class="space-y-3">
           <li>
             <a
-              href={`${base}/#sunset-experience`}
+              href={`${base}/#${t('sunset.id')}`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
               >{t("nav.experience")}</a
             >
           </li>
           <li>
             <a
-              href={`${base}/#recensioni`}
+              href={`${base}/#${t('reviews.id')}`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
               >{t("nav.reviews")}</a
             >
           </li>
           <li>
             <a
-              href={`${base}/#dove-siamo`}
+              href={`${base}/#${t('location.id')}`}
               class="text-stone-500 hover:text-stone-100 transition-colors text-sm"
               >{t("nav.location")}</a
             >
@@ -200,6 +200,25 @@ const base = lang === "en" ? "/en" : "";
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="1.5"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path></svg
+            >
+            <a
+              href="mailto:info@ilnodosantelia.it"
+              class="hover:text-stone-100 transition-colors">info@ilnodosantelia.it</a
+            >
+          </li>
+          <li class="flex items-center space-x-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-amber-500/60 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               ></path></svg
             >
@@ -216,24 +235,32 @@ const base = lang === "en" ? "/en" : "";
     <div
       class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
     >
-      <p class="text-stone-600 text-xs italic">
-        &copy; {new Date().getFullYear()} Il Nodo. {t("footer.rights")}
-      </p>
+      <div class="text-stone-600 text-[10px] uppercase tracking-[0.1em] text-center md:text-left space-y-2">
+        <p>
+          <span class="block md:inline">&copy; {new Date().getFullYear()} Il Nodo di Mesce Alain</span>
+          <span class="hidden md:inline">&nbsp;&bull;&nbsp;</span>
+          <span class="block md:inline">P.IVA 05303000821 &bull; REA PA - 267003</span>
+        </p>
+        <p class="italic opacity-60">
+          {t("footer.rights")}
+        </p>
+      </div>
 
       <div class="flex items-center space-x-6">
         <a
-          href="#"
+          href={`${base}/privacy-policy`}
           class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
           >{t("footer.privacy")}</a
         >
         <a
-          href="#"
+          href={`${base}/cookie-policy`}
           class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium"
           >{t("footer.cookie")}</a
         >
         <button
-          id="reset-cookies"
+          id="manage-cookies-btn"
           type="button"
+          data-cc="show-preferences"
           class="text-stone-600 hover:text-stone-400 text-[10px] uppercase tracking-widest transition-colors font-medium cursor-pointer"
         >
           {t("footer.manage")}
@@ -288,11 +315,3 @@ const base = lang === "en" ? "/en" : "";
     opacity: 1;
   }
 </style>
-
-<script is:inline>
-  document.getElementById("reset-cookies")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.removeItem("il-nodo-cookie-consent");
-    window.location.reload();
-  });
-</script>

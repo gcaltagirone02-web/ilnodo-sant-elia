@@ -17,18 +17,21 @@ interface Props {
   currentPath?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 const { currentPath = Astro.url.pathname } = Astro.props;
 
-const base = lang === "en" ? "/en" : "";
+const base = lang === "it" ? "" : `/${lang}`;
 
 const navLinks = [
-  { href: `${base}/#storia`, label: t("nav.storia") },
+  { href: `${base}/#${t('story.id')}`, label: t("nav.storia") },
   { href: `${base}/menu`, label: t("nav.menu") },
-  { href: `${base}/#sunset-experience`, label: t("nav.experience") },
-  { href: `${base}/#galleria`, label: t("nav.gallery") },
-  { href: lang === "en" ? "/en/#location" : "/#dove-siamo", label: t("nav.location") },
+  { href: `${base}/#${t('sunset.id')}`, label: t("nav.experience") },
+  { href: `${base}/#${t('gallery.id')}`, label: t("nav.gallery") },
+  { 
+    href: `${base}/#${t('location.id')}`, 
+    label: t("nav.location") 
+  },
 ];
 
 // Contextual WhatsApp messages
@@ -42,6 +45,10 @@ const messages = {
     home: "Hi!%20I'd%20like%20to%20book%20a%20table%20for%20an%20aperitif%20in%20Sant'Elia.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
     menu: "Hi!%20I%20saw%20your%20online%20menu%20and%20I'd%20like%20to%20book%20a%20table.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
   },
+  fr: {
+    home: "Bonjour!%20Je%20souhaiterais%20réserver%20une%20table%20pour%20un%20apéritif%20à%20Sant'Elia.%20Nous%20serons%20%5Binsérer%20n.%20personnes%5D%20à%20%5Binsérer%20l'heure%5D.%20Merci!",
+    menu: "Bonjour!%20J'ai%20vu%20votre%20menu%20en%20ligne%20et%20je%20souhaiterais%20réserver%20une%20table.%20Nous%20serons%20%5Binsérer%20n.%20personnes%5D%20à%20%5Binsérer%20l'heure%5D.%20Merci!",
+  },
 };
 
 const currentMessage =
@@ -51,15 +58,17 @@ const whatsappLink = `${whatsappBase}${currentMessage}`;
 // Helper to switch language keeping the same path
 const getSwitchPath = (targetLang: string) => {
   const segments = currentPath.split("/").filter(Boolean);
-  if (targetLang === "en") {
-    if (segments[0] !== "en") return `/en${currentPath}`;
-    return currentPath;
+  const currentLang = (segments[0] === "en" || segments[0] === "fr") ? segments[0] : "it";
+  
+  if (targetLang === "it") {
+    if (currentLang === "it") return currentPath;
+    const newPath = "/" + segments.slice(1).join("/");
+    return newPath === "" ? "/" : newPath;
   } else {
-    if (segments[0] === "en") {
-      const newPath = "/" + segments.slice(1).join("/");
-      return newPath === "" ? "/" : newPath;
-    }
-    return currentPath;
+    if (currentLang === targetLang) return currentPath;
+    const pathWithoutLang = currentLang === "it" ? currentPath : "/" + segments.slice(1).join("/");
+    const normalizedPath = pathWithoutLang.startsWith("/") ? pathWithoutLang : "/" + pathWithoutLang;
+    return `/${targetLang}${normalizedPath === "/" ? "" : normalizedPath}`;
   }
 };
 ---
@@ -144,7 +153,7 @@ const getSwitchPath = (targetLang: string) => {
       id="nav-toggle"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label="Apri menu di navigazione"
+      aria-label={t('nav.aria.open')}
     >
       <span class="site-nav__hamburger-icon" aria-hidden="true">
         <span class="site-nav__hamburger-bar"></span>
@@ -162,14 +171,14 @@ const getSwitchPath = (targetLang: string) => {
   aria-hidden="true"
   role="dialog"
   aria-modal="true"
-  aria-label="Menu mobile"
+  aria-label={t('nav.aria.mobile')}
 >
   <!-- Close button inside menu -->
   <button
     type="button"
     class="mobile-menu__close"
     id="mobile-menu-close"
-    aria-label="Chiudi menu"
+    aria-label={t('nav.aria.close')}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +241,7 @@ const getSwitchPath = (targetLang: string) => {
             d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.534 5.847L0 24l6.335-1.518C8.02 23.447 9.972 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.66-.523-5.168-1.43l-.368-.217-3.762.902.934-3.664-.24-.38C2.517 15.614 2 13.865 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
           ></path>
         </svg>
-        <span class="mobile-menu__text">{lang === 'en' ? 'Book Now' : 'Prenota ora'}</span>
+        <span class="mobile-menu__text">{t('nav.book')}</span>
       </a>
     </li>
     <li style="--stagger: 5" class="mobile-menu__lang">
@@ -810,6 +819,13 @@ const getSwitchPath = (targetLang: string) => {
     .site-nav__links,
     .site-nav__cta {
       display: none;
+    }
+
+    .site-nav__actions {
+      display: flex;
+      gap: 1rem;
+      margin-left: auto;
+      margin-right: 1.25rem;
     }
 
     .site-nav__hamburger {

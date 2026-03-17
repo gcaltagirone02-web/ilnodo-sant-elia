@@ -33,21 +33,25 @@ _bmad-output/
 .agent/
 .bmad/
 .bmad-output/
+plans/
+
 # Cloudflare
 .wrangler/
 .dev.vars
 
-# Testing
+# Testing and Reports
 .playwright-mcp/
 test-results/
+lighthouse-report*.json
+
+# Sanity
+.sanity/
+
+# Root Screenshots and Snapshots
+*.png
+*_snapshot.md
+temp.html
+test_2752.avif
 
 # Windows-specific files
 Thumbs.db
-
-# Temp files
-temp.html
-
-# Large assets/testing images
-signature_final_v2.png
-sunset_and_signature_final.png
-test_2752.avif

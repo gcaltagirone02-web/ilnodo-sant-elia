@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { useTranslations } from "../i18n/ui";
+
+const lang = "it";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Cookie Policy — Il Nodo 2.0"
+  description="Informativa sull'uso dei cookie per il sito ilnodosantelia.it."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Cookie Policy
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          Informativa sull'uso dei cookie e tecnologie simili
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Cosa sono i cookie</h2>
+          <p>
+            I cookie sono piccoli file di testo che i siti visitati dall'utente inviano al suo terminale, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita del medesimo utente. Nel corso della navigazione su un sito, l'utente può ricevere sul suo terminale anche cookie di siti o di web server diversi (c.d. cookie di "terze parti").
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Tipologie di cookie utilizzati</h2>
+          <p>
+            Il nostro sito utilizza esclusivamente le seguenti categorie di cookie e tecnologie simili:
+          </p>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">1. Cookie Tecnici (Necessari)</h3>
+              <p>
+                Questi cookie sono essenziali per il corretto funzionamento del sito e per consentire la navigazione. Senza di essi, il sito potrebbe non funzionare correttamente. 
+                Utilizziamo una soluzione di <strong>Cookie Consent</strong> per memorizzare le tue preferenze riguardanti i cookie stessi.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">2. Cloudflare Web Analytics (Privacy-First)</h3>
+              <p>
+                Utilizziamo Cloudflare Web Analytics per monitorare il traffico del sito in modo aggregato. Questa tecnologia <strong>non utilizza cookie</strong>, non raccoglie dati personali identificabili e non traccia gli utenti su siti diversi. Ci permette di capire come viene utilizzato il sito garantendo la massima privacy.
+              </p>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">3. Cookie di Terze Parti (Google Maps)</h3>
+              <p>
+                Il sito integra le mappe di Google Maps. L'interazione con queste mappe può comportare l'installazione di cookie da parte di Google LLC per finalità legate alla visualizzazione del servizio e alle preferenze dell'utente. 
+                Questi cookie vengono installati <strong>solo previo tuo consenso</strong>.
+              </p>
+              <button 
+                data-cc="show-preferences"
+                class="mt-4 px-6 py-2 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-sm font-medium rounded hover:bg-amber-500/20 transition-all"
+              >
+                Gestisci preferenze cookie
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Come gestire o disabilitare i cookie</h2>
+          <p>
+            Puoi modificare le tue preferenze in qualsiasi momento cliccando sul pulsante "Gestisci preferenze cookie" presente in questa pagina o nel footer del sito.
+          </p>
+          <p>
+            In alternativa, puoi configurare il tuo browser per rifiutare i cookie o per avvisarti quando un cookie viene inviato al tuo dispositivo. Ogni browser è diverso, quindi ti invitiamo a consultare la guida del tuo browser specifico:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" class="hover:text-amber-500 transition-colors">Google Chrome</a></li>
+            <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" class="hover:text-amber-500 transition-colors">Safari</a></li>
+            <li><a href="https://support.mozilla.org/it/kb/Attivare%20e%20disattivare%20i%20cookie" target="_blank" class="hover:text-amber-500 transition-colors">Mozilla Firefox</a></li>
+            <li><a href="https://support.microsoft.com/it-it/microsoft-edge/eliminare-e-gestire-i-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" class="hover:text-amber-500 transition-colors">Microsoft Edge</a></li>
+          </ul>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Maggiori informazioni</h2>
+          <p>
+            Per maggiori informazioni sul trattamento dei dati personali, ti invitiamo a consultare la nostra <a href="/privacy-policy" class="text-amber-500 hover:text-amber-400 underline decoration-amber-500/30 underline-offset-4">Privacy Policy</a>.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Ultimo aggiornamento: marzo 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>

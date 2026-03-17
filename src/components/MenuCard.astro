@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { name, price, description, ingredients, isHighlight = false } = Astro.props;
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 ---
 

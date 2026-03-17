@@ -4,24 +4,28 @@
  * Premium dropdown language selector with globe icon,
  * code tags, and glassmorphism.
  */
-import { languages } from "../i18n/ui";
+import { useTranslations, languages } from "../i18n/ui";
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
+const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 // Helper to switch language keeping the same path
 const getSwitchPath = (targetLang: string) => {
   const segments = currentPath.split("/").filter(Boolean);
-  if (targetLang === "en") {
-    if (segments[0] !== "en") return `/en${currentPath}`;
-    return currentPath;
-  } else {
-    if (segments[0] === "en") {
-      const newPath = "/" + segments.slice(1).join("/");
-      return newPath === "" ? "/" : newPath;
-    }
-    return currentPath;
+  const currentLangPrefix = segments[0] === "en" || segments[0] === "fr" ? segments[0] : null;
+
+  // Clean path without language prefix
+  const cleanPath = currentLangPrefix ? "/" + segments.slice(1).join("/") : currentPath;
+
+  if (targetLang === "it") {
+    return cleanPath === "" ? "/" : cleanPath;
   }
+  
+  // For targetLang 'en' or 'fr'
+  const prefix = `/${targetLang}`;
+  if (cleanPath === "/") return prefix;
+  return `${prefix}${cleanPath.startsWith("/") ? cleanPath : "/" + cleanPath}`;
 };
 
 const otherLanguages = Object.entries(languages).filter(([l]) => l !== lang);
@@ -34,7 +38,7 @@ const otherLanguages = Object.entries(languages).filter(([l]) => l !== lang);
     id="lang-picker-trigger"
     aria-haspopup="listbox"
     aria-expanded="false"
-    aria-label={`Lingua attuale: ${languages[lang]}`}
+    aria-label={t('nav.aria.lang_picker')}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +177,9 @@ const otherLanguages = Object.entries(languages).filter(([l]) => l !== lang);
         var(--color-brand-blue) 15%,
         transparent
       ) !important;
-      backdrop-filter: blur(12px) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
     }
 
     :global(.site-header:not(.scrolled)) .lang-picker__trigger {
@@ -203,9 +209,16 @@ const otherLanguages = Object.entries(languages).filter(([l]) => l !== lang);
   }
 
   .lang-picker__trigger:hover {
-    background: color-mix(in srgb, var(--color-white) 95%, transparent);
+    background: var(--color-white);
+    color: var(--color-brand-blue);
     transform: translateY(-1.5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.site-header:not(.scrolled)) .lang-picker__trigger:hover {
+    background: var(--color-accent-amber);
+    color: var(--color-brand-blue);
+    border-color: var(--color-accent-amber);
   }
 
   .lang-picker__globe {

@@ -1,0 +1,164 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = "en";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Privacy Policy — Il Nodo 2.0"
+  description="Privacy Policy pursuant to Art. 13 of EU Regulation 2016/679 (GDPR) for Il Nodo 2.0."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Privacy Policy
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          pursuant to Art. 13 of EU Regulation 2016/679 (GDPR)
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Data Controller</h2>
+          <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+            <p class="font-bold text-stone-100 mb-2">IL NODO DI MESCE ALAIN</p>
+            <p>Via dei Cantieri snc – 90017 Santa Flavia (PA), Italy</p>
+            <p>VAT ID: 05303000821</p>
+            <p>Email: <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a></p>
+            <p>Tel: <a href="tel:+393661770312" class="text-stone-200 hover:text-white transition-colors">+39 366 177 0312</a></p>
+          </div>
+          <p class="text-sm italic text-stone-400">
+            The Data Controller is the natural or legal person who determines the purposes and means of the processing of personal data. For any request related to privacy, you can contact us at the details provided above.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Website Type and Data Processed</h2>
+          <p>
+            The website ilnodosantelia.it is an informative showcase for the bar Il Nodo in Sant'Elia. The site does not actively collect personal data through registration forms, newsletters, or online purchases.
+          </p>
+          <p>
+            The only data processed are technical navigation data, automatically collected by computer systems and third-party services described below. This data includes, but is not limited to: IP addresses, browser type, operating system, pages visited, and access times. This data is not associated with identified users and is used exclusively to guarantee the correct functioning of the site.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Legal Basis for Processing</h2>
+          <p>
+            The processing of technical navigation data takes place on the basis of the Data Controller's legitimate interest (Art. 6, par. 1, point f of the GDPR), consisting in ensuring the security, stability, and aggregate monitoring of the website. Since the data collected is aggregate and anonymised, such processing does not affect the fundamental rights and freedoms of users.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Third-Party Services</h2>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Cloudflare (Hosting and Analytics)</h3>
+              <p class="mb-4">
+                The site is hosted and distributed via Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Cloudflare manages the site's technical infrastructure and provides the Cloudflare Web Analytics service, a privacy-first traffic analysis tool that does not use cookies and does not collect personally identifiable data, operating exclusively with aggregate and anonymous data.
+              </p>
+              <a href="https://www.cloudflare.com/privacypolicy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">More information: cloudflare.com/privacypolicy</a>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Google Maps</h3>
+              <p class="mb-4">
+                The site integrates Google Maps, a map service provided by Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Interacting with the map may involve the collection of data by Google according to its own privacy policies. Such data is managed exclusively by Google, and the Data Controller has no access to or control over it.
+              </p>
+              <a href="https://policies.google.com/privacy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">More information: policies.google.com/privacy</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Data Transfer Outside the EU</h2>
+          <p>
+            Cloudflare and Google LLC are based in the United States. Data transfer takes place in compliance with the guarantees provided by the GDPR, in particular through the Standard Contractual Clauses approved by the European Commission and, where applicable, under the EU-U.S. Data Privacy Framework.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Data Retention</h2>
+          <p>
+            Technical navigation data processed by Cloudflare Analytics is aggregate and anonymous, and therefore not subject to a retention period referable to identifiable natural persons. Data processed by Google Maps is stored according to Google LLC's policies.
+          </p>
+          <p>
+            The Data Controller does not independently store navigation logs containing personally identifiable data.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Rights of the Data Subjects</h2>
+          <p>Pursuant to Artt. 15–22 of the GDPR, every user has the right to:</p>
+          <ul class="list-none space-y-4 pl-0">
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Access</strong> — obtain confirmation of the processing and a copy of their data</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Rectification</strong> — request the correction of inaccurate data</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Erasure ("right to be forgotten")</strong> — request the deletion of their data</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Restriction</strong> — request the restriction of processing</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Portability</strong> — receive the data in a structured and readable format</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Objection</strong> — object to processing based on legitimate interest</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Withdrawal of consent</strong> — at any time, without prejudice to prior processing</div>
+            </li>
+          </ul>
+          <p class="pt-4">
+            To exercise your rights, please write to: <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a>
+          </p>
+          <p class="text-sm">
+            You also have the right to lodge a complaint with the Data Protection Authority (<a href="https://www.garanteprivacy.it" target="_blank" class="hover:text-amber-500 transition-colors">garanteprivacy.it</a>) if you believe that the processing violates the GDPR.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Data Protection Officer (DPO)</h2>
+          <p>
+            Given the nature and scope of the activities performed, the appointment of a Data Protection Officer is not mandatory pursuant to Art. 37 of the GDPR. For any matter regarding data protection, you may contact the Data Controller directly at the details provided.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Last updated: March 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Base typography is handled by Layout and global.css */
+  /* We add some local refinements for the legal text */
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>

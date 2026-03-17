@@ -6,11 +6,18 @@ export async function getSiteSettings() {
 }
 
 export async function getCategories(lang: string = "it") {
-  const isEn = lang === "en";
   const query = `*[_type == "category"] | order(orderRank asc, title asc) {
     _id,
     "title": select(
-      ${isEn} && defined(titleEn) && titleEn != "" => titleEn,
+      "${lang}" == "fr" => select(
+        defined(titleFr) && titleFr != "" => titleFr,
+        defined(titleEn) && titleEn != "" => titleEn,
+        title
+      ),
+      "${lang}" == "en" => select(
+        defined(titleEn) && titleEn != "" => titleEn,
+        title
+      ),
       title
     ),
     "slug": slug.current,
@@ -20,26 +27,52 @@ export async function getCategories(lang: string = "it") {
 }
 
 export async function getMenuItems(lang: string = "it") {
-  const isEn = lang === "en";
   const query = `*[_type == "menuItem"] | order(orderRank asc, name asc) {
     _id,
     "name": select(
-      ${isEn} && defined(nameEn) && nameEn != "" => nameEn,
+      "${lang}" == "fr" => select(
+        defined(nameFr) && nameFr != "" => nameFr,
+        defined(nameEn) && nameEn != "" => nameEn,
+        name
+      ),
+      "${lang}" == "en" => select(
+        defined(nameEn) && nameEn != "" => nameEn,
+        name
+      ),
       name
     ),
     "nameIt": name,
     "nameEn": nameEn,
+    "nameFr": nameFr,
     "price": price,
     "description": select(
-      ${isEn} && defined(descriptionEn) && descriptionEn != "" => descriptionEn,
+      "${lang}" == "fr" => select(
+        defined(descriptionFr) && descriptionFr != "" => descriptionFr,
+        defined(descriptionEn) && descriptionEn != "" => descriptionEn,
+        description
+      ),
+      "${lang}" == "en" => select(
+        defined(descriptionEn) && descriptionEn != "" => descriptionEn,
+        description
+      ),
       description
     ),
     "descriptionEn": descriptionEn,
+    "descriptionFr": descriptionFr,
     "ingredients": select(
-      ${isEn} && defined(ingredientsEn) && count(ingredientsEn) > 0 => ingredientsEn,
+      "${lang}" == "fr" => select(
+        defined(ingredientsFr) && count(ingredientsFr) > 0 => ingredientsFr,
+        defined(ingredientsEn) && count(ingredientsEn) > 0 => ingredientsEn,
+        ingredients
+      ),
+      "${lang}" == "en" => select(
+        defined(ingredientsEn) && count(ingredientsEn) > 0 => ingredientsEn,
+        ingredients
+      ),
       ingredients
     ),
     "ingredientsEn": ingredientsEn,
+    "ingredientsFr": ingredientsFr,
     "categorySlug": category->slug.current,
     isHighlight
   }`;

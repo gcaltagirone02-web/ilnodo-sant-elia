@@ -1,0 +1,60 @@
+[2m21:25:38[22m [34m[content][39m Syncing content
+[2m21:25:38[22m [34m[content][39m Synced content
+[2m21:25:38[22m [34m[types][39m Generated [2m33ms[22m
+[2m21:25:38[22m [34m[check][39m Getting diagnostics for Astro files in D:\Il-nodo_2.0...
+[96msrc/components/Hero.astro[0m:[93m54[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'desktopRetina' is declared but its value is never read.
+
+[7m54[0m const desktopRetina = await getImage({
+[7m  [0m [93m      ~~~~~~~~~~~~~[0m
+[96msrc/components/Hero.astro[0m:[93m48[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'desktopOptimized' is declared but its value is never read.
+
+[7m48[0m const desktopOptimized = await getImage({
+[7m  [0m [93m      ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/LanguagePicker.astro[0m:[93m30[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'otherLanguages' is declared but its value is never read.
+
+[7m30[0m const otherLanguages = Object.entries(languages).filter(([l]) => l !== lang);
+[7m  [0m [93m      ~~~~~~~~~~~~~~[0m
+
+[96msrc/components/Navbar.astro[0m:[93m48[0m:[93m57[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type '"it" | "en" | "fr"' can't be used to index type '{ it: { home: string; menu: string; }; en: { home: string; menu: string; }; }'.
+  Property 'fr' does not exist on type '{ it: { home: string; menu: string; }; en: { home: string; menu: string; }; }'.
+
+[7m48[0m   currentPath.includes("/menu") ? messages[lang].menu : messages[lang].home;
+[7m  [0m [91m                                                        ~~~~~~~~~~~~~~[0m
+[96msrc/components/Navbar.astro[0m:[93m48[0m:[93m35[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type '"it" | "en" | "fr"' can't be used to index type '{ it: { home: string; menu: string; }; en: { home: string; menu: string; }; }'.
+  Property 'fr' does not exist on type '{ it: { home: string; menu: string; }; en: { home: string; menu: string; }; }'.
+
+[7m48[0m   currentPath.includes("/menu") ? messages[lang].menu : messages[lang].home;
+[7m  [0m [91m                                  ~~~~~~~~~~~~~~[0m
+[96msrc/components/Navbar.astro[0m:[93m52[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'getSwitchPath' is declared but its value is never read.
+
+[7m52[0m const getSwitchPath = (targetLang: string) => {
+[7m  [0m [93m      ~~~~~~~~~~~~~[0m
+[96msrc/components/Navbar.astro[0m:[93m13[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'languages' is declared but its value is never read.
+
+[7m13[0m import { useTranslations, languages } from "../i18n/ui";
+[7m  [0m [93m                          ~~~~~~~~~[0m
+
+[96msrc/components/SEO.astro[0m:[93m23[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'ogLocale' is declared but its value is never read.
+
+[7m23[0m const ogLocale = ogLocaleMap[lang as keyof typeof ogLocaleMap] || "it_IT";
+[7m  [0m [93m      ~~~~~~~~[0m
+[96msrc/components/SEO.astro[0m:[93m12[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'alternateLanguages' is declared but its value is never read.
+
+[7m12[0m const alternateLanguages = ["it", "en", "fr"];
+[7m  [0m [93m      ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/i18n/ui.test.ts[0m:[93m3[0m:[93m31[0m - [93mwarning[0m[90m ts(6133): [0m'defaultLang' is declared but its value is never read.
+
+[7m3[0m import { ui, useTranslations, defaultLang } from './ui.ts';
+[7m [0m [93m                              ~~~~~~~~~~~[0m
+[96msrc/i18n/ui.test.ts[0m:[93m3[0m:[93m10[0m - [93mwarning[0m[90m ts(6133): [0m'ui' is declared but its value is never read.
+
+[7m3[0m import { ui, useTranslations, defaultLang } from './ui.ts';
+[7m [0m [93m         ~~[0m
+
+Result (33 files): 
+- 2 errors
+- 0 warnings
+- 9 hints
+

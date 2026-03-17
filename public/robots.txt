@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ilnodo.it/sitemap-index.xml
+Sitemap: https://ilnodosantelia.it/sitemap-index.xml

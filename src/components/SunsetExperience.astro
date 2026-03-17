@@ -9,10 +9,10 @@ interface Props {
   id?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = "sunset-experience" } = Astro.props;
+const { id = t('sunset.id') } = Astro.props;
 ---
 
 <section id={id} class="sunset-experience relative min-h-[80vh] flex items-center overflow-hidden">

@@ -17,12 +17,9 @@ const t = useTranslations(lang);
 interface MenuItem {
   name: string;
   nameIt?: string;
-  nameEn?: string;
   price: string;
   description?: string;
-  descriptionEn?: string;
   ingredients?: string[];
-  ingredientsEn?: string[];
   categorySlug: string;
   isHighlight?: boolean;
 }
@@ -175,7 +172,7 @@ const fallbackData: Record<string, MenuItem[]> = {
     { nameIt: "Porzione Gin Mare/Etna/Hendrick's", name: "Specialty Gin Portion", price: "€ 8.00", description: "Single portion of Mare, Etna, or Hendrick's", isHighlight: false, categorySlug: "cocktails-alcolici" },
     { nameIt: "Vodka Tonica/Lemon", name: "Vodka Tonic / Lemon", price: "€ 6.00", description: "Classic tonic or lemon drink", isHighlight: false, categorySlug: "cocktails-alcolici" },
     { nameIt: "Vodka Absolut", name: "Vodka Absolut", price: "€ 8.00", description: "Tonic / Lemon", isHighlight: false, categorySlug: "cocktails-alcolici" },
-    { nameIt: "Vodka Moskovskaya", name: "Vodka Moskovskaya", price: "€ 8.00", description: "Tonic / Lemon", isHighlight: false, categorySlug: "amari" },
+    { nameIt: "Vodka Moskovskaya", name: "Vodka Moskovskaya", price: "€ 8.00", description: "Tonic / Lemon", isHighlight: false, categorySlug: "cocktails-alcolici" },
     { nameIt: "Porzione Vodka Absolut/Moskovskaya", name: "Absolut / Moskovskaya Vodka Portion", price: "€ 6.00", description: "Single portion", isHighlight: false, categorySlug: "cocktails-alcolici" }
   ],
   "cocktails-analcolici": [
@@ -281,36 +278,8 @@ const fallbackData: Record<string, MenuItem[]> = {
   ],
 };
 
-// ENRICHMENT LOGIC: Match Sanity items with local fallbackData to ensure English content
-const enrichedItems = items.map((item: MenuItem) => {
-  const hasNameEn = !!(item.nameEn && item.nameEn !== "");
-  const hasDescEn = !!(item.descriptionEn && item.descriptionEn !== "");
-  const hasIngrEn = !!(item.ingredientsEn && item.ingredientsEn.length > 0);
-
-  // Match by Italian name in fallbackData
-  const flattenedFallback = Object.values(fallbackData).flat();
-  const localMatch = flattenedFallback.find(
-    (f) => (f.nameIt && f.nameIt.toLowerCase() === item.nameIt?.toLowerCase()) || 
-           (f.nameIt && f.nameIt.toLowerCase() === item.name.toLowerCase())
-  );
-
-  if (localMatch) {
-    return {
-      ...item,
-      name: (hasNameEn ? item.nameEn : localMatch.name) || item.name || "",
-      // If we have a local match with English ingredients but Sanity has Italian description,
-      // we suppress the Italian description to avoid double/untranslated info
-      description: hasDescEn 
-        ? item.descriptionEn 
-        : (localMatch.description || (localMatch.ingredients ? "" : item.description)),
-      ingredients: hasIngrEn ? item.ingredientsEn : (localMatch.ingredients || item.ingredients),
-    } as MenuItem;
-  }
-
-  return item;
-});
-
-const groupedItems = enrichedItems.reduce(
+// Group items by category
+const groupedItems = items.reduce(
   (acc, item) => {
     const catSlug = item.categorySlug || "other";
     if (!acc[catSlug]) acc[catSlug] = [];
@@ -322,6 +291,33 @@ const groupedItems = enrichedItems.reduce(
 
 const displayData: Record<string, MenuItem[]> =
   items.length > 0 ? groupedItems : fallbackData;
+
+// JSON-LD Menu Schema
+const menuSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": t("menu.hero.title"),
+  "description": t("menu.hero.subtitle"),
+  "publisher": {
+    "@type": "BarOrPub",
+    "name": "Il Nodo 2.0",
+    "url": "https://ilnodo.it"
+  },
+  "hasMenuSection": categories.map(cat => ({
+    "@type": "MenuSection",
+    "name": cat.name,
+    "hasMenuItem": (displayData[cat.slug] || []).map(item => ({
+      "@type": "MenuItem",
+      "name": item.name,
+      "description": item.description || (item.ingredients ? item.ingredients.join(", ") : ""),
+      "offers": {
+        "@type": "Offer",
+        "price": item.price.replace(/[^\d.,]/g, "").replace(",", "."),
+        "priceCurrency": "EUR"
+      }
+    }))
+  }))
+};
 ---
 
 <Layout
@@ -458,7 +454,8 @@ const displayData: Record<string, MenuItem[]> =
 
   </main>
 
-  <Footer />
+    <script type="application/ld+json" set:html={JSON.stringify(menuSchema)} is:inline />
+    <Footer />
 </Layout>
 
 <style>
@@ -468,15 +465,15 @@ const displayData: Record<string, MenuItem[]> =
 
   .menu-hero {
     position: relative;
-    height: 50vh;
-    min-height: 450px;
+    height: 65vh;
+    min-height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #0f1c46;
     overflow: hidden;
     margin-top: -5rem;
-    padding-top: 5rem;
+    padding-top: 8rem;
   }
 
   .menu-hero__overlay {
@@ -545,15 +542,23 @@ const displayData: Record<string, MenuItem[]> =
     font-size: clamp(3rem, 10vw, 5rem);
     font-weight: 300;
     color: white;
-    margin-bottom: 0.5rem;
-    line-height: 1;
+    margin-bottom: 2rem;
+    line-height: 1.1;
   }
 
   .menu-hero__subtitle {
     font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
     letter-spacing: 0.05em;
+    line-height: 1.6;
+    max-width: 45rem;
+    margin: 0 auto;
+  }
+
+  .menu-hero__actions {
+    margin-top: 4.5rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
   }
 
   .menu-container {

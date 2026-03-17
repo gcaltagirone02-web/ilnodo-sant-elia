@@ -7,10 +7,10 @@ interface Props {
   id?: string;
 }
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = lang === "en" ? "about" : "chi-siamo" } = Astro.props;
+const { id = t('story.id') } = Astro.props;
 ---
 
 <section id={id} class="storytelling">
@@ -21,7 +21,7 @@ const { id = lang === "en" ? "about" : "chi-siamo" } = Astro.props;
         <div class="storytelling__image-wrapper">
           <Image
             src={storytellingImg}
-            alt={lang === 'en' ? 'Relaxed atmosphere at Il Nodo 2.0 with sea view' : 'Atmosfera rilassata de Il Nodo 2.0 con vista mare'}
+            alt={t('story.alt')}
             class="storytelling__image"
             format="avif"
             width={800}

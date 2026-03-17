@@ -1,0 +1,89 @@
+
+> build
+> astro build
+
+[2m00:18:55[22m [34m[content][39m Syncing content
+[2m00:18:55[22m [34m[content][39m Synced content
+[2m00:18:55[22m [34m[types][39m Generated [2m40ms[22m
+[2m00:18:55[22m [34m[build][39m output: [34m"static"[39m
+[2m00:18:55[22m [34m[build][39m mode: [34m"static"[39m
+[2m00:18:55[22m [34m[build][39m directory: [34mD:\Il-nodo_2.0\dist\[39m
+[2m00:18:55[22m [34m[build][39m Collecting build info...
+[2m00:18:55[22m [34m[build][39m [32mÔ£ô Completed in 65ms.[39m
+[2m00:18:55[22m [34m[build][39m Building static entrypoints...
+[2m00:18:56[22m [34m[vite][39m [32mÔ£ô built in 1.59s[39m
+[2m00:18:56[22m [34m[build][39m [32mÔ£ô Completed in 1.62s.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2m00:18:56[22m [34m[vite][39m transforming...
+[2m00:18:56[22m [34m[vite][39m [32mÔ£ô[39m 8 modules transformed.
+[2m00:18:56[22m [34m[vite][39m rendering chunks...
+[2m00:18:56[22m [34m[vite][39m computing gzip size...
+[2m00:18:56[22m [34m[vite][39m [2mdist/[22m[36m_astro/page.B33sFNSa.js  [39m[1m[2m23.24 kB[22m[1m[22m[2m Ôöé gzip: 10.32 kB[22m
+[2m00:18:56[22m [34m[vite][39m [32mÔ£ô built in 151ms[39m
+
+[42m[30m generating static routes [39m[49m
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/cookie-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/cookie-policy/index.html[22m [2m(+15ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/en/cookie-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/en/cookie-policy/index.html[22m [2m(+4ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/en/menu.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/en/menu/index.html[22m [2m(+111ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/en/privacy-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/en/privacy-policy/index.html[22m [2m(+4ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/en/index.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/en/index.html[22m [2m(+7ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/fr/cookie-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/fr/cookie-policy/index.html[22m [2m(+2ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/fr/menu.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/fr/menu/index.html[22m [2m(+57ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/fr/privacy-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/fr/privacy-policy/index.html[22m [2m(+2ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/fr/index.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/fr/index.html[22m [2m(+7ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/menu.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/menu/index.html[22m [2m(+102ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/privacy-policy.astro
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/privacy-policy/index.html[22m [2m(+3ms)[22m 
+[2m00:18:57[22m [32mÔûÂ[39m src/pages/index.astro
+Sanity Connection: Site settings document not found.
+[2m00:18:57[22m   [34mÔööÔöÇ[39m [2m/index.html[22m [2m(+88ms)[22m 
+[2m00:18:57[22m [32mÔ£ô Completed in 877ms.
+[39m
+[42m[30m generating optimized images [39m[49m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/Logo.D4vFsjw0_27mJHv.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(1/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/golden-hour-mobile-il-nodo.BCBFjHkD_E69Bl.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(2/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/cocktails.BOZGTVnm_Z2gVJH4.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(3/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/golden-hour-dektop-il-nodo.C-fKZpTp_ZKelwe.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(4/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/analcolici.CrU5F-8M_Z2izDp8.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(5/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/birre.BKnfSdaA_Zk3yav.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(6/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/vini.Bqy7fuj9_1zU40M.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(7/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/amari.m3dUTm1a_25WjuM.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(8/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/soft-drinks.BuVSwJOu_2s3eY.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(9/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/stuzzichini-e-taglieri.C-jywX4z_Z22CapK.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(10/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/insalate.CkXKsVdB_ZApJA0.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(11/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/panini.ChaAzUFC_2jFV5A.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(12/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/storytelling-golden-hour.PhGCD4XL_plgU0.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(13/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/bruschettone-macro.DXpfLYNz_1G7kLl.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(14/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/cocktail-2.Y7ljeb88_Z11av7o.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(15/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/hero-mobile.DQrnILPx_MOwoI.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(16/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/golden-hour-mobile-il-nodo.BCBFjHkD_2pxCST.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(17/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/golden-hour-dektop-il-nodo.C-fKZpTp_10d7Kk.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(18/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/caletta-sant-elia.EmW_i_0k_Z1pkm3q.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(19/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/cocktail-basilico.DoEUj1OA_8rpIf.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(20/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/overview-il-nodo.LKxc9Uu0_Z1G7RsD.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(21/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/il-nodo-cocktail-macro.C-vAT65J_n6BTH.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(22/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/blue-cocktails-il-nodo.CiUnXtUO_Z13gdn5.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(23/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/terrazza-golen-hour-sant-elia.CfjOwyjN_ZYHsmv.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(24/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/tramonto-gallery._quV2gFB_Z1wgh2f.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(25/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/spiaggia-sant-elia.WwmtjaoP_w15Jq.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(26/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/hero-mobile.DQrnILPx_K6Esg.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(27/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/gin-tonic-il-nodo.CamirvOg_hxaxy.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(28/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/pink-sky-gallery-il-nodo.8yht3ol2_Zn1GdA.avif [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(29/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/hero-desktop.DdE_rwfr_Zizqis.avif [2m(reused cache entry)[22m [2m(+8ms)[22m [2m(30/31)[22m
+[2m00:18:57[22m   [32mÔûÂ[39m /_astro/hero-desktop.DdE_rwfr_ZHLKQ.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(31/31)[22m
+[2m00:18:57[22m [32mÔ£ô Completed in 19ms.
+[39m
+[2m00:18:57[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m00:18:57[22m [34m[build][39m 12 page(s) built in [1m2.78s[22m
+[2m00:18:57[22m [34m[build][39m [1mComplete![22m

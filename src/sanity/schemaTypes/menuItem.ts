@@ -19,6 +19,11 @@ export const menuItemType = defineType({
       type: "string",
     }),
     defineField({
+      name: "nameFr",
+      title: "Name (FR)",
+      type: "string",
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -55,6 +60,12 @@ export const menuItemType = defineType({
       rows: 3,
     }),
     defineField({
+      name: "descriptionFr",
+      title: "Description (FR)",
+      type: "text",
+      rows: 3,
+    }),
+    defineField({
       name: "ingredients",
       title: "Ingredients (IT)",
       type: "array",
@@ -66,6 +77,15 @@ export const menuItemType = defineType({
     defineField({
       name: "ingredientsEn",
       title: "Ingredients (EN)",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+    }),
+    defineField({
+      name: "ingredientsFr",
+      title: "Ingredients (FR)",
       type: "array",
       of: [{ type: "string" }],
       options: {

@@ -1,0 +1,162 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = "fr";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Politique de Confidentialité — Il Nodo 2.0"
+  description="Politique de Confidentialité conformément à l'art. 13 du Règlement UE 2016/679 (RGPD) pour Il Nodo 2.0."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Politique de Confidentialité
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          conformément à l'art. 13 du Règlement UE 2016/679 (RGPD)
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Responsable du Traitement</h2>
+          <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+            <p class="font-bold text-stone-100 mb-2">IL NODO DI MESCE ALAIN</p>
+            <p>Via dei Cantieri snc – 90017 Santa Flavia (PA), Italie</p>
+            <p>TVA: 05303000821</p>
+            <p>E-mail: <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a></p>
+            <p>Tél: <a href="tel:+393661770312" class="text-stone-200 hover:text-white transition-colors">+39 366 177 0312</a></p>
+          </div>
+          <p class="text-sm italic text-stone-400">
+            Le Responsable du traitement est la personne physique ou morale qui détermine les finalités et les moyens du traitement des données à caractère personnel. Pour toute demande relative à la confidentialité, vous pouvez nous contacter aux coordonnées indiquées ci-dessus.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Type de Site et Données Traitées</h2>
+          <p>
+            Le site ilnodosantelia.it est une vitrine informative pour le bar Il Nodo à Sant'Elia. Le site ne collecte pas activement de données personnelles via des formulaires d'inscription, des newsletters ou des achats en ligne.
+          </p>
+          <p>
+            Les seules données traitées sont les données techniques de navigation, collectées automatiquement par les systèmes informatiques et les services tiers décrits ci-dessous. Ces données incluent, à titre d'exemple : les adresses IP, le type de navigateur, le système d'exploitation, les pages visitées et les heures d'accès. Ces données ne sont pas associées à des utilisateurs identifiés et sont utilisées exclusivement pour garantir le bon fonctionnement du site.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Base Juridique du Traitement</h2>
+          <p>
+            Le traitement des données techniques de navigation a lieu sur la base de l'intérêt légitime du Responsable (art. 6, par. 1, let. f du RGPD), consistant à assurer la sécurité, la stabilité et le suivi agrégé du site web. Étant donné que les données collectées sont de nature agrégée et anonymisée, un tel traitement ne porte pas atteinte aux droits et libertés fondamentaux des utilisateurs.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Services Tiers</h2>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Cloudflare (Hébergement et Analytics)</h3>
+              <p class="mb-4">
+                Le site est hébergé et distribué via Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Cloudflare gère l'infrastructure technique du site et fournit le service Cloudflare Web Analytics, un outil d'analyse du trafic respectueux de la vie privée qui n'utilise pas de cookies et ne collecte pas de données personnelles identifiables, opérant exclusivement avec des données agrégées et anonymes.
+              </p>
+              <a href="https://www.cloudflare.com/privacypolicy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">Plus d'informations: cloudflare.com/privacypolicy</a>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Google Maps</h3>
+              <p class="mb-4">
+                Le site intègre Google Maps, un service de cartes fourni par Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). L'interaction avec la carte peut entraîner la collecte de données par Google selon ses propres politiques de confidentialité. Ces données sont gérées exclusivement par Google et le Responsable n'y a ni accès ni contrôle.
+              </p>
+              <a href="https://policies.google.com/privacy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">Plus d'informations: policies.google.com/privacy</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Transfert de Données Hors UE</h2>
+          <p>
+            Cloudflare et Google LLC sont basés aux États-Unis. Le transfert de données a lieu dans le respect des garanties prévues par le RGPD, notamment par le biais des Clauses Contractuelles Types approuvées par la Commission européenne et, le cas échéant, dans le cadre du EU-U.S. Data Privacy Framework.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Conservation des Données</h2>
+          <p>
+            Les données techniques de navigation traitées par Cloudflare Analytics sont de nature agrégée et anonyme, et ne sont donc pas soumises à une durée de conservation se rapportant à des personnes physiques identifiables. Les données traitées par Google Maps sont conservées selon les politiques de Google LLC.
+          </p>
+          <p>
+            Le Responsable ne conserve pas de manière autonome de journaux de navigation contenant des données personnelles identifiables.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Droits des Personnes Concernées</h2>
+          <p>Conformément aux art. 15–22 du RGPD, chaque utilisateur a le droit de :</p>
+          <ul class="list-none space-y-4 pl-0">
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Accès</strong> — obtenir la confirmation du traitement et une copie de ses données</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Rectification</strong> — demander la correction de données inexactes</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Effacement ("droit à l'oubli")</strong> — demander la suppression de ses données</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Limitation</strong> — demander la limitation du traitement</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Portabilité</strong> — recevoir les données dans un format structuré et lisible</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Opposition</strong> — s'opposer au traitement basé sur un intérêt légitime</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Retrait du consentement</strong> — à tout moment, sans préjudice du traitement antérieur</div>
+            </li>
+          </ul>
+          <p class="pt-4">
+            Pour exercer vos droits, veuillez écrire à : <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a>
+          </p>
+          <p class="text-sm">
+            Vous avez également le droit de déposer une réclamation auprès de l'autorité de protection des données compétente si vous estimez que le traitement viole le RGPD.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Délégué à la Protection des Données (DPO)</h2>
+          <p>
+            Compte tenu de la nature et de l'étendue des activités exercées, la désignation d'un Délégué à la Protection des Données n'est pas obligatoire en vertu de l'art. 37 du RGPD. Pour toute question relative à la protection des données, vous pouvez contacter directement le Responsable aux coordonnées indiquées.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Dernière mise à jour : mars 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>

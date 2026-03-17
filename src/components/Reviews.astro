@@ -1,42 +1,42 @@
 ---
 import { useTranslations } from "../i18n/ui";
 
-const lang = (Astro.currentLocale as "it" | "en") || "it";
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
 const reviews = [
   {
     name: "Santina C.",
-    date: lang === 'en' ? "August 2025" : "Agosto 2025",
+    date: t('reviews.item1.date'),
     stars: 5,
-    text: lang === 'en' ? "First time in Sant'Elia to visit the splendid cove, as it became lunchtime we decided to stop at this kiosk with tables on the beach. Beyond our expectations, it was an excellent choice. Relaxing atmosphere in the cool of the pergola and with the scent of the sea..." : "Prima volta a Sant'Elia per visitare la splendida caletta, facendosi ora di pranzo abbiamo deciso di fermarci in questo chiosco con i tavoli sulla spiaggia. Al di là delle nostre aspettative è stata un'ottima scelta. Atmosfera rilassante al fresco della pergola e col profumo del mare...",
+    text: t('reviews.item1.text'),
     source: "Google Reviews",
   },
   {
     name: "Francesca Brun",
-    date: lang === 'en' ? "July 2025" : "Luglio 2025",
+    date: t('reviews.item2.date'),
     stars: 5,
-    text: lang === 'en' ? "In the simplicity of their menu, we found quality products, courtesy and friendliness. A nice place to spend a quick lunch on a sunny Sunday. We will return!" : "Nella semplicità del loro menù, abbiamo trovato qualità dei prodotti, cortesia e simpatia. Un bel posto dove trascorrere un pranzo veloce di una soleggiata domenica. Ci ritorneremo!",
+    text: t('reviews.item2.text'),
     source: "Google Reviews",
   },
   {
     name: "Giuseppe Ceruso",
-    date: lang === 'en' ? "September 2025" : "Settembre 2025",
+    date: t('reviews.item3.date'),
     stars: 5,
-    text: lang === 'en' ? "Right on the beach of Sant'Elia, young & friendly staff & simple menu prepared fresh to order. Very reasonable prices, an authentic local favorite. Paid parking nearby with very reasonable sunbed rental on the beach, simply superb. Recommended!" : "Proprio sulla spiaggia di Sant'Elia, Personale giovane e cordiale & menu semplice preparato fesh su ordinazione. Prezzi molto ragionevoli, un autentico locale preferito. Parcheggio a pagamento nelle vicinanze con noleggio lettini molto ragionevole sulla spiaggia, semplicemente superba. Raccomandato!",
+    text: t('reviews.item3.text'),
     source: "Facebook",
   },
   {
     name: "Sofia Gagliardi",
-    date: lang === 'en' ? "August 2025" : "Agosto 2025",
+    date: t('reviews.item4.date'),
     stars: 5,
-    text: lang === 'en' ? "Magical place. The view of the white house on the rocks at sunset is priceless. Also excellent platter of local products." : "Posto magico. La vista sulla casa bianca sugli scogli al tramonto è impagabile. Ottimo anche il tagliere di prodotti locali.",
+    text: t('reviews.item4.text'),
     source: "TripAdvisor",
   },
 ];
 ---
 
-<section id={lang === 'en' ? 'reviews' : 'recensioni'} class="py-24 bg-stone-100 overflow-hidden">
+<section id={t('reviews.id')} class="py-24 bg-stone-100 overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16 space-y-4" data-aos="fade-up">
       <h2 class="text-amber-600 font-medium tracking-widest uppercase text-sm">

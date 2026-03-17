@@ -1,0 +1,164 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { useTranslations } from "../i18n/ui";
+
+const lang = "it";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Privacy Policy — Il Nodo 2.0"
+  description="Informativa sulla Privacy ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) per Il Nodo 2.0."
+>
+  <Navbar />
+  <main class="pt-32 pb-20 bg-stone-950 min-h-screen">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <header class="mb-16">
+        <h1 
+          class="text-4xl md:text-5xl text-stone-100 italic mb-4"
+          style="font-family: var(--font-playfair);"
+        >
+          Informativa sulla Privacy
+        </h1>
+        <p class="text-stone-400 font-medium uppercase tracking-widest text-xs">
+          ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR)
+        </p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-12 text-stone-300 leading-relaxed">
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Titolare del Trattamento</h2>
+          <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+            <p class="font-bold text-stone-100 mb-2">IL NODO DI MESCE ALAIN</p>
+            <p>Via dei Cantieri snc – 90017 Santa Flavia (PA)</p>
+            <p>P.IVA: 05303000821</p>
+            <p>Email: <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a></p>
+            <p>Tel: <a href="tel:+393661770312" class="text-stone-200 hover:text-white transition-colors">+39 366 177 0312</a></p>
+          </div>
+          <p class="text-sm italic text-stone-400">
+            Il Titolare del trattamento è la persona fisica o giuridica che determina le finalità e i mezzi del trattamento dei dati personali. Per qualsiasi richiesta relativa alla privacy, puoi contattarci ai recapiti sopra indicati.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Tipologia di Sito e Dati Trattati</h2>
+          <p>
+            Il sito ilnodosantelia.it è un sito vetrina informativo per il bar Il Nodo di Santa Elia. Il sito non raccoglie attivamente dati personali tramite moduli di registrazione, newsletter o acquisti online.
+          </p>
+          <p>
+            Gli unici dati trattati sono quelli tecnici di navigazione, raccolti automaticamente dai sistemi informatici e dai servizi di terze parti descritti di seguito. Tali dati includono, a titolo esemplificativo: indirizzi IP, tipo di browser, sistema operativo, pagine visitate e orari di accesso. Questi dati non sono associati a utenti identificati e vengono utilizzati esclusivamente per garantire il corretto funzionamento del sito.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Base Giuridica del Trattamento</h2>
+          <p>
+            Il trattamento dei dati di navigazione tecnica avviene sulla base del legittimo interesse del Titolare (art. 6, par. 1, lett. f del GDPR), consistente nel garantire la sicurezza, la stabilità e il monitoraggio aggregato del sito web. Poiché i dati raccolti sono di natura aggregata e anonimizzata, tale trattamento non pregiudica i diritti e le libertà fondamentali degli utenti.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Servizi di Terze Parti</h2>
+          
+          <div class="space-y-6">
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Cloudflare (Hosting e Analytics)</h3>
+              <p class="mb-4">
+                Il sito è ospitato e distribuito tramite Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Cloudflare gestisce l'infrastruttura tecnica del sito e fornisce il servizio di Cloudflare Web Analytics, uno strumento di analisi del traffico privacy-first che non utilizza cookie e non raccoglie dati personali identificabili, operando esclusivamente con dati aggregati e anonimi.
+              </p>
+              <a href="https://www.cloudflare.com/privacypolicy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">Maggiori informazioni: cloudflare.com/privacypolicy</a>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-lg border border-white/5">
+              <h3 class="text-lg text-amber-500 font-bold mb-3">Google Maps</h3>
+              <p class="mb-4">
+                Il sito integra Google Maps, un servizio di mappe fornito da Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). L'interazione con la mappa può comportare la raccolta di dati da parte di Google secondo le proprie politiche sulla privacy. Tali dati sono gestiti esclusivamente da Google e il Titolare non ha accesso né controllo su di essi.
+              </p>
+              <a href="https://policies.google.com/privacy" target="_blank" class="text-sm text-stone-400 hover:text-white underline decoration-amber-500/30 underline-offset-4">Maggiori informazioni: policies.google.com/privacy</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Trasferimento dei Dati Extra-UE</h2>
+          <p>
+            Cloudflare e Google LLC hanno sede negli Stati Uniti. Il trasferimento dei dati avviene nel rispetto delle garanzie previste dal GDPR, in particolare tramite le Clausole Contrattuali Standard approvate dalla Commissione Europea e, ove applicabile, nell'ambito del Data Privacy Framework UE-USA.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Conservazione dei Dati</h2>
+          <p>
+            I dati tecnici di navigazione elaborati da Cloudflare Analytics sono di natura aggregata e anonima, pertanto non soggetti a un termine di conservazione riferibile a persone fisiche identificabili. I dati trattati da Google Maps sono conservati secondo le politiche di Google LLC.
+          </p>
+          <p>
+            Il Titolare non conserva autonomamente log di navigazione contenenti dati personali identificabili.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Diritti degli Interessati</h2>
+          <p>Ai sensi degli artt. 15–22 del GDPR, ogni utente ha il diritto di:</p>
+          <ul class="list-none space-y-4 pl-0">
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Accesso</strong> — ottenere conferma del trattamento e una copia dei propri dati</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Rettifica</strong> — richiedere la correzione di dati inesatti</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Cancellazione ("diritto all'oblio")</strong> — richiedere la cancellazione dei propri dati</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Limitazione</strong> — richiedere la limitazione del trattamento</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Portabilità</strong> — ricevere i dati in formato strutturato e leggibile</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Opposizione</strong> — opporsi al trattamento basato su legittimo interesse</div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+              <div><strong class="text-stone-100">Revoca del consenso</strong> — in qualsiasi momento, senza pregiudicare il trattamento pregresso</div>
+            </li>
+          </ul>
+          <p class="pt-4">
+            Per esercitare i tuoi diritti, scrivi a: <a href="mailto:info@ilnodosantelia.it" class="text-amber-500 hover:text-amber-400 transition-colors">info@ilnodosantelia.it</a>
+          </p>
+          <p class="text-sm">
+            Hai inoltre il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" class="hover:text-amber-500 transition-colors">garanteprivacy.it</a>) qualora ritieni che il trattamento violi il GDPR.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl text-stone-100 font-medium border-b border-white/10 pb-2">Responsabile della Protezione dei Dati (DPO)</h2>
+          <p>
+            Data la natura e la portata dell'attività svolta, la nomina di un Data Protection Officer non è obbligatoria ai sensi dell'art. 37 del GDPR. Per qualsiasi questione relativa alla protezione dei dati, è possibile contattare direttamente il Titolare ai recapiti indicati.
+          </p>
+        </section>
+
+        <footer class="pt-12 border-t border-white/5 mt-16 text-sm text-stone-500 italic">
+          <p>Ultimo aggiornamento: marzo 2026</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Base typography is handled by Layout and global.css */
+  /* We add some local refinements for the legal text */
+  main {
+    background-image: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+</style>
