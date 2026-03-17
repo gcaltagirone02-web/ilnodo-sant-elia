@@ -1150,8 +1150,8 @@ const menuSchema = {
                 src={cat.image}
                 alt={cat.name}
                 class="category-card__image"
-                width={64}
-                height={64}
+                width={128}
+                height={128}
               />
               <span class="category-card__name">{cat.name}</span>
             </a>
@@ -1337,10 +1337,10 @@ const menuSchema = {
   /* Category Grid Navigation */
   .category-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 3rem;
-    padding: 0 0.5rem;
+    padding: 2rem 0.5rem 0; /* Padding top to avoid header clipping */
   }
 
   .category-card {
@@ -1405,8 +1405,9 @@ const menuSchema = {
   /* Desktop adjustments */
   @media (min-width: 768px) {
     .category-grid {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 1.25rem;
+      padding-top: 0;
     }
 
     .category-card {
@@ -1423,12 +1424,6 @@ const menuSchema = {
     }
   }
 
-  @media (min-width: 1024px) {
-    .category-grid {
-      grid-template-columns: repeat(9, 1fr);
-      gap: 1.5rem;
-    }
-  }
 
   /* Operative Notes */
   .menu-footer {
@@ -1474,7 +1469,7 @@ const menuSchema = {
   }
 
   #menu-categories {
-    scroll-margin-top: 6rem; /* Account for sticky navbar */
+    scroll-margin-top: 8rem; /* Increased to account for larger header context */
   }
 
   /* Hero Actions */
@@ -1574,14 +1569,14 @@ const menuSchema = {
 
     .category-card {
       padding: 1.5rem 0.5rem;
-      min-height: 160px; /* Even taller cards */
-      justify-content: flex-start;
+      min-height: 140px;
+      justify-content: center;
     }
 
     .category-card__image {
-      width: 68px;
-      height: 68px;
-      margin-bottom: 1rem;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.75rem;
     }
 
     .category-card__name {

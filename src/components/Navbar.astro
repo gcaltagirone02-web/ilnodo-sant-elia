@@ -87,15 +87,13 @@ const getSwitchPath = (targetLang: string) => {
     <a
       href={lang === "en" ? "/en" : "/"}
       class="site-nav__logo"
-      aria-label={`${t("nav.home")} — Il Nodo 2.0`}
+      aria-label={`${t("nav.home")} — Il Nodo`}
     >
       <Image
         src={logoImg}
         alt="Il Nodo Logo"
         class="site-nav__logo-img"
-        format="avif"
-        layout="responsive"
-        widths={[100, 200, 300]}
+        layout="fixed"
         loading="eager"
       />
     </a>

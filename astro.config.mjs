@@ -9,7 +9,7 @@ import cookieconsent from "@jop-software/astro-cookieconsent";
 export default defineConfig({
 // Cloudflare Pages deployment (static output)
 output: "static",
-site: "https://ilnodo.it",
+site: "https://ilnodosantelia.it",
 
   i18n: {
     defaultLocale: "it",
@@ -146,10 +146,12 @@ site: "https://ilnodo.it",
  		},
  	},
  },
+ 
 
   // Image optimization — WebP/AVIF auto-generation
   image: {
     domains: ["cdn.sanity.io"],
     remotePatterns: [{ protocol: "https" }],
+    layout: "constrained",
   },
 });

@@ -22,30 +22,7 @@ const lang = Astro.currentLocale || "it";
     <SEO title={title} description={description} ogImage={image} />
     <SchemaLocalBusiness />
 
-    <!-- Font preload hints for critical fonts -->
-    <link
-      rel="preload"
-      href="/fonts/cormorant-garamond-v21-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/plus-jakarta-sans-v12-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/inter-v20-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <!-- Fonts: self-hosted in global.css -->
+    <!-- Fonts: self-hosted in global.css with font-display: swap -->
   </head>
   <body>
     <slot />

@@ -8,8 +8,8 @@ export default defineConfig({
   name: "il-nodo",
   title: "Il Nodo Content Management",
 
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || "r3e9n3a3",
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET || "production",
+  projectId: process.env.PUBLIC_SANITY_PROJECT_ID || "r3e9n3a3",
+  dataset: process.env.PUBLIC_SANITY_DATASET || "production",
 
   plugins: [
     structureTool({

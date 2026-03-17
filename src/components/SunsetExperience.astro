@@ -22,14 +22,12 @@ const { id = t('sunset.id') } = Astro.props;
     <Image 
       src={sunsetDesktop} 
       alt={lang === 'en' ? 'Spectacular sunset in Sant\'Elia' : 'Tramonto spettacolare a Sant\'Elia'} 
-      format="avif"
       class="hidden md:block w-full h-full object-cover scale-110 motion-safe:animate-slow-zoom"
     />
     <!-- Mobile Background -->
     <Image 
       src={sunsetMobile} 
       alt={lang === 'en' ? 'Spectacular sunset in Sant\'Elia' : 'Tramonto spettacolare a Sant\'Elia'} 
-      format="avif"
       class="block md:hidden w-full h-full object-cover scale-110 motion-safe:animate-slow-zoom"
     />
     <!-- Premium Overlay Mix -->
