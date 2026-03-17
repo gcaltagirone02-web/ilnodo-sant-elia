@@ -18,52 +18,52 @@ interface Props {
 const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = t('gallery.id') } = Astro.props;
+const { id = t("gallery.id") } = Astro.props;
 
 const images = [
   {
     src: cocktail, // caletta-sant-elia.png
-    alt: t('gallery.alt.1'),
+    alt: t("gallery.alt.1"),
     span: "large",
   },
   {
     src: gallery2, // overview-il-nodo.png
-    alt: t('gallery.alt.2'),
+    alt: t("gallery.alt.2"),
     span: "tall",
   },
   {
     src: gallery3, // il-nodo-cocktail-macro.png
-    alt: t('gallery.alt.3'),
+    alt: t("gallery.alt.3"),
     span: "small",
   },
   {
     src: gallery1, // tramonto-gallery.png
-    alt: t('gallery.alt.4'),
+    alt: t("gallery.alt.4"),
     span: "small",
   },
   {
     src: tramonto, // terrazza-golen-hour-sant-elia.png
-    alt: t('gallery.alt.5'),
+    alt: t("gallery.alt.5"),
     span: "tall",
   },
   {
     src: spiaggia, // spiaggia-sant-elia.png
-    alt: t('gallery.alt.6'),
+    alt: t("gallery.alt.6"),
     span: "wide",
   },
   {
     src: panorama, // blue-cocktails-il-nodo.png
-    alt: t('gallery.alt.7'),
+    alt: t("gallery.alt.7"),
     span: "small",
   },
   {
     src: goldenHour, // gin-tonic-il-nodo.png
-    alt: t('gallery.alt.8'),
+    alt: t("gallery.alt.8"),
     span: "small",
   },
   {
     src: gallery5, // pink-sky-gallery-il-nodo.png
-    alt: t('gallery.alt.9'),
+    alt: t("gallery.alt.9"),
     span: "small",
   },
 ];
@@ -74,7 +74,8 @@ const images = [
     <div class="gallery__header reveal">
       <span class="gallery__label">{t("gallery.label")}</span>
       <h2 class="gallery__title">
-        {t("gallery.title")} <br />
+        {t("gallery.title")}
+        <br />
         <span class="italic text-accent">{t("gallery.accent")}</span>
       </h2>
     </div>
@@ -155,7 +156,12 @@ const images = [
   <dialog id="gallery-lightbox" class="lightbox">
     <div class="lightbox__content">
       <form method="dialog">
-        <button type="button" class="lightbox__close" aria-label="Chiudi galleria" id="close-lightbox">
+        <button
+          type="button"
+          class="lightbox__close"
+          aria-label="Chiudi galleria"
+          id="close-lightbox"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -181,7 +187,13 @@ const images = [
 </section>
 
 <script>
-  const setupGallery = () => {
+  // Lazy-load lightbox functionality - only initialize on first interaction
+  let lightboxInitialized = false;
+
+  const initLightbox = () => {
+    if (lightboxInitialized) return;
+    lightboxInitialized = true;
+
     const dialog = document.getElementById(
       "gallery-lightbox",
     ) as HTMLDialogElement;
@@ -189,29 +201,33 @@ const images = [
       "lightbox-image",
     ) as HTMLImageElement;
     const lightboxCaption = document.getElementById("lightbox-caption");
-    const galleryItems = document.querySelectorAll("[data-gallery-item]");
     const closeBtn = document.getElementById("close-lightbox");
 
     if (!dialog || !lightboxImg || !lightboxCaption) return;
 
-    galleryItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const src = item.getAttribute("data-img-src");
-        const alt = item.getAttribute("data-img-alt");
+    // Handle click on gallery items
+    const handleItemClick = (item: Element) => {
+      const src = item.getAttribute("data-img-src");
+      const alt = item.getAttribute("data-img-alt");
 
-        if (src && alt) {
-          lightboxImg.src = src;
-          lightboxImg.alt = alt;
-          lightboxCaption.textContent = alt;
-          dialog.showModal();
-          document.body.style.overflow = "hidden";
-          setTimeout(() => closeBtn?.focus(), 100);
-        }
-      });
+      if (src && alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightboxCaption.textContent = alt;
+        dialog.showModal();
+        document.body.style.overflow = "hidden";
+        setTimeout(() => closeBtn?.focus(), 100);
+      }
+    };
+
+    // Set up click handlers for all gallery items
+    const galleryItems = document.querySelectorAll("[data-gallery-item]");
+    galleryItems.forEach((item) => {
+      item.addEventListener("click", () => handleItemClick(item));
     });
 
     closeBtn?.addEventListener("click", () => {
-        dialog.close();
+      dialog.close();
     });
 
     dialog.addEventListener("close", () => {
@@ -224,13 +240,45 @@ const images = [
         dialog.close();
       }
     });
-
-    // ESC key already handled by browser <dialog>,
-    // but just in case of weirdness, it's native.
   };
 
-  setupGallery();
-  document.addEventListener("astro:after-swap", setupGallery);
+  // Set up lazy initialization - only load on first click
+  const setupLazyLightbox = () => {
+    const galleryItems = document.querySelectorAll("[data-gallery-item]");
+
+    galleryItems.forEach((item) => {
+      item.addEventListener(
+        "click",
+        () => {
+          initLightbox();
+          // Re-trigger the click after initialization
+          const src = item.getAttribute("data-img-src");
+          const alt = item.getAttribute("data-img-alt");
+          const dialog = document.getElementById(
+            "gallery-lightbox",
+          ) as HTMLDialogElement;
+          const lightboxImg = document.getElementById(
+            "lightbox-image",
+          ) as HTMLImageElement;
+          const lightboxCaption = document.getElementById("lightbox-caption");
+
+          if (src && alt && dialog && lightboxImg && lightboxCaption) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightboxCaption.textContent = alt;
+            dialog.showModal();
+            document.body.style.overflow = "hidden";
+            const closeBtn = document.getElementById("close-lightbox");
+            setTimeout(() => closeBtn?.focus(), 100);
+          }
+        },
+        { once: true },
+      );
+    });
+  };
+
+  setupLazyLightbox();
+  document.addEventListener("astro:after-swap", setupLazyLightbox);
 </script>
 
 <style>

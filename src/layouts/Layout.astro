@@ -19,15 +19,33 @@ const lang = Astro.currentLocale || "it";
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.sanity.io https://api.sanity.io; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"
-    />
     <SEO title={title} description={description} ogImage={image} />
     <SchemaLocalBusiness />
 
-    <!-- Fonts: self-hosted in global.css -->
+    <!-- Font preload hints for critical fonts -->
+    <link
+      rel="preload"
+      href="/fonts/cormorant-garamond-v21-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/plus-jakarta-sans-v12-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-v20-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
+    <!-- Fonts: self-hosted in global.css -->
   </head>
   <body>
     <slot />

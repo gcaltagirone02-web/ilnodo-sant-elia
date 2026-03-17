@@ -21,9 +21,7 @@ interface Props {
 const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const {
-  imageAlt = t('hero.alt'),
-} = Astro.props;
+const { imageAlt = t("hero.alt") } = Astro.props;
 
 // Ottimizziamo le immagini per le diverse viewport usando getImage
 // Mobile: 828px base + 1656px Retina 2x
@@ -68,11 +66,16 @@ const desktopRetina = await getImage({
         sizes="100vw"
         type="image/webp"
       />
-      <!-- Desktop: min 768px, using raw asset to bypass compression blur -->
-      <source media="(min-width: 768px)" srcset={desktopImg.src} />
+      <!-- Desktop: min 768px, using optimized AVIF with Retina srcset -->
+      <source
+        media="(min-width: 768px)"
+        srcset={`${desktopOptimized.src} 1920w, ${desktopRetina.src} 2752w`}
+        sizes="100vw"
+        type="image/avif"
+      />
       <!-- Fallback img -->
       <img
-        src={desktopImg.src}
+        src={desktopOptimized.src}
         alt={imageAlt}
         class="hero__bg-img"
         loading="eager"

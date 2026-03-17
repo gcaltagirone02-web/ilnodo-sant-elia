@@ -7,9 +7,9 @@ import cookieconsent from "@jop-software/astro-cookieconsent";
 
 // https://astro.build/config
 export default defineConfig({
-  // SSG — Static Site Generation for max performance (Lighthouse 95+)
-  output: "static",
-  site: "https://ilnodo.it",
+// Cloudflare Pages deployment (static output)
+output: "static",
+site: "https://ilnodo.it",
 
   i18n: {
     defaultLocale: "it",
@@ -134,14 +134,18 @@ export default defineConfig({
     }),
   ],
 
-  vite: {
-    plugins: [tailwindcss()],
-    resolve: {
-      alias: {
-        "vanilla-cookieconsent/dist/cookieconsent.css": "vanilla-cookieconsent/dist/cookieconsent.css"
-      }
-    }
-  },
+ vite: {
+ 	plugins: [tailwindcss()],
+ 	build: {
+ 		rollupOptions: {
+ 			output: {
+ 				manualChunks: {
+ 					vendor: ['astro'],
+ 				},
+ 			},
+ 		},
+ 	},
+ },
 
   // Image optimization — WebP/AVIF auto-generation
   image: {
