@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/cloudflare": "^13.1.2",
     "@astrojs/sitemap": "^3.7.1",
     "@jop-software/astro-cookieconsent": "^3.0.1",
     "@sanity/astro": "^3.2.11",
@@ -25,8 +25,8 @@
     "vanilla-cookieconsent": "^3.1.0"
   },
   "overrides": {
-    "@sanity/astro": {
-      "astro": "^6.0.5"
-    }
+    "astro": "^6.0.5",
+    "undici": ">=7.24.4",
+    "prismjs": ">=1.30.0"
   }
 }
