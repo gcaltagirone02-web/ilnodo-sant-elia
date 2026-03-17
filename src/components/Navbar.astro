@@ -24,13 +24,13 @@ const { currentPath = Astro.url.pathname } = Astro.props;
 const base = lang === "it" ? "" : `/${lang}`;
 
 const navLinks = [
-  { href: `${base}/#${t('story.id')}`, label: t("nav.storia") },
+  { href: `${base}/#${t("story.id")}`, label: t("nav.storia") },
   { href: `${base}/menu`, label: t("nav.menu") },
-  { href: `${base}/#${t('sunset.id')}`, label: t("nav.experience") },
-  { href: `${base}/#${t('gallery.id')}`, label: t("nav.gallery") },
-  { 
-    href: `${base}/#${t('location.id')}`, 
-    label: t("nav.location") 
+  { href: `${base}/#${t("sunset.id")}`, label: t("nav.experience") },
+  { href: `${base}/#${t("gallery.id")}`, label: t("nav.gallery") },
+  {
+    href: `${base}/#${t("location.id")}`,
+    label: t("nav.location"),
   },
 ];
 
@@ -51,23 +51,28 @@ const messages = {
   },
 };
 
-const currentMessage =
-  currentPath.includes("/menu") ? messages[lang].menu : messages[lang].home;
+const currentMessage = currentPath.includes("/menu")
+  ? messages[lang].menu
+  : messages[lang].home;
 const whatsappLink = `${whatsappBase}${currentMessage}`;
 
 // Helper to switch language keeping the same path
 const getSwitchPath = (targetLang: string) => {
   const segments = currentPath.split("/").filter(Boolean);
-  const currentLang = (segments[0] === "en" || segments[0] === "fr") ? segments[0] : "it";
-  
+  const currentLang =
+    segments[0] === "en" || segments[0] === "fr" ? segments[0] : "it";
+
   if (targetLang === "it") {
     if (currentLang === "it") return currentPath;
     const newPath = "/" + segments.slice(1).join("/");
     return newPath === "" ? "/" : newPath;
   } else {
     if (currentLang === targetLang) return currentPath;
-    const pathWithoutLang = currentLang === "it" ? currentPath : "/" + segments.slice(1).join("/");
-    const normalizedPath = pathWithoutLang.startsWith("/") ? pathWithoutLang : "/" + pathWithoutLang;
+    const pathWithoutLang =
+      currentLang === "it" ? currentPath : "/" + segments.slice(1).join("/");
+    const normalizedPath = pathWithoutLang.startsWith("/")
+      ? pathWithoutLang
+      : "/" + pathWithoutLang;
     return `/${targetLang}${normalizedPath === "/" ? "" : normalizedPath}`;
   }
 };
@@ -89,6 +94,8 @@ const getSwitchPath = (targetLang: string) => {
         alt="Il Nodo Logo"
         class="site-nav__logo-img"
         format="avif"
+        layout="responsive"
+        widths={[100, 200, 300]}
         loading="eager"
       />
     </a>
@@ -153,7 +160,7 @@ const getSwitchPath = (targetLang: string) => {
       id="nav-toggle"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label={t('nav.aria.open')}
+      aria-label={t("nav.aria.open")}
     >
       <span class="site-nav__hamburger-icon" aria-hidden="true">
         <span class="site-nav__hamburger-bar"></span>
@@ -171,14 +178,14 @@ const getSwitchPath = (targetLang: string) => {
   aria-hidden="true"
   role="dialog"
   aria-modal="true"
-  aria-label={t('nav.aria.mobile')}
+  aria-label={t("nav.aria.mobile")}
 >
   <!-- Close button inside menu -->
   <button
     type="button"
     class="mobile-menu__close"
     id="mobile-menu-close"
-    aria-label={t('nav.aria.close')}
+    aria-label={t("nav.aria.close")}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +248,7 @@ const getSwitchPath = (targetLang: string) => {
             d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.534 5.847L0 24l6.335-1.518C8.02 23.447 9.972 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.66-.523-5.168-1.43l-.368-.217-3.762.902.934-3.664-.24-.38C2.517 15.614 2 13.865 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
           ></path>
         </svg>
-        <span class="mobile-menu__text">{t('nav.book')}</span>
+        <span class="mobile-menu__text">{t("nav.book")}</span>
       </a>
     </li>
     <li style="--stagger: 5" class="mobile-menu__lang">

@@ -10,7 +10,7 @@ interface Props {
 const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const { id = t('story.id') } = Astro.props;
+const { id = t("story.id") } = Astro.props;
 ---
 
 <section id={id} class="storytelling">
@@ -21,11 +21,11 @@ const { id = t('story.id') } = Astro.props;
         <div class="storytelling__image-wrapper">
           <Image
             src={storytellingImg}
-            alt={t('story.alt')}
+            alt={t("story.alt")}
             class="storytelling__image"
             format="avif"
-            width={800}
-            height={1000}
+            layout="responsive"
+            widths={[400, 800, 1200]}
             loading="lazy"
           />
           <div class="storytelling__image-overlay"></div>
@@ -38,7 +38,8 @@ const { id = t('story.id') } = Astro.props;
           <span class="storytelling__label">{t("story.label")}</span>
           <h2 class="storytelling__title">
             {t("story.title").split(". ")[0]}. <br />
-            {t("story.title").split(". ")[1]} <br />
+            {t("story.title").split(". ")[1]}
+            <br />
             <span class="italic text-accent">{t("story.accent")}</span>
           </h2>
 
