@@ -1,0 +1,154 @@
+---
+// Location.astro
+import { useTranslations } from "../i18n/ui";
+
+const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
+const t = useTranslations(lang);
+---
+
+<section id={t('location.id')} class="py-24 bg-stone-950 overflow-hidden relative">
+  <!-- Subtle background texture -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E');"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      
+      <!-- Content Column -->
+      <div class="space-y-12" data-aos="fade-right">
+        <div class="space-y-4">
+          <h2 class="text-amber-500 font-medium tracking-widest uppercase text-sm">{t("location.label")}</h2>
+          <h3 class="text-4xl md:text-5xl font-serif text-stone-100">{t("location.title")} <span class="italic text-stone-400">Sant'Elia</span></h3>
+          <p class="text-stone-400 text-lg leading-relaxed max-w-lg">
+            {t("location.desc")}
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2">
+          <!-- Address -->
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2 text-stone-100 font-medium uppercase tracking-wider text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{t("location.address")}</span>
+            </div>
+            <p class="text-stone-300">Via dei Cantieri, snc<br/>90017 Sant'Elia (PA)</p>
+            <a 
+              href="https://maps.app.goo.gl/9uwPwxciv7T9GPoR6" 
+              target="_blank" 
+              class="inline-block text-amber-500 hover:text-amber-400 text-sm font-semibold transition-colors decoration-amber-500/30 underline underline-offset-4"
+            >
+              {t("location.maps")} →
+            </a>
+          </div>
+
+          <!-- Hours -->
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2 text-stone-100 font-medium uppercase tracking-wider text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{t("location.hours")}</span>
+            </div>
+            <ul class="text-stone-300 text-sm space-y-1">
+              <li class="flex justify-between"><span>{t("location.hours.mon_thu")}:</span> <span>16:00 - 01:00</span></li>
+              <li class="flex justify-between"><span>{t("location.hours.fri_sun")}:</span> <span>16:00 - 02:00</span></li>
+              <li class="text-stone-500 mt-2 italic">* {t("location.hours.seasonal")}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-stone-800 flex flex-wrap gap-6">
+           <div>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">{t("location.phone")}</span>
+             <a href="tel:+393661770312" class="text-stone-200 hover:text-amber-500 transition-colors">+39 366 177 0312</a>
+           </div>
+           <div>
+             <span class="block text-xs uppercase tracking-widest text-stone-500 mb-1">{t("location.email")}</span>
+             <a href="mailto:info@ilnodo-santelia.it" class="text-stone-200 hover:text-amber-500 transition-colors">info@ilnodo-santelia.it</a>
+           </div>
+        </div>
+      </div>
+
+      <!-- Map Column -->
+      <div id="map-container" class="relative w-full aspect-square lg:aspect-auto lg:h-[600px] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl bg-stone-900" data-aos="zoom-in">
+        <!-- Placeholder visibile prima del consenso -->
+        <div id="map-placeholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center space-y-6 z-20">
+          <div class="w-16 h-16 bg-stone-800 rounded-full flex items-center justify-center text-amber-500 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A2 2 0 013 15.488V5.512a2 2 0 011.138-1.79l5.447-2.723M15 4l5.447 2.724A2 2 0 0121 8.512v9.976a2 2 0 01-1.138 1.79L15 23M9 20l6-3m0 0l6 3m-6-3V4m-6 16V1" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <p class="text-stone-100 font-serif text-xl italic">{t("location.map_preview")}</p>
+            <p class="text-stone-400 text-sm max-w-xs mx-auto">
+              {t("location.map_consent")}
+            </p>
+          </div>
+          <button 
+            id="open-consent-btn" 
+            data-cc="show-preferences"
+            class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold rounded-full transition-all hover:scale-105 active:scale-95 text-sm shadow-lg shadow-amber-500/20"
+          >
+            {t("location.manage_preferences")}
+          </button>
+        </div>
+
+        <script is:inline>
+          function loadMapIfConsented() {
+            const cc = window.CookieConsent;
+            if (!cc) {
+              // If not initialized yet, try again in a bit
+              setTimeout(loadMapIfConsented, 500);
+              return;
+            }
+
+            const container = document.getElementById("map-container");
+            const placeholder = document.getElementById("map-placeholder");
+
+            if (cc.acceptedCategory("maps")) {
+              if (!document.getElementById("google-map-iframe")) {
+                if (placeholder) placeholder.style.display = 'none';
+                
+                const iframe = document.createElement("iframe");
+                iframe.id = "google-map-iframe";
+                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.459255971405!2d13.536511376569788!3d38.09601337190625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319e274b754e8a1%3A0x7d7591b037b52dd2!2sChiosco%20Il%20Nodo!5e1!3m2!1sit!2sit!4v1773281328449!5m2!1sit!2sit";
+                iframe.className = "w-full h-full border-0 grayscale-[0.2] contrast-[1.1] relative z-10 animate-fade-in";
+                iframe.allowFullscreen = true;
+                iframe.loading = "lazy";
+                iframe.referrerPolicy = "no-referrer-when-downgrade";
+                container?.appendChild(iframe);
+              }
+            } else {
+              // If consent withdrawn, remove map and show placeholder
+              const iframe = document.getElementById("google-map-iframe");
+              if (iframe) {
+                iframe.remove();
+                if (placeholder) placeholder.style.display = 'flex';
+              }
+            }
+          }
+
+          // Initial check
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadMapIfConsented);
+          } else {
+            loadMapIfConsented();
+          }
+
+          // Listen for custom events dispatched from astro.config.mjs callbacks
+          window.addEventListener("cc:onConsent", loadMapIfConsented);
+          window.addEventListener("cc:onChange", loadMapIfConsented);
+
+          // Support Astro View Transitions
+          document.addEventListener("astro:page-load", loadMapIfConsented);
+        </script>
+        
+        <!-- Map Overlay Gradient (Optional: subtle darkening to match theme) -->
+        <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.3)] z-30"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
