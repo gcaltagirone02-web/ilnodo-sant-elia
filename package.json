@@ -23,5 +23,10 @@
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vanilla-cookieconsent": "^3.1.0"
+  },
+  "overrides": {
+    "@sanity/astro": {
+      "astro": "^6.0.5"
+    }
   }
 }
