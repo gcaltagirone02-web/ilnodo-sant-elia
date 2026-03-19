@@ -6,9 +6,9 @@
 
 ---
 
-**Project:** Il Nodo 2.0
+**Project:** Il Nodo
 **Generated:** 2026-03-08 02:51:22
-**Category:** Cybersecurity Platform
+**Category:** Ristorante
 
 ---
 
