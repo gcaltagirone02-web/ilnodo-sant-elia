@@ -29,49 +29,6 @@ const {
   type = "website",
 } = Astro.props;
 
-// JSON-LD LocalBusiness Data
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "Bar",
-  name: "Il Nodo",
-  description: t('seo.business.description'),
-  url: "https://ilnodosantelia.it",
-  telephone: "+393661770312",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Via dei Cantieri, snc",
-    addressLocality: "Sant'Elia",
-    addressRegion: "PA",
-    postalCode: "90017",
-    addressCountry: "IT",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "38.1091",
-    longitude: "13.5332",
-  },
-  priceRange: "€€",
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "10:00",
-      closes: "00:00",
-    },
-  ],
-  sameAs: [
-    "https://www.instagram.com/il_nodo_santelia/",
-    "https://www.facebook.com/chioscoilnodo/",
-  ],
-};
 ---
 
 <AstroSEO
@@ -111,16 +68,6 @@ const localBusinessSchema = {
       { name: "generator", content: Astro.generator },
       { name: "theme-color", content: "#0F1C46" },
       { name: "author", content: "Calta" },
-      {
-        name: "keywords",
-        content: t('seo.keywords'),
-      },
     ],
   }}
-/>
-
-<script
-  type="application/ld+json"
-  is:inline
-  set:html={JSON.stringify(localBusinessSchema)}
 />

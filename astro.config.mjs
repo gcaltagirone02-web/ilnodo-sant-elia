@@ -20,7 +20,16 @@ site: "https://ilnodosantelia.it",
   },
 
   integrations: [
-	sitemap(),
+	sitemap({
+		i18n: {
+			defaultLocale: "it",
+			locales: {
+				it: "it",
+				en: "en",
+				fr: "fr",
+			},
+		},
+	}),
 	sanity({
       projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || "your-project-id",
       dataset: import.meta.env.PUBLIC_SANITY_DATASET || "production",

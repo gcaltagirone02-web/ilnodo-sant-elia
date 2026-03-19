@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
+
+# Block pure-scraping bots (training only, no search visibility in return)
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: https://ilnodosantelia.it/sitemap-index.xml

@@ -1,0 +1,680 @@
+uid=1_0 RootWebArea "Il tuo posto sul mare ti aspetta. — Il Nodo" url="https://ilnodosantelia.it/"
+  uid=1_1 ignored
+    uid=1_2 ignored
+      uid=1_3 banner
+        uid=1_4 navigation "Home"
+          uid=1_5 link "Home — Il Nodo" url="https://ilnodosantelia.it/"
+            uid=1_6 image "Il Nodo Logo" url="https://ilnodosantelia.it/_astro/Logo.D4vFsjw0_17aJC3.webp"
+          uid=1_7 list
+            uid=1_8 listitem level="1"
+              uid=1_9 link "CHI SIAMO" url="https://ilnodosantelia.it/#storia"
+                uid=1_10 generic
+                uid=1_11 StaticText "CHI SIAMO"
+                  uid=1_12 InlineTextBox "CHI SIAMO"
+            uid=1_13 listitem level="1"
+              uid=1_14 link "MENU" url="https://ilnodosantelia.it/menu"
+                uid=1_15 generic
+                uid=1_16 StaticText "MENU"
+                  uid=1_12 InlineTextBox "MENU"
+            uid=1_17 listitem level="1"
+              uid=1_18 link "ESPERIENZA" url="https://ilnodosantelia.it/#sunset-experience"
+                uid=1_19 generic
+                uid=1_20 StaticText "ESPERIENZA"
+                  uid=1_12 InlineTextBox "ESPERIENZA"
+            uid=1_21 listitem level="1"
+              uid=1_22 link "GALLERIA" url="https://ilnodosantelia.it/#galleria"
+                uid=1_23 generic
+                uid=1_24 StaticText "GALLERIA"
+                  uid=1_12 InlineTextBox "GALLERIA"
+            uid=1_25 listitem level="1"
+              uid=1_26 link "DOVE SIAMO" url="https://ilnodosantelia.it/#dove-siamo"
+                uid=1_27 generic
+                uid=1_28 StaticText "DOVE SIAMO"
+                  uid=1_12 InlineTextBox "DOVE SIAMO"
+          uid=1_29 ignored
+            uid=1_30 generic
+              uid=1_31 button "Lingua attuale: Italiano" expandable haspopup="listbox"
+                uid=1_32 image
+                uid=1_33 ignored
+                  uid=1_34 StaticText "IT"
+                    uid=1_12 InlineTextBox "IT"
+                uid=1_35 image
+              uid=1_36 ignored
+            uid=1_37 link "Prenota" url="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20l%27aperitivo%20a%20Sant%27Elia.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!"
+              uid=1_38 ignored
+              uid=1_39 ignored
+                uid=1_40 StaticText "Prenota"
+                  uid=1_12 InlineTextBox "Prenota"
+      uid=1_41 main
+        uid=1_42 region "Il tuo posto sul mare"
+          uid=1_43 generic
+            uid=1_44 ignored
+              uid=1_45 heading "Il tuo posto sul mare" level="1"
+                uid=1_46 StaticText "Il tuo"
+                  uid=1_12 InlineTextBox "Il tuo"
+                uid=1_47 LineBreak "
+"
+                  uid=1_12 InlineTextBox "
+"
+                uid=1_48 StaticText "posto sul mare"
+                  uid=1_12 InlineTextBox "posto sul mare"
+              uid=1_49 paragraph
+                uid=1_50 StaticText "ti aspetta. "
+                  uid=1_12 InlineTextBox "ti aspetta. "
+                uid=1_51 generic
+                  uid=1_52 StaticText "a Sant'Elia, Palermo"
+                    uid=1_12 InlineTextBox "a Sant'Elia, Palermo"
+              uid=1_53 paragraph
+                uid=1_54 StaticText "Siediti. Il tramonto è già pronto per te."
+                  uid=1_12 InlineTextBox "Siediti. Il tramonto è già pronto per te."
+              uid=1_55 group "Azioni principali"
+                uid=1_56 link "Prenota il tuo tavolo" url="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto."
+                  uid=1_57 ignored
+                    uid=1_58 StaticText "Prenota il tuo tavolo"
+                      uid=1_12 InlineTextBox "Prenota il tuo tavolo"
+                uid=1_59 link "Scopri il menu" url="https://ilnodosantelia.it/menu"
+                  uid=1_60 ignored
+                    uid=1_61 StaticText "Scopri il menu"
+                      uid=1_12 InlineTextBox "Scopri il menu"
+        uid=1_62 generic
+          uid=1_63 ignored
+            uid=1_64 ignored
+              uid=1_65 generic
+                uid=1_66 generic
+                  uid=1_67 image "Atmosfera e dettagli Il Nodo" url="https://ilnodosantelia.it/_astro/storytelling-golden-hour.PhGCD4XL_1Wk9yA.webp"
+                  uid=1_68 generic
+              uid=1_69 ignored
+                uid=1_70 ignored
+                  uid=1_71 ignored
+                    uid=1_72 StaticText "LA NOSTRA STORIA"
+                      uid=1_12 InlineTextBox "LA NOSTRA STORIA"
+                  uid=1_73 heading "Hai il mare davanti. Il tuo tavolo è pronto. Questo è il tuo posto." level="2"
+                    uid=1_74 StaticText "Hai il mare davanti."
+                      uid=1_12 InlineTextBox "Hai il mare davanti."
+                    uid=1_75 LineBreak "
+"
+                      uid=1_12 InlineTextBox "
+"
+                    uid=1_76 StaticText "Il tuo tavolo è pronto."
+                      uid=1_12 InlineTextBox "Il tuo tavolo è pronto."
+                    uid=1_77 LineBreak "
+"
+                      uid=1_12 InlineTextBox "
+"
+                    uid=1_78 StaticText "Questo è il tuo posto."
+                      uid=1_12 InlineTextBox "Questo è il tuo posto."
+                  uid=1_79 ignored
+                    uid=1_80 paragraph
+                      uid=1_81 StaticText "Il Nodo non è solo un bar. È il battito di Sant'Elia, un rifugio dove il tempo rallenta e il sapore del salmastro si sposa con l'eccellenza della cura."
+                        uid=1_12 InlineTextBox "Il Nodo non è solo un bar. È il battito di Sant'Elia, un rifugio dove il "
+                        uid=1_12 InlineTextBox "tempo rallenta e il sapore del salmastro si sposa con l'eccellenza "
+                        uid=1_12 InlineTextBox "della cura."
+                    uid=1_82 paragraph
+                      uid=1_83 StaticText "Nato dalla passione per l’ospitalità autentica, il nostro "nodo" rappresenta il legame indissolubile tra la terra e il mare, tra chi accoglie e chi desidera lasciarsi cullare dalla bellezza di uno dei borghi più suggestivi della Sicilia."
+                        uid=1_12 InlineTextBox "Nato dalla passione per l’ospitalità autentica, il nostro "nodo" "
+                        uid=1_12 InlineTextBox "rappresenta il legame indissolubile tra la terra e il mare, tra chi "
+                        uid=1_12 InlineTextBox "accoglie e chi desidera lasciarsi cullare dalla bellezza di uno dei "
+                        uid=1_12 InlineTextBox "borghi più suggestivi della Sicilia."
+                    uid=1_84 paragraph
+                      uid=1_85 StaticText ""Siamo amici del mare, custodi di tramonti e compagni dei vostri momenti più cari.""
+                        uid=1_12 InlineTextBox ""Siamo amici del mare, custodi di tramonti e compagni dei vostri "
+                        uid=1_12 InlineTextBox "momenti più cari.""
+        uid=1_86 generic
+          uid=1_87 ignored
+            uid=1_88 ignored
+              uid=1_89 ignored
+                uid=1_90 StaticText "L'ARTE DEL MOMENTO"
+                  uid=1_12 InlineTextBox "L'ARTE DEL MOMENTO"
+              uid=1_91 heading "Ogni particolare racconta una storia di cura." level="2"
+                uid=1_92 StaticText "Ogni particolare racconta"
+                  uid=1_12 InlineTextBox "Ogni particolare racconta"
+                uid=1_93 LineBreak "
+"
+                  uid=1_12 InlineTextBox "
+"
+                uid=1_94 StaticText "una storia di cura."
+                  uid=1_12 InlineTextBox "una storia di cura."
+            uid=1_95 ignored
+              uid=1_96 generic
+                uid=1_97 generic
+                  uid=1_98 image "La Mixology" url="https://ilnodosantelia.it/_astro/cocktail-2.Y7ljeb88_Z2t7THK.webp"
+                  uid=1_99 generic
+                uid=1_100 generic
+                  uid=1_101 ignored
+                    uid=1_102 StaticText "COCKTAIL ARTIGIANALI"
+                      uid=1_12 InlineTextBox "COCKTAIL ARTIGIANALI"
+                  uid=1_103 heading "La Mixology" level="3"
+                    uid=1_104 StaticText "La Mixology"
+                      uid=1_12 InlineTextBox "La Mixology"
+                  uid=1_105 paragraph
+                    uid=1_106 StaticText "Dove il mare incontra il bancone. Cocktail curati, ingredienti freschi e il sapore del tramonto."
+                      uid=1_12 InlineTextBox "Dove il mare incontra il bancone. Cocktail "
+                      uid=1_12 InlineTextBox "curati, ingredienti freschi e il sapore del "
+                      uid=1_12 InlineTextBox "tramonto."
+              uid=1_107 generic
+                uid=1_108 generic
+                  uid=1_109 image "Il Sapore" url="https://ilnodosantelia.it/_astro/bruschettone-macro.DXpfLYNz_hXtva.webp"
+                  uid=1_110 generic
+                uid=1_111 generic
+                  uid=1_112 ignored
+                    uid=1_113 StaticText "APERITIVO SICILIANO"
+                      uid=1_12 InlineTextBox "APERITIVO SICILIANO"
+                  uid=1_114 heading "Il Sapore" level="3"
+                    uid=1_115 StaticText "Il Sapore"
+                      uid=1_12 InlineTextBox "Il Sapore"
+                  uid=1_116 paragraph
+                    uid=1_117 StaticText "Stuzzichini e taglieri che sanno di Sicilia. La semplicità della materia prima, la bellezza del mare."
+                      uid=1_12 InlineTextBox "Stuzzichini e taglieri che sanno di Sicilia. La "
+                      uid=1_12 InlineTextBox "semplicità della materia prima, la bellezza del "
+                      uid=1_12 InlineTextBox "mare."
+              uid=1_118 generic
+                uid=1_119 generic
+                  uid=1_120 image "La Tradizione" url="https://ilnodosantelia.it/_astro/cocktail-basilico.DoEUj1OA_zxC10.webp"
+                  uid=1_121 generic
+                uid=1_122 generic
+                  uid=1_123 ignored
+                    uid=1_124 StaticText "SAPORI DEL BORGO"
+                      uid=1_12 InlineTextBox "SAPORI DEL BORGO"
+                  uid=1_125 heading "La Tradizione" level="3"
+                    uid=1_126 StaticText "La Tradizione"
+                      uid=1_12 InlineTextBox "La Tradizione"
+                  uid=1_127 paragraph
+                    uid=1_128 StaticText "Profumi di basilico fresco e colori delle maioliche siciliane. Un brindisi autentico alle nostre radici, al ritmo lento del mare."
+                      uid=1_12 InlineTextBox "Profumi di basilico fresco e colori delle "
+                      uid=1_12 InlineTextBox "maioliche siciliane. Un brindisi autentico alle "
+                      uid=1_12 InlineTextBox "nostre radici, al ritmo lento del mare."
+        uid=1_129 generic
+          uid=1_130 generic
+            uid=1_131 image "Tramonto spettacolare a Sant'Elia" url="https://ilnodosantelia.it/_astro/golden-hour-dektop-il-nodo.C-fKZpTp_25zaYc.webp"
+            uid=1_132 generic
+            uid=1_133 generic
+          uid=1_134 generic
+            uid=1_135 ignored
+              uid=1_136 ignored
+                uid=1_137 StaticText "THE GOLDEN HOUR"
+                  uid=1_12 InlineTextBox "THE GOLDEN HOUR"
+                uid=1_138 heading "L'emozione del Tramonto." level="2"
+                  uid=1_139 StaticText "L'emozione del"
+                    uid=1_12 InlineTextBox "L'emozione del"
+                  uid=1_140 LineBreak "
+"
+                    uid=1_12 InlineTextBox "
+"
+                  uid=1_141 StaticText "Tramonto."
+                    uid=1_12 InlineTextBox "Tramonto."
+              uid=1_142 ignored
+                uid=1_143 paragraph
+                  uid=1_144 StaticText "Non è solo un aperitivo, è un rito. Quando il sole si tuffa nel mare di Sant'Elia, il tempo si ferma e lascia spazio alla bellezza pura."
+                    uid=1_12 InlineTextBox "Non è solo un aperitivo, è un rito. Quando il sole si tuffa nel "
+                    uid=1_12 InlineTextBox "mare di Sant'Elia, il tempo si ferma e lascia spazio alla bellezza "
+                    uid=1_12 InlineTextBox "pura."
+                uid=1_145 ignored
+                  uid=1_146 link "Prenota il tuo tavolo" url="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20godermi%20il%20tramonto%20al%20Nodo."
+                    uid=1_147 ignored
+                      uid=1_148 StaticText "Prenota il tuo tavolo"
+                        uid=1_12 InlineTextBox "Prenota il tuo tavolo"
+                    uid=1_149 image
+                  uid=1_150 ignored
+                    uid=1_151 ignored
+                      uid=1_152 ignored
+                      uid=1_153 ignored
+                    uid=1_154 ignored
+                      uid=1_155 StaticText "Posti limitati per il tramonto"
+                        uid=1_12 InlineTextBox "Posti limitati per il tramonto"
+          uid=1_156 generic
+        uid=1_157 generic
+          uid=1_158 ignored
+            uid=1_159 ignored
+              uid=1_160 ignored
+                uid=1_161 StaticText "I NOSTRI MOMENTI"
+                  uid=1_12 InlineTextBox "I NOSTRI MOMENTI"
+              uid=1_162 heading "Cattura l'essenza della vita sul mare." level="2"
+                uid=1_163 StaticText "Cattura l'essenza della"
+                  uid=1_12 InlineTextBox "Cattura l'essenza della"
+                uid=1_164 LineBreak "
+"
+                  uid=1_12 InlineTextBox "
+"
+                uid=1_165 StaticText "vita sul mare."
+                  uid=1_12 InlineTextBox "vita sul mare."
+            uid=1_166 generic
+              uid=1_167 ignored
+                uid=1_168 button "Visualizza immagine: Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar."
+                  uid=1_169 generic
+                    uid=1_170 image "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar." url="https://ilnodosantelia.it/_astro/caletta-sant-elia.EmW_i_0k_1gyYpp.webp"
+                    uid=1_171 generic
+                      uid=1_172 ignored
+                        uid=1_173 image
+                        uid=1_174 ignored
+                          uid=1_175 StaticText "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar."
+                            uid=1_12 InlineTextBox "Scorci segreti: la caletta incantata a pochi passi dal nostro Beach Bar."
+                uid=1_176 button "Visualizza immagine: Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo."
+                  uid=1_177 generic
+                    uid=1_178 image "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo." url="https://ilnodosantelia.it/_astro/overview-il-nodo.LKxc9Uu0_Z1C4a9n.webp"
+                    uid=1_179 generic
+                      uid=1_180 ignored
+                        uid=1_181 image
+                        uid=1_182 ignored
+                          uid=1_183 StaticText "Uno sguardo d'insieme: dove l'azzurro del cielo incontra lo stile unico di Il Nodo."
+                            uid=1_12 InlineTextBox "Uno sguardo d'insieme: dove "
+                            uid=1_12 InlineTextBox "l'azzurro del cielo incontra lo stile "
+                            uid=1_12 InlineTextBox "unico di Il Nodo."
+                uid=1_184 button "Visualizza immagine: L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink."
+                  uid=1_185 generic
+                    uid=1_186 image "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink." url="https://ilnodosantelia.it/_astro/il-nodo-cocktail-macro.C-vAT65J_Z1XnkaC.webp"
+                    uid=1_187 generic
+                      uid=1_188 ignored
+                        uid=1_189 image
+                        uid=1_190 ignored
+                          uid=1_191 StaticText "L'arte della mixology: ingredienti freschi e decorazioni artigianali per ogni drink."
+                            uid=1_12 InlineTextBox "L'arte della mixology: ingredienti "
+                            uid=1_12 InlineTextBox "freschi e decorazioni artigianali "
+                            uid=1_12 InlineTextBox "per ogni drink."
+                uid=1_192 button "Visualizza immagine: I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza."
+                  uid=1_193 generic
+                    uid=1_194 image "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza." url="https://ilnodosantelia.it/_astro/tramonto-gallery._quV2gFB_Z1Hem2y.webp"
+                    uid=1_195 generic
+                      uid=1_196 ignored
+                        uid=1_197 image
+                        uid=1_198 ignored
+                          uid=1_199 StaticText "I riflessi caldi del tramonto siciliano che abbracciano la nostra terrazza."
+                            uid=1_12 InlineTextBox "I riflessi caldi del tramonto "
+                            uid=1_12 InlineTextBox "siciliano che abbracciano la "
+                            uid=1_12 InlineTextBox "nostra terrazza."
+                uid=1_200 button "Visualizza immagine: Vista mozzafiato dalla nostra terrazza durante l'ora d'oro."
+                  uid=1_201 generic
+                    uid=1_202 image "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro." url="https://ilnodosantelia.it/_astro/terrazza-golen-hour-sant-elia.CfjOwyjN_ZnyJgP.webp"
+                    uid=1_203 generic
+                      uid=1_204 ignored
+                        uid=1_205 image
+                        uid=1_206 ignored
+                          uid=1_207 StaticText "Vista mozzafiato dalla nostra terrazza durante l'ora d'oro."
+                            uid=1_12 InlineTextBox "Vista mozzafiato dalla nostra "
+                            uid=1_12 InlineTextBox "terrazza durante l'ora d'oro."
+                uid=1_208 button "Visualizza immagine: La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale."
+                  uid=1_209 generic
+                    uid=1_210 image "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale." url="https://ilnodosantelia.it/_astro/spiaggia-sant-elia.WwmtjaoP_Z1Q9LCv.webp"
+                    uid=1_211 generic
+                      uid=1_212 ignored
+                        uid=1_213 image
+                        uid=1_214 ignored
+                          uid=1_215 StaticText "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale."
+                            uid=1_12 InlineTextBox "La spiaggia cristallina di Sant'Elia, il cuore pulsante del nostro litorale."
+                uid=1_216 button "Visualizza immagine: Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo."
+                  uid=1_217 generic
+                    uid=1_218 image "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo." url="https://ilnodosantelia.it/_astro/blue-cocktails-il-nodo.CiUnXtUO_Z2t8nNU.webp"
+                    uid=1_219 generic
+                      uid=1_220 ignored
+                        uid=1_221 image
+                        uid=1_222 ignored
+                          uid=1_223 StaticText "Cocktail d'autore ispirati ai colori e ai sapori del Mediterraneo."
+                            uid=1_12 InlineTextBox "Cocktail d'autore ispirati ai "
+                            uid=1_12 InlineTextBox "colori e ai sapori del "
+                            uid=1_12 InlineTextBox "Mediterraneo."
+                uid=1_224 button "Visualizza immagine: Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare."
+                  uid=1_225 generic
+                    uid=1_226 image "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare." url="https://ilnodosantelia.it/_astro/gin-tonic-il-nodo.CamirvOg_pSmF.webp"
+                    uid=1_227 generic
+                      uid=1_228 ignored
+                        uid=1_229 image
+                        uid=1_230 ignored
+                          uid=1_231 StaticText "Il compagno perfetto per il tuo relax: un Gin Tonic ghiacciato vista mare."
+                            uid=1_12 InlineTextBox "Il compagno perfetto per il tuo "
+                            uid=1_12 InlineTextBox "relax: un Gin Tonic ghiacciato "
+                            uid=1_12 InlineTextBox "vista mare."
+                uid=1_232 button "Visualizza immagine: Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia."
+                  uid=1_233 generic
+                    uid=1_234 image "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia." url="https://ilnodosantelia.it/_astro/pink-sky-gallery-il-nodo.8yht3ol2_Z25lXhQ.webp"
+                    uid=1_235 generic
+                      uid=1_236 ignored
+                        uid=1_237 image
+                        uid=1_238 ignored
+                          uid=1_239 StaticText "Sfumature di rosa e lavanda: l'ora più magica della giornata a Sant'Elia."
+                            uid=1_12 InlineTextBox "Sfumature di rosa e lavanda: "
+                            uid=1_12 InlineTextBox "l'ora più magica della giornata a "
+                            uid=1_12 InlineTextBox "Sant'Elia."
+        uid=1_240 generic
+          uid=1_241 ignored
+            uid=1_242 ignored
+              uid=1_243 heading "SOCIAL PROOF" level="2"
+                uid=1_244 StaticText "SOCIAL PROOF"
+                  uid=1_12 InlineTextBox "SOCIAL PROOF"
+              uid=1_245 heading "Dicono di Noi" level="3"
+                uid=1_246 StaticText "Dicono di Noi"
+                  uid=1_12 InlineTextBox "Dicono di Noi"
+              uid=1_247 paragraph
+                uid=1_248 StaticText ""Non siamo noi a dirlo, ma chi vive Il Nodo ogni giorno. La vostra soddisfazione è il nostro miglior cocktail.""
+                  uid=1_12 InlineTextBox ""Non siamo noi a dirlo, ma chi vive Il Nodo ogni giorno. La vostra soddisfazione è il nostro "
+                  uid=1_12 InlineTextBox "miglior cocktail.""
+            uid=1_249 ignored
+              uid=1_250 ignored
+                uid=1_251 ignored
+                  uid=1_252 ignored
+                    uid=1_253 image
+                    uid=1_254 image
+                    uid=1_255 image
+                    uid=1_256 image
+                    uid=1_257 image
+                  uid=1_258 paragraph
+                    uid=1_259 ignored
+                      uid=1_260 StaticText "“"
+                        uid=1_12 InlineTextBox "“"
+                    uid=1_261 StaticText "Posto favoloso, personale gentile e preparato molto attento al servizio. Cocktail ottimi e vasta scelta. Consigliatissimo per un aperitivo al tramonto!"
+                      uid=1_12 InlineTextBox "Posto favoloso, personale "
+                      uid=1_12 InlineTextBox "gentile e preparato molto "
+                      uid=1_12 InlineTextBox "attento al servizio. Cocktail "
+                      uid=1_12 InlineTextBox "ottimi e vasta scelta. "
+                      uid=1_12 InlineTextBox "Consigliatissimo per un "
+                      uid=1_12 InlineTextBox "aperitivo al tramonto!"
+                uid=1_262 ignored
+                  uid=1_263 paragraph
+                    uid=1_264 StaticText "Santina C."
+                      uid=1_12 InlineTextBox "Santina C."
+                  uid=1_265 ignored
+                    uid=1_266 ignored
+                      uid=1_267 StaticText "AGOSTO 2025"
+                        uid=1_12 InlineTextBox "AGOSTO 2025"
+                    uid=1_268 ignored
+                      uid=1_269 StaticText "Google Reviews"
+                        uid=1_12 InlineTextBox "Google Reviews"
+              uid=1_270 ignored
+                uid=1_271 ignored
+                  uid=1_272 ignored
+                    uid=1_273 image
+                    uid=1_274 image
+                    uid=1_275 image
+                    uid=1_276 image
+                    uid=1_277 image
+                  uid=1_278 paragraph
+                    uid=1_279 ignored
+                      uid=1_280 StaticText "“"
+                        uid=1_12 InlineTextBox "“"
+                    uid=1_281 StaticText "Una perla incastonata nel borgo di Sant'Elia. Atmosfera magica, cocktail ricercati e una vista che ti toglie il fiato. Il miglior posto per godersi il mare."
+                      uid=1_12 InlineTextBox "Una perla incastonata nel "
+                      uid=1_12 InlineTextBox "borgo di Sant'Elia. "
+                      uid=1_12 InlineTextBox "Atmosfera magica, cocktail "
+                      uid=1_12 InlineTextBox "ricercati e una vista che ti "
+                      uid=1_12 InlineTextBox "toglie il fiato. Il miglior posto "
+                      uid=1_12 InlineTextBox "per godersi il mare."
+                uid=1_282 ignored
+                  uid=1_283 paragraph
+                    uid=1_284 StaticText "Francesca Brun"
+                      uid=1_12 InlineTextBox "Francesca Brun"
+                  uid=1_285 ignored
+                    uid=1_286 ignored
+                      uid=1_287 StaticText "LUGLIO 2025"
+                        uid=1_12 InlineTextBox "LUGLIO 2025"
+                    uid=1_288 ignored
+                      uid=1_289 StaticText "Google Reviews"
+                        uid=1_12 InlineTextBox "Google Reviews"
+              uid=1_290 ignored
+                uid=1_291 ignored
+                  uid=1_292 ignored
+                    uid=1_293 image
+                    uid=1_294 image
+                    uid=1_295 image
+                    uid=1_296 image
+                    uid=1_297 image
+                  uid=1_298 paragraph
+                    uid=1_299 ignored
+                      uid=1_300 StaticText "“"
+                        uid=1_12 InlineTextBox "“"
+                    uid=1_301 StaticText "Professionalità e cordialità in un contesto unico. L'aperitivo è abbondante e di qualità. Non puoi dire di essere stato in Sicilia senza passare da qui."
+                      uid=1_12 InlineTextBox "Professionalità e cordialità in "
+                      uid=1_12 InlineTextBox "un contesto unico. "
+                      uid=1_12 InlineTextBox "L'aperitivo è abbondante e "
+                      uid=1_12 InlineTextBox "di qualità. Non puoi dire di "
+                      uid=1_12 InlineTextBox "essere stato in Sicilia senza "
+                      uid=1_12 InlineTextBox "passare da qui."
+                uid=1_302 ignored
+                  uid=1_303 paragraph
+                    uid=1_304 StaticText "Giuseppe Ceruso"
+                      uid=1_12 InlineTextBox "Giuseppe Ceruso"
+                  uid=1_305 ignored
+                    uid=1_306 ignored
+                      uid=1_307 StaticText "SETTEMBRE 2025"
+                        uid=1_12 InlineTextBox "SETTEMBRE 2025"
+                    uid=1_308 ignored
+                      uid=1_309 StaticText "Facebook"
+                        uid=1_12 InlineTextBox "Facebook"
+              uid=1_310 ignored
+                uid=1_311 ignored
+                  uid=1_312 ignored
+                    uid=1_313 image
+                    uid=1_314 image
+                    uid=1_315 image
+                    uid=1_316 image
+                    uid=1_317 image
+                  uid=1_318 paragraph
+                    uid=1_319 ignored
+                      uid=1_320 StaticText "“"
+                        uid=1_12 InlineTextBox "“"
+                    uid=1_321 StaticText "Posto magico. La vista sulla casa bianca sugli scogli al tramonto è impagabile. Ottimo anche il tagliere di prodotti locali."
+                      uid=1_12 InlineTextBox "Posto magico. La vista sulla "
+                      uid=1_12 InlineTextBox "casa bianca sugli scogli al "
+                      uid=1_12 InlineTextBox "tramonto è impagabile. "
+                      uid=1_12 InlineTextBox "Ottimo anche il tagliere di "
+                      uid=1_12 InlineTextBox "prodotti locali."
+                uid=1_322 ignored
+                  uid=1_323 paragraph
+                    uid=1_324 StaticText "Sofia Gagliardi"
+                      uid=1_12 InlineTextBox "Sofia Gagliardi"
+                  uid=1_325 ignored
+                    uid=1_326 ignored
+                      uid=1_327 StaticText "AGOSTO 2025"
+                        uid=1_12 InlineTextBox "AGOSTO 2025"
+                    uid=1_328 ignored
+                      uid=1_329 StaticText "TripAdvisor"
+                        uid=1_12 InlineTextBox "TripAdvisor"
+            uid=1_330 ignored
+              uid=1_331 paragraph
+                uid=1_332 StaticText "Hai visitato Il Nodo?"
+                  uid=1_12 InlineTextBox "Hai visitato Il Nodo?"
+              uid=1_333 link "Lascia una recensione" url="https://maps.app.goo.gl/9uwPwxciv7T9GPoR6"
+                uid=1_334 ignored
+                  uid=1_335 StaticText "Lascia una recensione"
+                    uid=1_12 InlineTextBox "Lascia una recensione"
+                uid=1_336 image
+        uid=1_337 generic
+          uid=1_338 generic
+          uid=1_339 generic
+            uid=1_340 ignored
+              uid=1_341 ignored
+                uid=1_342 ignored
+                  uid=1_343 heading "COORDINATE DI BELLEZZA" level="2"
+                    uid=1_344 StaticText "COORDINATE DI BELLEZZA"
+                      uid=1_12 InlineTextBox "COORDINATE DI BELLEZZA"
+                  uid=1_345 heading "Vieni a trovarci a Sant'Elia" level="3"
+                    uid=1_346 StaticText "Vieni a trovarci a "
+                      uid=1_12 InlineTextBox "Vieni a trovarci a "
+                    uid=1_347 StaticText "Sant'Elia"
+                      uid=1_12 InlineTextBox "Sant'Elia"
+                  uid=1_348 paragraph
+                    uid=1_349 StaticText "Siamo incastonati nel suggestivo borgo di Sant'Elia, dove il mare lambisce le antiche case dei pescatori. Un angolo di Sicilia autentica che aspetta solo di essere scoperto."
+                      uid=1_12 InlineTextBox "Siamo incastonati nel suggestivo borgo di Sant'Elia, dove il "
+                      uid=1_12 InlineTextBox "mare lambisce le antiche case dei pescatori. Un angolo di "
+                      uid=1_12 InlineTextBox "Sicilia autentica che aspetta solo di essere scoperto."
+                uid=1_350 ignored
+                  uid=1_351 ignored
+                    uid=1_352 ignored
+                      uid=1_353 image
+                      uid=1_354 ignored
+                        uid=1_355 StaticText "INDIRIZZO"
+                          uid=1_12 InlineTextBox "INDIRIZZO"
+                    uid=1_356 paragraph
+                      uid=1_357 StaticText "Via dei Cantieri, snc"
+                        uid=1_12 InlineTextBox "Via dei Cantieri, snc"
+                      uid=1_358 LineBreak "
+"
+                        uid=1_12 InlineTextBox "
+"
+                      uid=1_359 StaticText "90017 Sant'Elia (PA)"
+                        uid=1_12 InlineTextBox "90017 Sant'Elia (PA)"
+                    uid=1_360 link "Link Google Maps →" url="https://maps.app.goo.gl/9uwPwxciv7T9GPoR6"
+                      uid=1_361 StaticText "Link Google Maps →"
+                        uid=1_12 InlineTextBox "Link Google Maps →"
+                  uid=1_362 ignored
+                    uid=1_363 ignored
+                      uid=1_364 image
+                      uid=1_365 ignored
+                        uid=1_366 StaticText "ORARI"
+                          uid=1_12 InlineTextBox "ORARI"
+                    uid=1_367 list
+                      uid=1_368 listitem level="1"
+                        uid=1_369 ignored
+                          uid=1_370 StaticText "Lun - Dom:"
+                            uid=1_12 InlineTextBox "Lun - Dom:"
+                        uid=1_371 ignored
+                          uid=1_372 StaticText "10:00 - 00:00"
+                            uid=1_12 InlineTextBox "10:00 - 00:00"
+                      uid=1_373 listitem level="1"
+                        uid=1_374 StaticText "* Gli orari possono variare in base alla stagione."
+                          uid=1_12 InlineTextBox "* Gli orari possono variare in base alla "
+                          uid=1_12 InlineTextBox "stagione."
+                uid=1_375 ignored
+                  uid=1_376 ignored
+                    uid=1_377 ignored
+                      uid=1_378 StaticText "TELEFONO"
+                        uid=1_12 InlineTextBox "TELEFONO"
+                    uid=1_379 link "+39 366 177 0312" url="tel:+393661770312"
+                      uid=1_380 StaticText "+39 366 177 0312"
+                        uid=1_12 InlineTextBox "+39 366 177 0312"
+                  uid=1_381 ignored
+                    uid=1_382 ignored
+                      uid=1_383 StaticText "EMAIL"
+                        uid=1_12 InlineTextBox "EMAIL"
+                    uid=1_384 link "info@ilnodosantelia.it" url="mailto:info@ilnodosantelia.it"
+                      uid=1_385 StaticText "info@ilnodosantelia.it"
+                        uid=1_12 InlineTextBox "info@ilnodosantelia.it"
+              uid=1_386 generic
+                uid=1_387 generic
+                  uid=1_388 ignored
+                    uid=1_389 image
+                  uid=1_390 ignored
+                    uid=1_391 paragraph
+                      uid=1_392 StaticText "Anteprima Mappa"
+                        uid=1_12 InlineTextBox "Anteprima Mappa"
+                    uid=1_393 paragraph
+                      uid=1_394 StaticText "Accetta i cookie per visualizzare la mappa con la nostra posizione."
+                        uid=1_12 InlineTextBox "Accetta i cookie per visualizzare la mappa con la "
+                        uid=1_12 InlineTextBox "nostra posizione."
+                  uid=1_395 button "Gestisci preferenze"
+                    uid=1_396 StaticText "Gestisci preferenze"
+                      uid=1_12 InlineTextBox "Gestisci preferenze"
+                uid=1_397 generic
+        uid=1_398 sectionfooter
+          uid=1_399 generic
+          uid=1_400 generic
+            uid=1_401 ignored
+              uid=1_402 ignored
+                uid=1_403 ignored
+                  uid=1_404 heading "Il Nodo" level="2"
+                    uid=1_405 StaticText "Il Nodo"
+                      uid=1_12 InlineTextBox "Il Nodo"
+                  uid=1_406 paragraph
+                    uid=1_407 StaticText "Il tuo angolo di paradiso a Sant'Elia. Aperitivi d'autore, vista mozzafiato e l'accoglienza autentica della nostra terra."
+                      uid=1_12 InlineTextBox "Il tuo angolo di paradiso a Sant'Elia. "
+                      uid=1_12 InlineTextBox "Aperitivi d'autore, vista mozzafiato e "
+                      uid=1_12 InlineTextBox "l'accoglienza autentica della nostra terra."
+                uid=1_408 ignored
+                  uid=1_409 link "Instagram" url="https://www.instagram.com/il_nodo_santelia/"
+                    uid=1_410 image
+                  uid=1_411 link "Facebook" url="https://www.facebook.com/chioscoilnodo"
+                    uid=1_412 image
+              uid=1_413 ignored
+                uid=1_414 heading "NAVIGAZIONE" level="3"
+                  uid=1_415 StaticText "NAVIGAZIONE"
+                    uid=1_12 InlineTextBox "NAVIGAZIONE"
+                uid=1_416 list
+                  uid=1_417 listitem level="1"
+                    uid=1_418 link "Home" url="https://ilnodosantelia.it/#hero"
+                      uid=1_419 StaticText "Home"
+                        uid=1_12 InlineTextBox "Home"
+                  uid=1_420 listitem level="1"
+                    uid=1_421 link "Chi Siamo" url="https://ilnodosantelia.it/#storia"
+                      uid=1_422 StaticText "Chi Siamo"
+                        uid=1_12 InlineTextBox "Chi Siamo"
+                  uid=1_423 listitem level="1"
+                    uid=1_424 link "Menu" url="https://ilnodosantelia.it/menu"
+                      uid=1_425 StaticText "Menu"
+                        uid=1_12 InlineTextBox "Menu"
+                  uid=1_426 listitem level="1"
+                    uid=1_427 link "Galleria" url="https://ilnodosantelia.it/#galleria"
+                      uid=1_428 StaticText "Galleria"
+                        uid=1_12 InlineTextBox "Galleria"
+              uid=1_429 ignored
+                uid=1_430 list
+                  uid=1_431 listitem level="1"
+                    uid=1_432 link "Esperienza" url="https://ilnodosantelia.it/#sunset-experience"
+                      uid=1_433 StaticText "Esperienza"
+                        uid=1_12 InlineTextBox "Esperienza"
+                  uid=1_434 listitem level="1"
+                    uid=1_435 link "Recensioni" url="https://ilnodosantelia.it/#recensioni"
+                      uid=1_436 StaticText "Recensioni"
+                        uid=1_12 InlineTextBox "Recensioni"
+                  uid=1_437 listitem level="1"
+                    uid=1_438 link "Dove siamo" url="https://ilnodosantelia.it/#dove-siamo"
+                      uid=1_439 StaticText "Dove siamo"
+                        uid=1_12 InlineTextBox "Dove siamo"
+                  uid=1_440 listitem level="1"
+                    uid=1_441 link "Contattaci" url="https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo.%20Grazie!"
+                      uid=1_442 StaticText "Contattaci"
+                        uid=1_12 InlineTextBox "Contattaci"
+              uid=1_443 ignored
+                uid=1_444 heading "INFORMAZIONI" level="3"
+                  uid=1_445 StaticText "INFORMAZIONI"
+                    uid=1_12 InlineTextBox "INFORMAZIONI"
+                uid=1_446 list
+                  uid=1_447 listitem level="1"
+                    uid=1_448 image
+                    uid=1_449 ignored
+                      uid=1_450 StaticText "Via dei Cantieri, snc"
+                        uid=1_12 InlineTextBox "Via dei Cantieri, snc"
+                      uid=1_451 LineBreak "
+"
+                        uid=1_12 InlineTextBox "
+"
+                      uid=1_452 StaticText "Sant'Elia, PA 90017"
+                        uid=1_12 InlineTextBox "Sant'Elia, PA 90017"
+                  uid=1_453 listitem level="1"
+                    uid=1_454 image
+                    uid=1_455 link "info@ilnodosantelia.it" url="mailto:info@ilnodosantelia.it"
+                      uid=1_456 StaticText "info@ilnodosantelia.it"
+                        uid=1_12 InlineTextBox "info@ilnodosantelia.it"
+                  uid=1_457 listitem level="1"
+                    uid=1_458 image
+                    uid=1_459 link "+39 366 177 0312" url="tel:+393661770312"
+                      uid=1_460 StaticText "+39 366 177 0312"
+                        uid=1_12 InlineTextBox "+39 366 177 0312"
+            uid=1_461 ignored
+              uid=1_462 ignored
+                uid=1_463 paragraph
+                  uid=1_464 StaticText "© 2026 IL NODO DI MESCE ALAIN"
+                    uid=1_12 InlineTextBox "© 2026 IL NODO DI MESCE ALAIN"
+                  uid=1_465 StaticText " "
+                    uid=1_12 InlineTextBox " "
+                  uid=1_466 StaticText " • "
+                    uid=1_12 InlineTextBox " • "
+                  uid=1_467 StaticText " "
+                    uid=1_12 InlineTextBox " "
+                  uid=1_468 StaticText "P.IVA 05303000821 • REA PA - 267003"
+                    uid=1_12 InlineTextBox "P.IVA 05303000821 • REA PA - 267003"
+                uid=1_469 paragraph
+                  uid=1_470 StaticText "TUTTI I DIRITTI RISERVATI."
+                    uid=1_12 InlineTextBox "TUTTI I DIRITTI RISERVATI."
+              uid=1_471 ignored
+                uid=1_472 link "PRIVACY POLICY" url="https://ilnodosantelia.it/privacy-policy"
+                  uid=1_473 StaticText "PRIVACY POLICY"
+                    uid=1_12 InlineTextBox "PRIVACY POLICY"
+                uid=1_474 link "COOKIE POLICY" url="https://ilnodosantelia.it/cookie-policy"
+                  uid=1_475 StaticText "COOKIE POLICY"
+                    uid=1_12 InlineTextBox "COOKIE POLICY"
+                uid=1_476 button "GESTISCI COOKIE"
+                  uid=1_477 StaticText "GESTISCI COOKIE"
+                    uid=1_12 InlineTextBox "GESTISCI COOKIE"
+              uid=1_478 ignored
+                uid=1_479 StaticText "DESIGN BY"
+                  uid=1_12 InlineTextBox "DESIGN BY"
+                uid=1_480 link "Calta" url="https://www.instagram.com/caltaa_/"
+                  uid=1_481 StaticText "Calta"
+                    uid=1_12 InlineTextBox "Calta"

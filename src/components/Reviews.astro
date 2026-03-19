@@ -39,13 +39,13 @@ const reviews = [
 <section id={t('reviews.id')} class="py-24 bg-stone-100 overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16 space-y-4" data-aos="fade-up">
-      <h2 class="text-amber-600 font-medium tracking-widest uppercase text-sm">
+      <span class="block text-amber-800 font-medium tracking-widest uppercase text-sm">
         {t("reviews.label")}
-      </h2>
-      <h3 class="text-4xl md:text-5xl font-serif text-stone-900">
+      </span>
+      <h2 class="text-4xl md:text-5xl font-serif text-stone-900">
         {t("reviews.title")}
-      </h3>
-      <p class="text-stone-500 max-w-2xl mx-auto italic">
+      </h2>
+      <p class="text-stone-600 max-w-2xl mx-auto italic">
         {t("reviews.desc")}
       </p>
     </div>
@@ -59,12 +59,13 @@ const reviews = [
             data-aos-delay={index * 100}
           >
             <div class="space-y-4">
-              <div class="flex space-x-1">
+              <div class="flex space-x-1" role="img" aria-label={lang === "en" ? `${review.stars} out of 5 stars` : lang === "fr" ? `${review.stars} étoiles sur 5` : `${review.stars} stelle su 5`}>
                 {[...Array(review.stars)].map(() => (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="w-5 h-5 text-amber-500 fill-current"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>

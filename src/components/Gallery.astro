@@ -106,7 +106,7 @@ const images = [
             <button
               type="button"
               class={`gallery__item gallery__item--${image.span} reveal delay-${(index % 3) + 1}`}
-              aria-label={`Visualizza immagine: ${image.alt}`}
+              aria-label={image.alt}
               data-gallery-item
               data-img-src={image.src.src}
               data-img-alt={image.alt}

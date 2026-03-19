@@ -13,6 +13,18 @@ interface Props {
 const { title, description, image } = Astro.props;
 
 const lang = Astro.currentLocale || "it";
+const site = "https://ilnodosantelia.it";
+
+// Build hreflang alternate URLs for the current page
+const pathname = Astro.url.pathname;
+// Strip locale prefix to get the base path (e.g. "/en/menu/" → "/menu/", "/" → "/")
+const basePath = pathname.replace(/^\/(en|fr)\//, "/").replace(/^\/(en|fr)$/, "/");
+const alternates = [
+  { hreflang: "it", href: `${site}${basePath}` },
+  { hreflang: "en", href: `${site}/en${basePath === "/" ? "/" : basePath}` },
+  { hreflang: "fr", href: `${site}/fr${basePath === "/" ? "/" : basePath}` },
+  { hreflang: "x-default", href: `${site}${basePath}` },
+];
 ---
 
 <!doctype html>
@@ -24,7 +36,14 @@ const lang = Astro.currentLocale || "it";
     <SEO title={title} description={description} ogImage={image} />
     <SchemaLocalBusiness />
 
-    <!-- Fonts: self-hosted in global.css with font-display: swap -->
+    {/* Hreflang: tell search engines about language variants */}
+    {alternates.map(alt => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+
+    <!-- Preload critical fonts (Hero heading + CTA) to minimize CLS from font-display: swap -->
+    <link rel="preload" href="/fonts/cormorant-garamond-v21-latin-300.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-v12-latin-600.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <slot />
