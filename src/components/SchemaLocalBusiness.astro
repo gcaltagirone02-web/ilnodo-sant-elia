@@ -5,44 +5,54 @@ const lang = Astro.currentLocale || "it";
 const schema = {
   "@context": "https://schema.org",
   "@type": "BarOrPub",
-  "name": "Il Nodo 2.0",
-  "url": "https://ilnodo.it",
-  "telephone": "+393661770312",
-  "image": "https://ilnodo.it/images/social-preview.png",
-  "priceRange": "€€",
-  "address": {
+  name: "Il Nodo",
+  url: "https://ilnodosantelia.it",
+  telephone: "+393661770312",
+  image: "https://ilnodosantelia.it/images/social-preview.png",
+  priceRange: "€€",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Via dei Cantieri, snc",
-    "addressLocality": "Sant'Elia",
-    "addressRegion": "PA",
-    "postalCode": "90017",
-    "addressCountry": "IT"
+    streetAddress: "Via dei Cantieri, snc",
+    addressLocality: "Sant'Elia",
+    addressRegion: "PA",
+    postalCode: "90017",
+    addressCountry: "IT",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": 38.0960,
-    "longitude": 13.5365
+    latitude: 38.096131607001794,
+    longitude: 13.539118486558483,
   },
-  "openingHoursSpecification": [
+  openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-      "opens": "16:00",
-      "closes": "01:00"
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "10:00",
+      closes: "00:00",
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday", "Saturday", "Sunday"],
-      "opens": "16:00",
-      "closes": "02:00"
-    }
   ],
-  "menu": "https://ilnodo.it/menu",
-  "servesCuisine": lang === "en" ? "Cocktails, Drinks, Aperitif" : "Cocktail, Aperitivi, Drink",
-  "sameAs": [
-    "https://www.instagram.com/il_nodo_beach_bar/",
-    "https://www.facebook.com/chioscoilnodo"
-  ]
+  menu: "https://ilnodosantelia.it/menu",
+  servesCuisine:
+    lang === "en"
+      ? "Cocktails, Drinks, Aperitif"
+      : "Cocktail, Aperitivi, Drink",
+  sameAs: [
+    "https://www.instagram.com/il_nodo_santelia/",
+    "https://www.facebook.com/chioscoilnodo",
+  ],
 };
 ---
-<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(schema)}
+/>

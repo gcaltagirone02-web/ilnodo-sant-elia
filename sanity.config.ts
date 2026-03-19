@@ -15,7 +15,7 @@ export default defineConfig({
     structureTool({
       structure: (S) =>
         S.list()
-          .title("Il Nodo 2.0 - Pannello")
+          .title("Il Nodo - Pannello")
           .items([
             // Sezione Proprietari: Alain & Alida
             S.listItem()

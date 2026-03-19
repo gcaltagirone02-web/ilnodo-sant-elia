@@ -1,4 +1,4 @@
-# Il Nodo 2.0 — Beach Bar a Sant'Elia
+# Il Nodo — Beach Bar a Sant'Elia
 
 Sito vetrina ad alte prestazioni per **Il Nodo Cocktail & Beach Bar** situato a Sant'Elia (PA). Il progetto è focalizzato sulla Local SEO, la conversione immediata e un'estetica premium "Solar".
 
