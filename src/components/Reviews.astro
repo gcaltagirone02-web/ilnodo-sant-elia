@@ -34,7 +34,26 @@ const reviews = [
     source: "TripAdvisor",
   },
 ];
+
+// JSON-LD Review schema linked to LocalBusiness entity
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "@id": "https://ilnodosantelia.it/#local-business",
+  review: reviews.map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.name },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: r.stars.toString(),
+      bestRating: "5",
+    },
+    reviewBody: r.text,
+  })),
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(reviewSchema)} />
 
 <section id={t('reviews.id')} class="py-24 bg-stone-100 overflow-hidden">
   <div class="container mx-auto px-6">

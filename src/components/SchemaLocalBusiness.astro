@@ -5,15 +5,17 @@ const lang = Astro.currentLocale || "it";
 const schema = {
   "@context": "https://schema.org",
   "@type": "BarOrPub",
+  "@id": "https://ilnodosantelia.it/#local-business",
   name: "Il Nodo",
   url: "https://ilnodosantelia.it",
   telephone: "+393661770312",
+  email: "info@ilnodosantelia.it",
   image: "https://ilnodosantelia.it/images/social-preview.png",
   priceRange: "€€",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Via dei Cantieri, snc",
-    addressLocality: "Sant'Elia",
+    addressLocality: "Santa Flavia",
     addressRegion: "PA",
     postalCode: "90017",
     addressCountry: "IT",
@@ -23,6 +25,11 @@ const schema = {
     latitude: 38.096131607001794,
     longitude: 13.539118486558483,
   },
+  areaServed: {
+    "@type": "Place",
+    name: "Sant'Elia, Santa Flavia",
+  },
+  hasMap: "https://maps.app.goo.gl/9uwPwxciv7T9GPoR6",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -37,13 +44,38 @@ const schema = {
       ],
       opens: "10:00",
       closes: "00:00",
+      validFrom: "2026-04-01",
+      validThrough: "2026-10-31",
     },
   ],
   menu: "https://ilnodosantelia.it/menu",
   servesCuisine:
     lang === "en"
-      ? "Cocktails, Drinks, Aperitif"
-      : "Cocktail, Aperitivi, Drink",
+      ? ["Cocktails", "Aperitifs", "Appetizers", "Sandwiches", "Salads", "Sicilian Granita"]
+      : lang === "fr"
+        ? ["Cocktails", "Apéritifs", "Amuse-bouches", "Paninis", "Salades", "Granita Sicilienne"]
+        : ["Cocktail", "Aperitivi", "Stuzzichini", "Panini", "Insalate", "Granite Siciliane"],
+  acceptsReservations: "True",
+  paymentAccepted: "Cash, Credit Card",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.2",
+    reviewCount: "421",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Live Music", value: true },
+    { "@type": "LocationFeatureSpecification", name: "DJ Set", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Sea View", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Outdoor Seating", value: true },
+  ],
+  keywords:
+    lang === "en"
+      ? "beach bar, cocktail bar, sunset aperitif, live music, DJ set, Sant'Elia, Santa Flavia"
+      : lang === "fr"
+        ? "bar de plage, bar à cocktails, apéritif coucher de soleil, musique live, DJ set, Sant'Elia, Santa Flavia"
+        : "beach bar, cocktail bar, aperitivo al tramonto, musica dal vivo, DJ set, Sant'Elia, Santa Flavia",
   sameAs: [
     "https://www.instagram.com/il_nodo_santelia/",
     "https://www.facebook.com/chioscoilnodo",
