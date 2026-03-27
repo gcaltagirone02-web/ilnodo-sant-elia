@@ -36,25 +36,25 @@ const navLinks = [
 
 // Contextual WhatsApp messages
 const whatsappBase = "https://api.whatsapp.com/send?phone=393661770312&text=";
-const messages = {
+const messages: Record<string, { home: string; menu: string }> = {
   it: {
-    home: "Ciao!%20Vorrei%20prenotare%20un%20tavolo%20per%20l'aperitivo%20a%20Sant'Elia.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!",
-    menu: "Ciao!%20Ho%20visto%20il%20vostro%20menu%20online%20e%20vorrei%20prenotare%20un%20tavolo.%20Saremo%20in%20%5Binserisci%20n.%20persone%5D%20alle%20ore%20%5Binserisci%20orario%5D.%20Grazie!",
+    home: "Ciao! Vorrei prenotare un tavolo per l'aperitivo a Sant'Elia.\n- Data: \n- Persone: \n- Orario: \nGrazie!",
+    menu: "Ciao! Ho visto il vostro menu e vorrei prenotare un tavolo.\n- Data: \n- Persone: \n- Orario: \nGrazie!",
   },
   en: {
-    home: "Hi!%20I'd%20like%20to%20book%20a%20table%20for%20an%20aperitif%20in%20Sant'Elia.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
-    menu: "Hi!%20I%20saw%20your%20online%20menu%20and%20I'd%20like%20to%20book%20a%20table.%20We%20will%20be%20%5Binsert%20n.%20people%5D%20at%20%5Binsert%20time%5D.%20Thank%20you!",
+    home: "Hi! I'd like to book a table for an aperitif in Sant'Elia.\n- Date: \n- People: \n- Time: \nThank you!",
+    menu: "Hi! I saw your menu and I'd like to book a table.\n- Date: \n- People: \n- Time: \nThank you!",
   },
   fr: {
-    home: "Bonjour!%20Je%20souhaiterais%20réserver%20une%20table%20pour%20un%20apéritif%20à%20Sant'Elia.%20Nous%20serons%20%5Binsérer%20n.%20personnes%5D%20à%20%5Binsérer%20l'heure%5D.%20Merci!",
-    menu: "Bonjour!%20J'ai%20vu%20votre%20menu%20en%20ligne%20et%20je%20souhaiterais%20réserver%20une%20table.%20Nous%20serons%20%5Binsérer%20n.%20personnes%5D%20à%20%5Binsérer%20l'heure%5D.%20Merci!",
+    home: "Bonjour ! Je souhaiterais réserver une table pour un apéritif à Sant'Elia.\n- Date : \n- Personnes : \n- Heure : \nMerci !",
+    menu: "Bonjour ! J'ai vu votre menu et je souhaiterais réserver une table.\n- Date : \n- Personnes : \n- Heure : \nMerci !",
   },
 };
 
 const currentMessage = currentPath.includes("/menu")
   ? messages[lang].menu
   : messages[lang].home;
-const whatsappLink = `${whatsappBase}${currentMessage}`;
+const whatsappLink = `${whatsappBase}${encodeURIComponent(currentMessage)}`;
 
 // Helper to switch language keeping the same path
 const getSwitchPath = (targetLang: string) => {

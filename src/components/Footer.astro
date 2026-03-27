@@ -9,9 +9,13 @@ interface Props {
 const lang = (Astro.currentLocale as "it" | "en" | "fr") || "it";
 const t = useTranslations(lang);
 
-const {
-  whatsappLink = "https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20ricevere%20alcune%20informazioni%20riguardo%20Il%20Nodo.%20Grazie!",
-} = Astro.props;
+const footerMessages: Record<string, string> = {
+  it: "Ciao! Vorrei ricevere alcune informazioni riguardo Il Nodo. Grazie!",
+  en: "Hi! I'd like some information about Il Nodo. Thank you!",
+  fr: "Bonjour ! Je souhaiterais recevoir des informations sur Il Nodo. Merci !",
+};
+const defaultWhatsappLink = `https://api.whatsapp.com/send?phone=393661770312&text=${encodeURIComponent(footerMessages[lang])}`;
+const { whatsappLink = defaultWhatsappLink } = Astro.props;
 
 const base = lang === "en" ? "/en" : lang === "fr" ? "/fr" : "";
 ---

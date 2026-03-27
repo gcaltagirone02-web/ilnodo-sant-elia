@@ -53,6 +53,15 @@ const desktopRetina = await getImage({
   quality: 90,
   width: 2752, // Full available width
 });
+
+// WhatsApp pre-compiled messages
+const whatsappBase = "https://api.whatsapp.com/send?phone=393661770312&text=";
+const heroMessages: Record<string, string> = {
+  it: "Ciao! Vorrei prenotare un tavolo al Nodo.\n- Data: \n- Persone: \n- Orario: \nGrazie!",
+  en: "Hi! I'd like to book a table at Il Nodo.\n- Date: \n- People: \n- Time: \nThank you!",
+  fr: "Bonjour ! Je souhaiterais réserver une table au Nodo.\n- Date : \n- Personnes : \n- Heure : \nMerci !",
+};
+const heroWhatsappLink = `${whatsappBase}${encodeURIComponent(heroMessages[lang])}`;
 ---
 
 <section id="hero" class="hero" aria-labelledby="hero-heading">
@@ -118,11 +127,7 @@ const desktopRetina = await getImage({
             : "Azioni principali"}
       >
         <a
-          href={lang === "en"
-            ? "https://api.whatsapp.com/send?phone=393661770312&text=Hi!%20I'd%20like%20information%20or%20to%20book%20a%20table%20for%20a%20sunset%20aperitif."
-            : lang === "fr"
-              ? "https://api.whatsapp.com/send?phone=393661770312&text=Bonjour!%20Je%20souhaiterais%20des%20informations%20ou%20réserver%20une%20table%20pour%20un%20apéritif%20au%20couché%20du%20soleil."
-              : "https://api.whatsapp.com/send?phone=393661770312&text=Ciao!%20Vorrei%20informazioni%20o%20prenotare%20un%20tavolo%20per%20un%20aperitivo%20al%20tramonto."}
+          href={heroWhatsappLink}
           class="hero__cta-primary"
           target="_blank"
           rel="noopener noreferrer"
