@@ -74,7 +74,7 @@ export async function getMenuItems(lang: string = "it") {
     "ingredientsEn": ingredientsEn,
     "ingredientsFr": ingredientsFr,
     "categorySlug": category->slug.current,
-    isHighlight
+    "isHighlight": coalesce(isHighlight, false)
   }`;
   return await client.fetch(query);
 }
