@@ -1,5 +1,21 @@
 import { client } from "./client";
 
+export interface MenuItem {
+  name: string;
+  nameIt?: string;
+  nameEn?: string;
+  nameFr?: string;
+  price: string;
+  description?: string;
+  descriptionEn?: string;
+  descriptionFr?: string;
+  ingredients?: string[];
+  ingredientsEn?: string[];
+  ingredientsFr?: string[];
+  categorySlug: string;
+  isHighlight?: boolean;
+}
+
 export async function getSiteSettings() {
   const query = `*[_type == "operations"][0]`;
   return await client.fetch(query);

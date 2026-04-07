@@ -9,25 +9,15 @@ import desktopHero from "../../assets/images/golden-hour-dektop-il-nodo.png";
 import mobileHero from "../../assets/images/golden-hour-mobile-il-nodo.png";
 import { getCategories, getMenuItems } from "../../lib/sanity/queries";
 import { useTranslations } from "../../i18n/ui";
-import { menuFallbackData, type MenuItem } from "../../data/menuFallback";
+import type { MenuItem } from "../../lib/sanity/queries";
 
 const lang = "fr";
 const t = useTranslations(lang);
 
-let items: MenuItem[] = [];
-let sanityCategories: any[] = [];
-
-try {
-  [items, sanityCategories] = await Promise.all([
-    getMenuItems(lang),
-    getCategories(lang),
-  ]);
-} catch (error) {
-  console.warn(
-    "Sanity fetch failed, using fallback data. Check your projectId in astro.config.mjs.",
-    error,
-  );
-}
+const [items, sanityCategories]: [MenuItem[], any[]] = await Promise.all([
+  getMenuItems(lang),
+  getCategories(lang),
+]);
 
 // Category images
 import cocktailsAlcoliciImg from "../../assets/images/cocktails.webp";
@@ -100,11 +90,8 @@ const categories =
       ];
 
 
-// Fallback data
-const fallbackData = menuFallbackData[lang];
-
 // Group items by category
-const groupedItems = items.reduce(
+const displayData: Record<string, MenuItem[]> = items.reduce(
   (acc, item) => {
     const catSlug = item.categorySlug || "other";
     if (!acc[catSlug]) acc[catSlug] = [];
@@ -113,9 +100,6 @@ const groupedItems = items.reduce(
   },
   {} as Record<string, MenuItem[]>,
 );
-
-const displayData: Record<string, MenuItem[]> =
-  items.length > 0 ? groupedItems : fallbackData;
 
 // JSON-LD Menu Schema
 const menuSchema = {
