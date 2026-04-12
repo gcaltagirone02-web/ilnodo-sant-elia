@@ -17,9 +17,9 @@ const { id = t('sunset.id') } = Astro.props;
 // WhatsApp pre-compiled messages
 const whatsappBase = "https://api.whatsapp.com/send?phone=393661770312&text=";
 const sunsetMessages: Record<string, string> = {
-  it: "Ciao! Vorrei prenotare un tavolo per il tramonto al Nodo.\n- Data: \n- Persone: \n- Orario: \nGrazie!",
-  en: "Hi! I'd like to book a table for sunset at Il Nodo.\n- Date: \n- People: \n- Time: \nThank you!",
-  fr: "Bonjour ! Je souhaiterais réserver une table pour le coucher du soleil au Nodo.\n- Date : \n- Personnes : \n- Heure : \nMerci !",
+  it: "Ciao! Vorrei prenotare un tavolo per il tramonto al Nodo.\n- Nome: \n- Data: \n- Persone: \n- Orario: \nGrazie!",
+  en: "Hi! I'd like to book a table for sunset at Il Nodo.\n- Name: \n- Date: \n- People: \n- Time: \nThank you!",
+  fr: "Bonjour ! Je souhaiterais réserver une table pour le coucher du soleil au Nodo.\n- Prénom : \n- Date : \n- Personnes : \n- Heure : \nMerci !",
 };
 const sunsetWhatsappLink = `${whatsappBase}${encodeURIComponent(sunsetMessages[lang])}`;
 ---
